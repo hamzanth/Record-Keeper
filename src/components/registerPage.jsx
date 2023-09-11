@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { addDoc, collection } from "firebase/firestore"
-import { firebase } from '../firebase_setup/firebase'
+import { firebase, auth } from '../firebase_setup/firebase'
 import { getAuth, createUserWithEmailAndPassword, signOut } from 'firebase/auth'
 import styles from './auth.module.css'
 
@@ -12,28 +12,33 @@ const RegisterPage = () => {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
 
-  const auth = getAuth()
-  const submitHandler = async (event) => {
+  // console.log(auth)
+  const addDataToFirebase = async() => {
+    try{
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+      console.log("where is the error")
+      const user = userCredential.user
+      await addDoc(collection(firebase, "Users"), {
+        uuid: user.id,
+        email: user.email,
+        firstName: firstName,
+        lastName: lastName
+      })
+      // return true
+    }
+    catch(error){
+      console.log("There is something wrong")
+      // return {error: error.message}
+    }
+  }
+  const submitHandler = (event) => {
     event.preventDefault()
     console.log("The form has been submitted")
     if (password !== confirmPassword){
       setError("The passwords do not match")
     }
     else{
-      try{
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-        const user = userCredential.user
-        await addDoc(collection(firebase, "users"), {
-          uuid: user.id,
-          email: user.email,
-          firstName: firstName,
-          lastName: lastName
-        })
-        return true
-      }
-      catch(error){
-        return {error: error.message}
-      }
+      addDataToFirebase()
     }
   }
 

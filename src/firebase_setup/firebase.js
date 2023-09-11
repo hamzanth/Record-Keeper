@@ -2,22 +2,29 @@
 import { getFirestore } from "firebase/firestore"
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDRVGvm2LSGH4M5OrJTNUVzg7ScIqAEMso",
-  authDomain: "record-keeper-3aa80.firebaseapp.com",
-  projectId: "record-keeper-3aa80",
-  storageBucket: "record-keeper-3aa80.appspot.com",
-  messagingSenderId: "921212292236",
-  appId: "1:921212292236:web:5983b18bbdb63b47fbffa9",
-  measurementId: "G-EV7NBFN547"
+  apiKey: "AIzaSyDEqcnDbml771Mjzm4WEMOcbYs8Ko7tW8U",
+  authDomain: "record-keeper-dbeeb.firebaseapp.com",
+  projectId: "record-keeper-dbeeb",
+  storageBucket: "record-keeper-dbeeb.appspot.com",
+  messagingSenderId: "291527137338",
+  appId: "1:291527137338:web:4eec0451554a4e1850bd03",
+  measurementId: "G-JGGSNFH6YW"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-export const firebase = getFirestore(app)
+const auth = getAuth(app)
+const firebase = getFirestore(app)
+
+export {
+  auth,
+  firebase
+}
