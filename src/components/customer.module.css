@@ -1,0 +1,159 @@
+.customerContainer{
+  color: black;
+}
+.container{
+  max-width: 1280px;
+  margin: 0 auto;
+  color: black;
+}
+.categoryName{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.categorySpan{
+  font-size: 18px;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 7px 12px;
+}
+.categoryHd{
+  text-align: center;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: background-color 0.3s
+}
+.categoryHd:hover{
+  background-color: lightgrey;
+  color: black;
+}
+.clearDebt{
+  position: absolute;
+  top: 0%;
+  left: 10%;
+  letter-spacing: 7px;
+  width: 75%;
+  transform: rotate(-5deg);
+  font-weight: bold;
+  color: red;
+  border: 3px solid red;
+  font-size: 33px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.historySide{
+  width: 60%;
+  margin: 0 auto;
+}
+.transactRecord{
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  cursor: pointer;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 2px groove green;
+  border-radius: 8px;
+  transition: 0.3s;
+  padding: 0;
+}
+.tickContainer{
+  margin-left: 20px;
+  border: 2px solid black;
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+}
+.tickSymbol{
+  width: 19px;
+  height: 11px;
+  display: inline-block;
+  border-left: 3px solid teal;
+  border-bottom: 3px solid teal;
+  box-sizing: border-box;
+  transform: rotate(-30deg) translate(3px, -3px);
+}
+.showTransDet{
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  z-index: 50;
+  background-color: royalblue;
+  color: white;
+  border-radius: 10px;
+  padding: 20px 50px;
+  animation: scaleCart 0.5s ease-in;
+}
+.cancelTransShow{
+   font-size: 40px;
+   color: white;
+   position: absolute;
+   top: 8px;
+   right: 15px;
+   cursor: pointer;
+}
+.cancelTransShow:hover{
+  color: red;
+}
+.saleName{
+  font-size: 20px;
+  cursor: pointer;
+  margin: 0 30px;
+  color: white;
+  width: 50%;
+  background-color: teal;
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 3px 15px;
+  position: relative;
+}
+.saleName:hover{
+  color: black;
+}
+.clearAllBtn{
+  background-color: teal;
+}
+.clearAllBtn:hover{
+  background-color: darkred;
+}
+.depositInput{
+  font-size: 12px;
+  padding: 5px 7px;
+  background-color: white;
+  color: black;
+  font-family: cursive;
+  display: inline-block;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+.littleTotal{
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  border: 1px solid red;
+  background-color: red;
+  color: white;
+  font-size: 10px;
+  border-radius: 50%;
+}
+.unclear{
+  position: absolute;
+  z-index: 55;
+  top: 10px;
+  right: 10px;
+  background-color: green;
+  color: white;
+  font-size: 14px;
+}
+.unclear:hover{
+  background-color: darkgreen;
+}
+@keyframes scaleCart{
+  from{
+    transform: scale(0);
+  }
+  to{
+    transform: scale(1)
+  }
+}

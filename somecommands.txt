@@ -1,0 +1,27 @@
+node
+mongo
+npx --version
+vite --version
+cd documents
+cd code
+mkdir React
+npm init @vitejs/app
+npm install -g npm@9.8.1
+npx create-vite-app RecordKeeper 
+cd RecordKeeper
+npm install
+dir /b
+npm run dev
+y
+cd ..
+mkdir Records
+rd records
+dir /b
+cd react
+dir /b
+npm create vite@latest
+cd Record-Keeper
+npm install
+npm run dev
+doskey /history
+doskey /history >somecommands.txt
