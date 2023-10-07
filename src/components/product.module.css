@@ -176,3 +176,56 @@
   text-align: center;
   border: 1px solid black;
 }
+.productForm{
+  position: absolute;
+  width: 50%;
+  top: 20%;
+  background-color: white;
+  left: 20%;
+  /* transform: translateX(-50%); */
+  border: 3px solid black;
+  padding: 5px 30px;
+  border-radius: 5px;
+  animation: scaleProdForm 0.5s ease-in;
+}
+.productFormButton{
+  color: white;
+  background-color: green;
+}
+.productFormClose{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 35px;
+  color: darkred;
+  cursor: pointer;
+  padding: 4px 15px;
+}
+.productFormClose:hover{
+  color: red;
+}
+
+.productFormInput{
+  width: 100%;
+  box-sizing: border-box;
+  margin: 5px 0;
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 10px;
+}
+.productAddButton{
+  background-color: cornflowerblue;
+  color: white;
+  box-sizing: border-box;
+}
+.productAddButton:hover{
+  border: 2px solid black;
+}
+@keyframes scaleProdForm{
+  from{
+    transform: scale(0);
+  }
+  to{
+    transform: scale(1)
+  }
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        
+    </div>
+
+    <script>
+        let container = document.querySelector("div.container")
+        fetch("http://127.0.0.1:3000/products")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            for (let i=0; i<data.products.length; i++){
+                let card = document.createElement("div")
+                let pname = document.createElement("p")
+                let pquant = document.createElement("p")
+                let pprice = document.createElement("p")
+                pname.textContent = data.products[i].name
+                pquant.textContent = data.products[i].quantity
+                pprice.textContent = data.products[i].price
+                card.appendChild(pname)
+                card.appendChild(pquant)
+                card.appendChild(pprice)
+                container.appendChild(card)
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,41 +1,12 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import jwtDecode from 'jwt-decode'
 import { CustomerContext } from '../context'
 import Product from './miniComponents/product'
 import styles from './product.module.css'
 import ShoppingCart from './miniComponents/ShoppingCart'
 
-const Products = ({customer, setTotalDebt}) => {
-  const initialState = [
-    {
-      category: "Snacks",
-      name: "groundnut",
-      quantity: 4,
-      price: 20,
-      image: "/productPictures/scissors.jpeg"
-    },
-    {
-      category: "Snacks",
-      name: "Choco Rings",
-      quantity: 2,
-      price: 60,
-      image: "/productPictures/paper.jpeg"
-    },
-    {
-      category: "Snacks",
-      quantity: 7,
-      name: "Pale G",
-      price: 60,
-      image: "/productPictures/rock.jpeg"
-    },
-    {
-      category: "Food Stuff",
-      name: "Spaghetti",
-      quantity: 1,
-      price: 600,
-      image: "/productPictures/paper.jpeg"
-    },
-  ]
+const Products = ({customer, setTotalDebt, setCustomerDetail}) => {
 
   const productCategory = ["All Categories", "food Stuff", "snacks", "ingredients", "drinks"]
 
@@ -56,8 +27,8 @@ const Products = ({customer, setTotalDebt}) => {
     setProductDisplay(newProducts)
   }
 
-  const [products, setProduct] = useState(initialState)
-  const [productDisplay, setProductDisplay] = useState(initialState)
+  const [products, setProduct] = useState([])
+  const [productDisplay, setProductDisplay] = useState([])
   const [ searchTerm, setSearchTerm ] = useState("")
   const [categoryChoice, setCategoryChoice ] = useState("All Categories")
   const [showCategory, setShowCategory ] = useState(false)
@@ -65,11 +36,49 @@ const Products = ({customer, setTotalDebt}) => {
   const [cart, setCart] = useState({})
   const [totalCost, setTotalCost] = useState(0)
   const [resetPrice, setResetPrice] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState("")
   // const [outOfStockArr, setOutOfStockArr] = useState([])
 
-  const { saveTransaction } = useContext(CustomerContext)
-  const { customers } = useContext(CustomerContext)
-  const { setCustomers } = useContext(CustomerContext)
+  useEffect(() => {
+    fetch("http://127.0.0.1:3000/products")
+    .then(response => response.json())
+    .then(data => {
+      // console.log(data)
+      setProduct(data.products)
+      setProductDisplay(data.products)
+      setIsLoading(false)
+    })
+    .catch(error => {
+      setError("Could not connect to the backend servers")
+      setIsLoading(false)
+    })
+  }, [])
+
+  // const { saveTransaction } = useContext(CustomerContext)
+  // const { customers } = useContext(CustomerContext)
+  // const { setCustomers } = useContext(CustomerContext)
+
+  const saveTransaction = (id, transObj, owing, owed) => {
+    fetch("http://127.0.0.1:3000/products/addtotimeline", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({id: id, transObj: transObj, owing: owing, owed: owed})
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data)
+      setCustomerDetail(data.user)
+      setProduct(data.products)
+      setProductDisplay(data.products)
+
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
 
   const changeQuantity = (product, quantity) => {
     const prods = [...productDisplay]
@@ -142,7 +151,7 @@ const Products = ({customer, setTotalDebt}) => {
        }
 
     if ((customer.amountOwed === 0) && (customer.amountOwing === 0)){
-      saveTransaction(customer, newTransaction, totalCost, 0)
+      saveTransaction(customer._id, newTransaction, totalCost, 0)
     }
     else{
       if (customer.amountOwed !== 0){
@@ -151,56 +160,20 @@ const Products = ({customer, setTotalDebt}) => {
           console.log("the amount is greater than ")
           newOwed = netAmount * -1
           newOwing = 0
-          saveTransaction(customer, newTransaction, newOwing, newOwed)
+          saveTransaction(customer._id, newTransaction, newOwing, newOwed)
         }
         else{
           newOwed = 0
           newOwing = netAmount
-          saveTransaction(customer, newTransaction, newOwing, newOwed)
+          saveTransaction(customer._id, newTransaction, newOwing, newOwed)
         }
       }
       else if (customer.amountOwing !== 0){
         newOwed = 0
         newOwing = totalCost + customer.amountOwing
-        saveTransaction(customer, newTransaction, newOwing, newOwed)
+        saveTransaction(customer._id, newTransaction, newOwing, newOwed)
       }
     }
-
-    // if (netAmount > 0){
-      // const allCustomersClone = [...customers]
-      // const customerIndex = allCustomersClone.indexOf(customer)
-      // const customerClone = {...customer}
-      // customerClone.amountOwed = 0
-      // allCustomersClone[customerIndex] = customerClone
-      // setCustomers(allCustomersClone)
-      // const newOwed = 0
-      // saveTransaction(customer, cart, newOwed)
-      // setTotalDebt(netAmount - totalCost)
-    // }
-    // else if (netAmount < 0){
-      // const allCustomersClone = [...customers]
-      // const customerIndex = allCustomersClone.indexOf(customer)
-      // const customerClone = {...customer}
-      // customerClone.amountOwed = customer.amountOwed - totalAmt
-      // allCustomersClone[customerIndex] = customerClone
-      // console.log(allCustomersClone)
-      // setCustomers(allCustomersClone)
-      // const newOwed = customer.amountOwed - to
-      // console.log(`newOwed = ${customer.amountOwed} - ${totalAmt}`)
-      // saveTransaction(customer, cart, newOwed)
-      // setTotalDebt(0)
-    // }
-    // else{
-      // const allCustomersClone = [...customers]
-      // const customerIndex = allCustomersClone.indexOf(customer)
-      // const customerClone = {...customer}
-      // customerClone.amountOwed = 0
-      // allCustomersClone[customerIndex] = customerClone
-      // setCustomers(allCustomersClone)
-    //   const newOwed = 0
-    //   saveTransaction(customer, cart, newOwed)
-    //   setTotalDebt(0)
-    // }
     setCart({})
   }
   const discardProducts = () => {
@@ -210,57 +183,145 @@ const Products = ({customer, setTotalDebt}) => {
     setProductDisplay(products)
     setCart({})
   }
-  return (
-  <div className={styles.gridContainer}>
-    <div>
-      <h2 style={{marginTop: 0}}>Select a Category</h2>
-      <ul className={styles.categoryUl}>
-        { productCategory.map((category) => (
-          <li
-            style={{backgroundColor: categoryChoice === category && "green", color: categoryChoice === category && "white"}}
-            className={`${styles.categoryLi}`}
-            key={category}
-            onClick={() => handleCategory(category)}
-            >
-              {category}
-            </li>
-        ))}
-      </ul>
-    </div>
-    <div className={styles.productContainer}>
-      <ShoppingCart
-        cart={cart}
-        totalCost={totalCost}
-        setShowCart={setShowCart}
-        buyProduct={buyProduct}
-        discardProducts={discardProducts}
-        showCart={showCart}
-      />
-      <span className={styles.totalCost} onClick={() => setShowCart(!showCart)}>#{totalCost}</span>
-      <input className={styles.searchInput} type="text" value={searchTerm} placeholder="Search for a product" onChange={handleChange} />
-      <h2 className={styles.productHeading}>All Product</h2>
-      { productDisplay.length !== 0 ? (
-        <div className={styles.productGridContainer}>
-          { productDisplay.map((prod) => (
-            <Product
-              key = {prod.name}
-              changeQuantity = {changeQuantity}
-              changeTotalPrice = {changeTotalPrice}
-              createCartData = {createCartData}
-              product = {prod}
-              resetPrice = {resetPrice}
-              setResetPrice = {setResetPrice}
+
+  if(isLoading){
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    )
+  }
+  else{
+    return (
+      <div>
+        {error ? (
+          <div>
+            <p style={{textAlign: "center"}}>{error}</p>
+          </div>
+        ) : (
+          <div className={styles.gridContainer}>
+          <div>
+            <h2 style={{marginTop: 0}}>Select a Category</h2>
+            <ul className={styles.categoryUl}>
+              { productCategory.map((category) => (
+                <li
+                  style={{backgroundColor: categoryChoice === category && "green", color: categoryChoice === category && "white"}}
+                  className={`${styles.categoryLi}`}
+                  key={category}
+                  onClick={() => handleCategory(category)}
+                  >
+                    {category}
+                  </li>
+              ))}
+            </ul>
+          </div>
+          <div className={styles.productContainer}>
+            <ShoppingCart
+              cart={cart}
+              totalCost={totalCost}
+              setShowCart={setShowCart}
+              buyProduct={buyProduct}
+              discardProducts={discardProducts}
+              showCart={showCart}
             />
-          ))}
+            <span className={styles.totalCost} onClick={() => setShowCart(!showCart)}>#{totalCost}</span>
+            <input className={styles.searchInput} type="text" value={searchTerm} placeholder="Search for a product" onChange={handleChange} />
+            <h2 className={styles.productHeading}>All Product</h2>
+            { productDisplay.length !== 0 ? (
+              <div className={styles.productGridContainer}>
+                { productDisplay.map((prod) => (
+                  <Product
+                    key = {prod.name}
+                    changeQuantity = {changeQuantity}
+                    changeTotalPrice = {changeTotalPrice}
+                    createCartData = {createCartData}
+                    product = {prod}
+                    resetPrice = {resetPrice}
+                    setResetPrice = {setResetPrice}
+                  />
+                ))}
+              </div>
+            ): (
+              <div>
+                <p>There are no products yet in the store</p>
+              </div>
+            ) }
+          </div>
         </div>
-      ): (
-        <div>
-          <p>There are no products yet in the store</p>
-        </div>
-      ) }
-    </div>
-    </div>
-  )
+        )}
+      </div>
+    )
+  }
+
+  // return (
+  // <div className={styles.gridContainer}>
+  //   {isLoading ? ( 
+  //     <div>
+  //       <h1>Loading...</h1>
+  //     </div>
+  //   )
+  //   : (
+  //     <div>
+  //       {error ? (
+  //         <div>
+  //           <p style={{textAlign: "center"}}>{error}</p>
+  //         </div>
+  //       ) : (
+  //         <div className="otherpart">
+  //         <div>
+  //           <h2 style={{marginTop: 0}}>Select a Category</h2>
+  //           <ul className={styles.categoryUl}>
+  //             { productCategory.map((category) => (
+  //               <li
+  //                 style={{backgroundColor: categoryChoice === category && "green", color: categoryChoice === category && "white"}}
+  //                 className={`${styles.categoryLi}`}
+  //                 key={category}
+  //                 onClick={() => handleCategory(category)}
+  //                 >
+  //                   {category}
+  //                 </li>
+  //             ))}
+  //           </ul>
+  //         </div>
+  //         <div className={styles.productContainer}>
+  //           <ShoppingCart
+  //             cart={cart}
+  //             totalCost={totalCost}
+  //             setShowCart={setShowCart}
+  //             buyProduct={buyProduct}
+  //             discardProducts={discardProducts}
+  //             showCart={showCart}
+  //           />
+  //           <span className={styles.totalCost} onClick={() => setShowCart(!showCart)}>#{totalCost}</span>
+  //           <input className={styles.searchInput} type="text" value={searchTerm} placeholder="Search for a product" onChange={handleChange} />
+  //           <h2 className={styles.productHeading}>All Product</h2>
+  //           { productDisplay.length !== 0 ? (
+  //             <div className={styles.productGridContainer}>
+  //               { productDisplay.map((prod) => (
+  //                 <Product
+  //                   key = {prod.name}
+  //                   changeQuantity = {changeQuantity}
+  //                   changeTotalPrice = {changeTotalPrice}
+  //                   createCartData = {createCartData}
+  //                   product = {prod}
+  //                   resetPrice = {resetPrice}
+  //                   setResetPrice = {setResetPrice}
+  //                 />
+  //               ))}
+  //             </div>
+  //           ): (
+  //             <div>
+  //               <p>There are no products yet in the store</p>
+  //             </div>
+  //           ) }
+  //         </div>
+  //       </div>
+  //       )}
+  //     </div>
+  //   )}
+    
+  //   </div>
+  // )
 }
 
 export default Products

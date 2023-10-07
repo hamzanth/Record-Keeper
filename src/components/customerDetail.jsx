@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
+import jwtDecode from 'jwt-decode'
 import { CustomerContext } from '../context'
 import moment from 'moment'
 import Products from './ProductPage'
@@ -15,8 +16,8 @@ const CustomerDetail = () => {
   const [totalDebt, setTotalDebt] = useState(0)
   const [owed, setOwed] = useState(0)
   const [deposit, setDeposit] = useState("")
-  const { customers } = useContext(CustomerContext)
-  const { saveTransaction } = useContext(CustomerContext)
+  const [decodedToken, setDecodedToken] = useState(null)
+  const [error, setError] = useState("")
   const navigate = useNavigate()
   const params = useParams()
   // const saveTransaction = location.state
@@ -24,54 +25,97 @@ const CustomerDetail = () => {
   // console.log(customers)
   useEffect(() => {
     const customerId = params.id
-    const detail = customers[customerId]
-    console.log("The new customer detail is now")
-    console.log(detail)
-    setCustomerDetail(detail)
+    const token = localStorage.getItem("token")
+    try{
+      const decodedData = jwtDecode(token)
+      setDecodedToken(decodedData) 
+    }
+    catch(error){
+      setError(error)
+    }
+    fetch("http://127.0.0.1:3000/accounts/users/" + customerId)
+    .then(resp => resp.json())
+    .then(data => {
+      // console.log(data.message)
+      console.log(data.user)
+      setCustomerDetail(data.user)
+    })
+    .catch(error => {
+      console.log(error)
+    })
   }, [])
 
   const handleCategories = (category) => {
     setCategoryHead(category)
   }
 
-  const calculateIndAmount = (index) => {
+  const saveTransaction = (id, transObj, owing, owed) => {
+    fetch("http://127.0.0.1:3000/products/makedeposit", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({id: id, newTransaction: transObj, amountOwing: owing, amountOwed: owed})
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data.message)
+      setCustomerDetail(data.user)
+    })
+  }
+
+  const calculateIndAmount = (id) => {
     let total = 0
-    const transaction = customerDetail.timeline[index]
-    // console.log(transaction)
-    Object.keys(transaction.prod).map(product => {
-      total = total + transaction.prod[product].price * transaction.prod[product].quantity
+    let transaction = null
+    // console.log(customerDetail.timeLine)
+    // console.log("this is for the index")
+    transaction = customerDetail.timeLine.filter(trans => trans._id === id)[0]
+
+    transaction.prods.map(transObj => {
+      total = total + transObj.price * transObj.quantity
     })
     return total
   }
 
-  const handleClear = (transact) => {
-    const detailClone = {...customerDetail}
-    const timelineClone = [...detailClone.timeline]
-    const transIndex = timelineClone.indexOf(transact)
-    const trans = timelineClone[transIndex]
-    trans.cleared = !trans.cleared
-    timelineClone[transIndex] = trans
-    detailClone.timeline = timelineClone
-    setCustomerDetail(detailClone)
-    // const subAmt = calculateIndAmount(transIndex)
-    // const changeTotalAmt = trans.cleared ? totalDebt - subAmt : totalDebt + subAmt
+  const handleClear = (transId, userId) => {
+
+    fetch("http://127.0.0.1:3000/products/cleartransaction/" + userId + "/transact/" + transId, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // body: JSON.stringify({id: transact._id})
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data.message)
+      setCustomerDetail(data.user)
+    })
   }
 
   const handleShowDetail = (transIndex) => {
     setShowTransactionDetail(true)
-    const transDet = customerDetail.transactions[transIndex]
+    const transDet = customerDetail.timeLine[transIndex]
     setTransactionDetail(transDet)
   }
 
-  const handleDebtReset = () => {
-    const detailClone = {...customerDetail}
-    const transactClone = [...detailClone.transactions]
-    transactClone.map(trans => {
-      trans.cleared = true
+  const handleDebtReset = (userid) => {
+    fetch("http://127.0.0.1:3000/products/allreset", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({userid: userid})
     })
-    detailClone.transactions = transactClone
-    setCustomerDetail(detailClone)
-    setTotalDebt(0)
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data.message)
+      setCustomerDetail(data.user)
+    })
+  }
+
+  const resetOwed = (id) => {
+    console.log("This is the id for the reset owed ", id)
   }
 
   const handleDeposit = (e) => {
@@ -91,7 +135,7 @@ const CustomerDetail = () => {
       date: new Date()
     }
     if ((customerDetail.amountOwed === 0) && (customerDetail.amountOwing === 0)){
-      saveTransaction(customerDetail, newTransaction, 0, Number(depost))
+      saveTransaction(customerDetail._id, newTransaction, 0, Number(depost))
     }
     else{
       if (customerDetail.amountOwing !== 0){
@@ -99,18 +143,18 @@ const CustomerDetail = () => {
         if (netAmount < 0){
           newOwing = netAmount * -1
           newOwed = 0
-          saveTransaction(customerDetail, newTransaction, newOwing, newOwed)
+          saveTransaction(customerDetail._id, newTransaction, newOwing, newOwed)
         }
         else{
           newOwing = 0
           newOwed = netAmount
-          saveTransaction(customerDetail, newTransaction, newOwing, newOwed)
+          saveTransaction(customerDetail._id, newTransaction, newOwing, newOwed)
         }
       }
       else if (customerDetail.amountOwed !== 0){
         newOwing = 0
         newOwed = Number(deposit) + customerDetail.amountOwed
-        saveTransaction(customerDetail, newTransaction, newOwing, newOwed)
+        saveTransaction(customerDetail._id, newTransaction, newOwing, newOwed)
       }
     }
     setDeposit("")
@@ -125,10 +169,12 @@ const CustomerDetail = () => {
       </div>
       <div className={styles.container}>
         <h2>This is the customer detail page</h2>
-        <p>{customerDetail.name} ({customerDetail.department})</p>
+        <p>{customerDetail.username} ({customerDetail.department})</p>
         <div style={{display: "flex", justifyContent: "space-around"}}>
           <span style={{color: "red", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>Owing : #{customerDetail.amountOwing}</span>
-          <span style={{color: "green", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>Owed: #{customerDetail.amountOwed}</span>
+          <span style={{color: "green", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>
+            Owed: #{customerDetail.amountOwed} {decodedToken.role === "admin" && <button style={{fontSize: "10px", border: "1px solid teal"}} type="button" onClick={() => resetOwed(customerDetail._id)}>clear</button>}
+          </span>
         </div>
         <div className={styles.categoryName}>
           <h5 className={styles.categoryHd} style={{backgroundColor: categoryHead === "history" && "teal", color: categoryHead === "history" && "white"}}>
@@ -159,11 +205,11 @@ const CustomerDetail = () => {
         <div className={styles.categoryGrid}>
           <div className={styles.historySide} style={{display: categoryHead === "history" ? "block" : "none"}}>
             <h3>Transactions History</h3>
-            <div onClick={handleDebtReset} style={{textAlign: "right", marginBottom: "22px"}}><button className={styles.clearAllBtn}>clear All</button></div>
-            {customerDetail.timeline && customerDetail.timeline.sort((a, b) => b.date-a.date).map((transaction, higherIndex) => (
+            <div onClick={() => handleDebtReset(customerDetail._id)} style={{textAlign: "right", marginBottom: "22px"}}><button className={styles.clearAllBtn}>clear All</button></div>
+            {customerDetail.timeLine && customerDetail.timeLine.sort((a, b) => new Date(b.date) - new Date(a.date)).map((transaction, higherIndex) => (
               <div key={higherIndex} style={{border: "1px solid teal", borderRadius: "4px", position: "relative", marginBottom: "25px"}}>
                 <h4>{moment(transaction.date).fromNow().toString()} </h4>
-                <button onClick={() => handleClear(transaction)} className={styles.unclear} style={{display: transaction.type === "sale" ? "inline-block" : "none"}}>{transaction.cleared ? "Unclear" : "Clear"}</button>
+                <button onClick={() => handleClear(transaction._id, customerDetail._id)} className={styles.unclear} style={{display: transaction.type === "sale" ? "inline-block" : "none"}}>{transaction.cleared ? "Unclear" : "Clear"}</button>
                 <TimeLine
                   customerDetail = {customerDetail}
                   transaction = {transaction}
@@ -180,21 +226,25 @@ const CustomerDetail = () => {
               <input className={styles.depositInput} type="number" placeholder="Record Deposit" value={deposit} onChange={(e) => setDeposit(e.target.value)} />
               <button style={{fontSize: "10px"}} onClick={handleDeposit}>Deposit</button>
             </div>
-            {customerDetail.timeline && customerDetail.timeline.filter(trans => trans.type === "sale" && trans.cleared === false).sort((a, b) => b.date - a.date).map((transact, index) => (
+            {customerDetail.timeLine && customerDetail.timeLine.filter(trans => trans.type === "sale" && trans.cleared === false).sort((a, b) => new Date(b.date) - new Date(a.date)).map((transact, index) => (
               <div className={styles.transactRecord} key={index}>
                 <p style={{fontSize: "12px", fontStyle:"italic", margin:"12px"}}>{moment(transact.date).fromNow()}</p>
                 <p onClick={() => handleShowDetail(index)} className={styles.saleName}>
-                  <span className={styles.littleTotal}>{calculateIndAmount(index)}</span>
-                  {Object.keys(transact.prod).map((prodKey, ind) => (
-                    <span key={ind} style={{fontSize: "12px"}}>{prodKey}: {transact.prod[prodKey].quantity}, </span>
+                  <span className={styles.littleTotal}>{calculateIndAmount(transact._id)}</span>
+                  {transact.prods.map((transObj, ind) => (
+                    <span key={ind} style={{fontSize: "12px"}}>{transObj.name}: {transObj.quantity}, </span>
                   ))}
                 </p>
-                <div className={styles.tickContainer} onClick={() => handleClear(transact)}>{transact.cleared ? <span className={styles.tickSymbol}></span>: <span></span>}</div>
+                <div className={styles.tickContainer} onClick={() => handleClear(transact._id, customerDetail._id)}>{transact.cleared ? <span className={styles.tickSymbol}></span>: <span></span>}</div>
               </div>
             ))}
           </div>
             <div className={styles.productSide} style={{display: categoryHead === "shop" ? "block" : "none"}}>
-              <Products customer={customerDetail} setTotalDebt={setTotalDebt} />
+              <Products 
+                customer={customerDetail} 
+                setTotalDebt={setTotalDebt} 
+                setCustomerDetail={setCustomerDetail}
+              />
             </div>
         </div>
       </div>

@@ -5,10 +5,10 @@ const TimeLine = ({transaction, higherIndex, customerDetail}) => {
 
   const calculateIndAmount = (index) => {
     let total = 0
-    const transaction = customerDetail.timeline[index]
+    const transaction = customerDetail.timeLine[index]
     // console.log(transaction)
-    Object.keys(transaction.prod).map(product => {
-      total = total + transaction.prod[product].price * transaction.prod[product].quantity
+    Object.keys(transaction.prods).map(product => {
+      total = total + transaction.prods[product].price * transaction.prods[product].quantity
     })
     return total
   }
@@ -27,16 +27,16 @@ const TimeLine = ({transaction, higherIndex, customerDetail}) => {
           </tr>
         </thead>
         <tbody>
-          {transaction.prod && Object.keys(transaction.prod).map((key, lowerIndex) => (
+          {transaction.prods && transaction.prods.map((transObj, lowerIndex) => (
             <tr key={lowerIndex}>
               <td className={styles.tableBodyData}><span>{lowerIndex + 1}</span></td>
               <td className={styles.tableBodyData} style={{paddingRight: "50px"}}>
-                <span style={{fontStyle: "italic", fontSize: "18px"}}>{key}(#{transaction.prod[key].price})</span>
+                <span style={{fontStyle: "italic", fontSize: "18px"}}>{transObj.name}(#{transObj.price})</span>
               </td>
               <td className={styles.tableBodyData}>
-                <span style={{fontStyle: "italic", fontSize: "18px"}}>{transaction.prod[key].quantity}</span>
+                <span style={{fontStyle: "italic", fontSize: "18px"}}>{transObj.quantity}</span>
               </td>
-              <td className={styles.tableBodyData}><span>#{transaction.prod[key].quantity * transaction.prod[key].price}</span></td>
+              <td className={styles.tableBodyData}><span>#{transObj.quantity * transObj.price}</span></td>
             </tr>
           ))}
             <tr>
