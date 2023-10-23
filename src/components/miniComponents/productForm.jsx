@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import styles from '../product.module.css'
+import styles from '../dashboard.module.css'
 
-const ProductForm = ({unDisplayForm}) => {
+const ProductForm = ({unDisplayForm, showProductForm, updateProducts}) => {
     
     const [ name, setName ] = useState("")
     const [ price, setPrice ] = useState("")
@@ -25,17 +25,18 @@ const ProductForm = ({unDisplayForm}) => {
         .then(resp => resp.json())
         .then(data => {
           console.log(data)
+          setName("")
+          setPrice("")
+          setQuantity("")
+          setImage("")
+          updateProducts(data.product)
         })
         .catch(error => console.log(error))
-        setName("")
-        setPrice("")
-        setQuantity("")
-        setImage("")
     }
 
     return (
         <>
-        <div>
+        <div className={styles.productForm} style={{display: showProductForm ? "block" : "none"}}>
           <button type="submit" className={styles.productFormClose} onClick={unDisplayForm}>X</button>
           <h3>Add a product to the store</h3>
           <form onSubmit={submitHandler}>
@@ -43,7 +44,9 @@ const ProductForm = ({unDisplayForm}) => {
             <input className={styles.productFormInput} type="text" value={price} onChange={(e)=>setPrice(e.target.value)} placeholder="Enter Price" />
             <input className={styles.productFormInput} type="text" value={quantity} onChange={(e)=>setQuantity(e.target.value)} placeholder="Enter Quantity" />
             <input className={styles.productFormInput} type="text" value={image} onChange={(e)=>setImage(e.target.value)} placeholder="Enter Product Image" />
+            <div style={{textAlign: "center"}}>
             <button className={styles.productAddButton} type="submit">Add</button>
+            </div>
           </form>
         </div>
         </>

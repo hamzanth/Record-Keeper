@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import styles from '../product.module.css'
 
-const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, resetPrice, setResetPrice }) => {
+const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, resetPrice, setResetPrice, limitExceeded, aboveLimit, setAboveLimit }) => {
   const [ quantity, setQuantity ] = useState(0)
   const [outOfStock, setOutOfStock] = useState(false)
   const [localTotal, setLocalTotal] = useState(0)
 
   useEffect(() => {
+      // if(aboveLimit){
+      //   dispLimitExceeded()
+      // }
+
       if(resetPrice){
         resetLocalPrice()
       }
@@ -28,6 +32,11 @@ const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, re
       changeTotalPrice(product.price, - 1)
       createCartData(product, - 1)
     }
+  }
+
+  const dispLimitExceeded = () => {
+    console.log("the limit has been exceeded in the product component")
+    decreaseQuantity()
   }
 
   const resetLocalPrice = () => {
@@ -64,8 +73,14 @@ const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, re
         </div>
       ): (
         <div>
-          <button className={`${styles.btn} ${styles.plusStyle}`} style={{ display: product.quantity < 1 ? "none" : "inline-block"}} onClick={()=> increaseQuantity()}>+</button>
-          <button style={{ display: quantity === 0 ? "none" : "inline-block"}} className={`${styles.btn} ${styles.minusStyle}`} onClick={() => decreaseQuantity()}>-</button>
+          {limitExceeded ? (
+            <h3>You cannot exceed the #1000 limit</h3>
+          ) : (
+            <div>
+              <button className={`${styles.btn} ${styles.plusStyle}`} style={{ display: product.quantity < 1 ? "none" : "inline-block"}} onClick={()=> increaseQuantity()}>+</button>
+              <button style={{ display: quantity === 0 ? "none" : "inline-block"}} className={`${styles.btn} ${styles.minusStyle}`} onClick={() => decreaseQuantity()}>-</button>
+            </div>
+          )}  
         </div>
       )}
     </div>

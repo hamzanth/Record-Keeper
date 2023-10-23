@@ -18,6 +18,7 @@ const CustomerDetail = () => {
   const [deposit, setDeposit] = useState("")
   const [decodedToken, setDecodedToken] = useState(null)
   const [error, setError] = useState("")
+  const [limitExceeded, setLimitExceeded] = useState(false)
   const navigate = useNavigate()
   const params = useParams()
   // const saveTransaction = location.state
@@ -28,6 +29,7 @@ const CustomerDetail = () => {
     const token = localStorage.getItem("token")
     try{
       const decodedData = jwtDecode(token)
+      console.log(decodedData)
       setDecodedToken(decodedData) 
     }
     catch(error){
@@ -173,7 +175,7 @@ const CustomerDetail = () => {
         <div style={{display: "flex", justifyContent: "space-around"}}>
           <span style={{color: "red", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>Owing : #{customerDetail.amountOwing}</span>
           <span style={{color: "green", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>
-            Owed: #{customerDetail.amountOwed} {decodedToken.role === "admin" && <button style={{fontSize: "10px", border: "1px solid teal"}} type="button" onClick={() => resetOwed(customerDetail._id)}>clear</button>}
+            Owed: #{customerDetail.amountOwed} {decodedToken && decodedToken.role === "admin" && <button style={{fontSize: "10px", border: "1px solid teal"}} type="button" onClick={() => resetOwed(customerDetail._id)}>clear</button>}
           </span>
         </div>
         <div className={styles.categoryName}>
@@ -244,6 +246,8 @@ const CustomerDetail = () => {
                 customer={customerDetail} 
                 setTotalDebt={setTotalDebt} 
                 setCustomerDetail={setCustomerDetail}
+                limitExceeded={limitExceeded}
+                setLimitExceeded={setLimitExceeded}
               />
             </div>
         </div>

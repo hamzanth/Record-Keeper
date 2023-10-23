@@ -16,6 +16,7 @@ const Customers = () => {
     try{
       const decodedToken = jwtDecode(jwtToken)
       console.log(decodedToken)
+
       setDecToken(decodedToken)
     }
     catch(error){
@@ -38,6 +39,7 @@ const Customers = () => {
   }, [])
 
   const handleMakeAdmin = (id) => {
+    console.log(id)
     fetch("http://127.0.0.1:3000/accounts/update", {
       method: "PUT",
       headers: { "Content-Type": "application/json"},
@@ -60,7 +62,7 @@ const Customers = () => {
   // }
   return (
     <>
-      {!decToken ? (
+      {!decToken || decToken.role === "basic" ? (
         <div>
           <p>Your are not authorized to view this page</p>
         </div>
@@ -71,13 +73,13 @@ const Customers = () => {
           <h3>There was error while loading the data</h3>
         ): (
           <div>
-            { customers.filter(customer => customer.role !== "admin").map((customer) => (
+            { customers.filter(customer => customer.role !== "super").map((customer) => (
               <div key={customer._id}>
                 <Link to={"/customers/" + customer._id}>
                   <h3>{customer.username}</h3>
                 </Link>
 
-                  <button style={{ display: "inline-block"}} type="button" onClick={() => handleMakeAdmin(customer._id)}>make admin</button>
+                  <button style={{ display: decToken.role === "super" ? "inline-block" : "none"}} type="button" onClick={() => handleMakeAdmin(customer._id)}>make admin</button>
               </div>
             ))}
           </div>

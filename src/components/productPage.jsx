@@ -6,7 +6,7 @@ import Product from './miniComponents/product'
 import styles from './product.module.css'
 import ShoppingCart from './miniComponents/ShoppingCart'
 
-const Products = ({customer, setTotalDebt, setCustomerDetail}) => {
+const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, setLimitExceeded}) => {
 
   const productCategory = ["All Categories", "food Stuff", "snacks", "ingredients", "drinks"]
 
@@ -38,6 +38,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail}) => {
   const [resetPrice, setResetPrice] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState("")
+  const [aboveLimit, setAboveLimit] = useState(false)
   // const [outOfStockArr, setOutOfStockArr] = useState([])
 
   useEffect(() => {
@@ -65,12 +66,15 @@ const Products = ({customer, setTotalDebt, setCustomerDetail}) => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({id: id, transObj: transObj, owing: owing, owed: owed})
+      body: JSON.stringify({id: id, transObj: transObj, owing: owing, owed: owed, name:`${customer.username}(${customer.department})`})
     })
     .then(resp => resp.json())
     .then(data => {
       console.log(data)
       setCustomerDetail(data.user)
+      if (data.user.amountOwing === 1000){
+        setLimitExceeded(true)
+      } 
       setProduct(data.products)
       setProductDisplay(data.products)
 
@@ -95,7 +99,19 @@ const Products = ({customer, setTotalDebt, setCustomerDetail}) => {
   const changeTotalPrice = (price, quantityBought) => {
     const total = totalCost + price * quantityBought
     // console.log(`price ${price} : quantityBought ${quantityBought}: totalCost ${total}`)
-    setTotalCost(total)
+    console.log(total + customer.amountOwing)
+    if(total + customer.amountOwing === 1000) {
+      setTotalCost(total)
+      setLimitExceeded(true)
+    }
+    else if(total + customer.amountOwing > 1000) {
+      // setLimitExceeded(true)
+      setAboveLimit(true)
+      alert("You cannot have debt above 1000")
+    }
+    else{
+      setTotalCost(total)
+    }
   }
   const createCartData = (product, quantity) => {
     const productName = product.name
@@ -181,6 +197,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail}) => {
     setShowCart(false)
     setResetPrice(true)
     setProductDisplay(products)
+    setLimitExceeded(false)
     setCart({})
   }
 
@@ -223,6 +240,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail}) => {
               buyProduct={buyProduct}
               discardProducts={discardProducts}
               showCart={showCart}
+              setLimitExceeded={setLimitExceeded}
             />
             <span className={styles.totalCost} onClick={() => setShowCart(!showCart)}>#{totalCost}</span>
             <input className={styles.searchInput} type="text" value={searchTerm} placeholder="Search for a product" onChange={handleChange} />
@@ -238,6 +256,9 @@ const Products = ({customer, setTotalDebt, setCustomerDetail}) => {
                     product = {prod}
                     resetPrice = {resetPrice}
                     setResetPrice = {setResetPrice}
+                    limitExceeded={limitExceeded}
+                    aboveLimit={aboveLimit}
+                    setAboveLimit={setAboveLimit}
                   />
                 ))}
               </div>

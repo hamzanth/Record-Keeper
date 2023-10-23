@@ -35,8 +35,23 @@ const LoginPage = () => {
         localStorage.setItem("token", data.token)
         const tokenData = jwtDecode(data.token)
         setError("")
-        tokenData.role === "admin" ? navigate("/customers") : navigate("/customers/" + tokenData.id)
-        // navigate("")
+        switch(tokenData.role){
+          case "super": {
+            navigate("/dashboard")
+            break
+          }
+          case "admin": {
+            navigate("/customers")
+            break
+          }
+          case 'basic': {
+            navigate("/customers/" + tokenData.id)
+            break
+          }
+          default: {
+            console.log("This place should not be reached")
+          }
+        }
       }
       console.log(data)
     })
