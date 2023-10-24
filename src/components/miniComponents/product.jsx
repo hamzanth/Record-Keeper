@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from '../product.module.css'
 
-const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, resetPrice, setResetPrice, limitExceeded, aboveLimit, setAboveLimit }) => {
+const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, resetPrice, setResetPrice, limitExceeded, totalCostDebt, setTotalCostDebt }) => {
   const [ quantity, setQuantity ] = useState(0)
   const [outOfStock, setOutOfStock] = useState(false)
   const [localTotal, setLocalTotal] = useState(0)
@@ -17,10 +17,16 @@ const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, re
   }, [resetPrice])
 
   const increaseQuantity = () => {
-    setQuantity(quantity + 1)
-    changeQuantity(product, -1)
-    changeTotalPrice(product.price, 1)
-    createCartData(product, 1)
+    console.log(totalCostDebt + product.price)
+    if (totalCostDebt + product.price * 1 > 1000){
+      alert("YOu cannot exceed 1000")
+    }
+    else{
+      setQuantity(quantity + 1)
+      changeQuantity(product, -1)
+      changeTotalPrice(product.price, 1)
+      createCartData(product, 1)
+    }
     // if (product.quantity < 2){
     //   setOutOfStock(true)
     // }

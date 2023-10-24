@@ -15,9 +15,9 @@ const TopProducts = () => {
         <>
             <div>
                 <h3>Top 10 Products</h3>
-                {topProducts && topProducts.map(prod => (
+                {topProducts && topProducts.map((prod, index) => (
                     <div key={prod._id}>
-                        <p>{prod.name}</p>
+                        <p style={{color: index === 0 ? "#4caf50" : "black", fontWeight: index === 0 ? "bold" : "normal"}}>{prod.name}</p>
                     </div>
                 ))}
             </div>

@@ -17,7 +17,7 @@ const TopProducts = () => {
                 <h3>Top 10 Customers</h3>
                 {topCustomers && topCustomers.filter(customer => customer.role !== "super").map((cust, index) => (
                     <div key={cust._id}>
-                        <p style={{color: index === 0 ? "#4caf50" : "black"}}>{cust.username}</p>
+                        <p style={{color: index === 0 ? "#4caf50" : "black", fontWeight: index === 0 ? "bold" : "normal"}}>{cust.username}</p>
                     </div>
                 ))}
             </div>

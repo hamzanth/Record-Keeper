@@ -38,7 +38,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
   const [resetPrice, setResetPrice] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState("")
-  const [aboveLimit, setAboveLimit] = useState(false)
+  const [totalCostDebt, setTotalCostDebt] = useState(0)
   // const [outOfStockArr, setOutOfStockArr] = useState([])
 
   useEffect(() => {
@@ -49,6 +49,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
       setProduct(data.products)
       setProductDisplay(data.products)
       setIsLoading(false)
+      setTotalCostDebt(customer.amountOwing)
     })
     .catch(error => {
       setError("Could not connect to the backend servers")
@@ -100,13 +101,14 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
     const total = totalCost + price * quantityBought
     // console.log(`price ${price} : quantityBought ${quantityBought}: totalCost ${total}`)
     console.log(total + customer.amountOwing)
+    setTotalCostDebt(total + customer.amountOwing)
     if(total + customer.amountOwing === 1000) {
       setTotalCost(total)
       setLimitExceeded(true)
     }
     else if(total + customer.amountOwing > 1000) {
       // setLimitExceeded(true)
-      setAboveLimit(true)
+      // setAboveLimit(true)
       alert("You cannot have debt above 1000")
     }
     else{
@@ -257,8 +259,8 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
                     resetPrice = {resetPrice}
                     setResetPrice = {setResetPrice}
                     limitExceeded={limitExceeded}
-                    aboveLimit={aboveLimit}
-                    setAboveLimit={setAboveLimit}
+                    totalCostDebt={totalCostDebt}
+                    setTotalCostDebt={setTotalCostDebt}
                   />
                 ))}
               </div>

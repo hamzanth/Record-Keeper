@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
-import { CustomerContext } from '../context'
 import moment from 'moment'
-import Products from './ProductPage'
+import Products from './productPage'
 import TimeLine from './miniComponents/timeLine'
 import styles from './customer.module.css'
 
@@ -151,6 +150,7 @@ const CustomerDetail = () => {
           newOwing = 0
           newOwed = netAmount
           saveTransaction(customerDetail._id, newTransaction, newOwing, newOwed)
+          handleDebtReset(customerDetail._id)
         }
       }
       else if (customerDetail.amountOwed !== 0){
@@ -241,7 +241,8 @@ const CustomerDetail = () => {
               </div>
             ))}
           </div>
-            <div className={styles.productSide} style={{display: categoryHead === "shop" ? "block" : "none"}}>
+          {categoryHead === "shop" && (
+            <div className={styles.productSide}>
               <Products 
                 customer={customerDetail} 
                 setTotalDebt={setTotalDebt} 
@@ -250,6 +251,8 @@ const CustomerDetail = () => {
                 setLimitExceeded={setLimitExceeded}
               />
             </div>
+
+          )} 
         </div>
       </div>
     </>
