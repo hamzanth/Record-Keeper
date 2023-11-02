@@ -9,6 +9,7 @@ import CustomerDetail from './components/CustomerDetail'
 import AdminDashBoard from './components/adminDashboard'
 import LoginPage from './components/loginPage'
 import RegisterPage from './components/registerPage'
+import NavBar from './components/miniComponents/navBar'
 import './App.css'
 
 function App() {

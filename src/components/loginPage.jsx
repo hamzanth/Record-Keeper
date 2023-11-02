@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './auth.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
+import NavBar from './miniComponents/navBar'
 
 const LoginPage = () => {
   const [error, setError] = useState("")
@@ -65,6 +66,7 @@ const LoginPage = () => {
 
   return(
     <>
+    <NavBar />
     <div className={styles.registerContainer}>
       <h3 style={{color: "black"}}>This is the Login page</h3>
       <form onSubmit={submitHandler}>

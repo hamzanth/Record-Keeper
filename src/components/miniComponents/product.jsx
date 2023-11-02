@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from '../product.module.css'
 
-const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, resetPrice, setResetPrice, limitExceeded, totalCostDebt, setTotalCostDebt }) => {
+const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, resetPrice, setResetPrice, limitExceeded, totalCostDebt, setTotalCostDebt, customer }) => {
   const [ quantity, setQuantity ] = useState(0)
   const [outOfStock, setOutOfStock] = useState(false)
   const [localTotal, setLocalTotal] = useState(0)
@@ -18,7 +18,7 @@ const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, re
 
   const increaseQuantity = () => {
     console.log(totalCostDebt + product.price)
-    if (totalCostDebt + product.price * 1 > 1000){
+    if (totalCostDebt + product.price * 1 > customer.debtLimit){
       alert("YOu cannot exceed 1000")
     }
     else{
@@ -56,13 +56,46 @@ const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, re
     }
   }
 
+  const getImage = (prod) => {
+    if (!prod.image){
+      return (
+        <div><img alt="No image found" /></div>
+      )
+    }
+    else if (!prod.image.data){
+      return (
+        <div><img alt="No image found" /></div>
+      )
+    }
+    else{
+      const base64String = btoa(String.fromCharCode(...new Uint8Array(prod.image.data.data)))
+      const imgStyle = {width: "100%", height: "130px"}
+      return (
+        <div>
+          <img style={imgStyle} src={`data:image/jpg;base64, ${base64String}`} />
+        </div>
+      )
+    }
+  }
+
+  const catgStyle = {
+    fontStyle: "italic", 
+    fontWeight: "normal", 
+    fontSize: "17px",
+    backgroundColor: "teal",
+    color: "white",
+    padding: "3px 5px",
+    borderRadius: "1px"
+  }
+
   return (
     <>
     <div className={styles.indProd}>
       <span className={styles.localPrice} style={{display: quantity === 0 ? "none" : "block"}}>#{quantity * product.price}</span>
       <span className={styles.quantityDisplay} style={{display: quantity === 0 ? "none" : "block"}}>{quantity}</span>
-      <h2 className={styles.prodBod} style={{color: "black", marginTop: 0}}>{product.name}</h2>
-      <img className={styles.prodImage} src={product.image} alt="the image could not be found"/>
+      <h2 className={styles.prodBod} style={{color: "black", marginTop: 0}}><span style={catgStyle}>{product.category}</span> {product.name}</h2>
+      {/* <img className={styles.prodImage} src={"/productPictures/paper.jpeg"} alt="the image could not be found"/> */}
+      {getImage(product)}
       <div style={{margin: "20px 0"}}>
         <div style={{display: "flex"}}>
           <span className={styles.det} style={{ display: "inline-block", marginRight: "30px"}}>Quantity: </span>

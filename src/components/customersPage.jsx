@@ -3,6 +3,7 @@ import { Link, useNavigate, Navigate, useLocation } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 import { CustomerContext } from '../context'
 import styles from './customer.module.css'
+import NavBar from './miniComponents/navBar'
 
 const Customers = () => {
 
@@ -62,24 +63,25 @@ const Customers = () => {
   // }
   return (
     <>
+      <NavBar />
       {!decToken || decToken.role === "basic" ? (
         <div>
           <p>Your are not authorized to view this page</p>
         </div>
       ) : (
         <div className={styles.customerContainer}>
-        <h2>This is the Customer's page</h2>
+        <h2 style={{textAlign: "center"}}>Customer's page</h2>
         {errors ? (
           <h3>There was error while loading the data</h3>
         ): (
           <div>
             { customers.filter(customer => customer.role !== "super").map((customer) => (
-              <div key={customer._id}>
-                <Link to={"/customers/" + customer._id}>
-                  <h3>{customer.username}</h3>
+              <div className={styles.custdivStyle} style={{textAlign: "center"}} key={customer._id}>
+                <Link className={styles.custsStyle} to={"/customers/" + customer._id}>
+                  <h3><span style={{borderBottom: "2px solid black", display: "inline-block", width: "50%", padding: "15px"}}>{customer.username}</span></h3>
                 </Link>
 
-                  <button style={{ display: decToken.role === "super" ? "inline-block" : "none"}} type="button" onClick={() => handleMakeAdmin(customer._id)}>make admin</button>
+                  {/* <button style={{ display: decToken.role === "super" ? "inline-block" : "none"}} type="button" onClick={() => handleMakeAdmin(customer._id)}>make admin</button> */}
               </div>
             ))}
           </div>

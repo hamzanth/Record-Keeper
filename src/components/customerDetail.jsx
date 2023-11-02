@@ -4,6 +4,7 @@ import jwtDecode from 'jwt-decode'
 import moment from 'moment'
 import Products from './productPage'
 import TimeLine from './miniComponents/timeLine'
+import NavBar from './miniComponents/navBar'
 import styles from './customer.module.css'
 
 const CustomerDetail = () => {
@@ -165,15 +166,17 @@ const CustomerDetail = () => {
 
   return (
     <>
+      <NavBar />
       <div className={styles.showTransDet} style={{display: showTransactionDetail ? "block" : "none"}}>
         <span onClick={() => setShowTransactionDetail(false)} className={styles.cancelTransShow}>x</span>
         <h2>This is the Transaction Detail Dialog</h2>
       </div>
       <div className={styles.container}>
-        <h2>This is the customer detail page</h2>
-        <p>{customerDetail.username} ({customerDetail.department})</p>
+        <h2 style={{textAlign: "center"}}>This is the customer detail page</h2>
+        <p style={{textAlign: "center"}}>{customerDetail.username} ({customerDetail.department})</p>
         <div style={{display: "flex", justifyContent: "space-around"}}>
           <span style={{color: "red", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>Owing : #{customerDetail.amountOwing}</span>
+          <span style={{color: "#3f51b5", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>#{customerDetail.debtLimit}</span>
           <span style={{color: "green", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>
             Owed: #{customerDetail.amountOwed} {decodedToken && decodedToken.role === "admin" && <button style={{fontSize: "10px", border: "1px solid teal"}} type="button" onClick={() => resetOwed(customerDetail._id)}>clear</button>}
           </span>
@@ -222,9 +225,9 @@ const CustomerDetail = () => {
             ))}
             <button type="button" onClick={() => navigate(-1)}>go back</button>
           </div>
-          <div style={{display: categoryHead === "recent" ? "block" : "none"}}>
-            <h3>Uncleared Transactions</h3>
-            <div style={{margin: "20px 0"}}>
+          <div style={{display: categoryHead === "recent" ? "block" : "none"}} className={styles.unclearTrans}>
+            <h3 style={{textAlign: "center"}}>Uncleared Transactions</h3>
+            <div style={{margin: "20px 0", textAlign: "center"}}>
               <input className={styles.depositInput} type="number" placeholder="Record Deposit" value={deposit} onChange={(e) => setDeposit(e.target.value)} />
               <button style={{fontSize: "10px"}} onClick={handleDeposit}>Deposit</button>
             </div>

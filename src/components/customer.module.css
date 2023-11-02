@@ -9,6 +9,8 @@
 .categoryName{
   display: grid;
   grid-template-columns: auto auto auto;
+  width: 90%;
+  margin: 0 auto;
 }
 .categorySpan{
   font-size: 18px;
@@ -149,11 +151,34 @@
 .unclear:hover{
   background-color: darkgreen;
 }
+
+.custdivStyle{
+  /* border-bottom: 1px solid black;
+  background-color: aqua;
+  color: black;
+  width: 60%;
+  margin: 0 auto; */
+}
+.custsStyle:hover{
+  color: black;
+}
+
 @keyframes scaleCart{
   from{
     transform: scale(0);
   }
   to{
-    transform: scale(1)
+    transform: scale(1);
+  }
+}
+
+/* .unclearTrans{
+  width: 80%;
+  margin: 0 auto;
+} */
+@media screen and (max-width: 700px){
+  .categoryName{
+    width: 100%;
+    margin: 0 auto;
   }
 }

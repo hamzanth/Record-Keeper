@@ -28,6 +28,7 @@ const AdminDashBoard = () => {
   const [ selectedProduct, setSelectedProduct ] = useState({})
   const [ amountOwing, setAmountOwing ] = useState(0)
   const [ amountOwed, setAmountOwed ] = useState(0)
+  const [ debtLimit, setDebtLimit ] = useState(0)
 
   const calcTotal = (users) => {
     console.log("the user is ")
@@ -62,6 +63,8 @@ const AdminDashBoard = () => {
       })
       setAmountOwed(totalOwing)
       setAmountOwing(totalOwed)
+      console.log("The general limit is " + data.users[0].debtLimit)
+      setDebtLimit(data.users[0].debtLimit)
       data.users ? setCustomers(data.users) : setError(error)
     })
     .catch(error => {
@@ -246,6 +249,8 @@ const AdminDashBoard = () => {
           <OwingCardBox 
             amountOwing={amountOwing}
             amountOwed={amountOwed}
+            debtLimit={debtLimit}
+            setDebtLimit={setDebtLimit}
           />
           <div className={styles.overViewBox}>
             <TransHistory />

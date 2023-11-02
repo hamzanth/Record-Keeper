@@ -40,3 +40,21 @@
 .read-the-docs {
   color: #888;
 }
+.highlight{
+  color: red;
+  border: 2px solid black;
+}
+.scrollStyles{
+  height: 59vh; 
+  width: 60%; 
+  scrollbar-color: blue green;
+  overflow-y: scroll;
+}
+.verticalTrack{
+  background-color: blue;
+  height: 100%;
+}
+.verticalThumb{
+  background-color: green;
+  height: 14px;
+}

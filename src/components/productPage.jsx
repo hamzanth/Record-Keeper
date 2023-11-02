@@ -102,11 +102,11 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
     // console.log(`price ${price} : quantityBought ${quantityBought}: totalCost ${total}`)
     console.log(total + customer.amountOwing)
     setTotalCostDebt(total + customer.amountOwing)
-    if(total + customer.amountOwing === 1000) {
+    if(total + customer.amountOwing === customer.debtLimit) {
       setTotalCost(total)
       setLimitExceeded(true)
     }
-    else if(total + customer.amountOwing > 1000) {
+    else if(total + customer.amountOwing > customer.debtLimit) {
       // setLimitExceeded(true)
       // setAboveLimit(true)
       alert("You cannot have debt above 1000")
@@ -205,7 +205,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
 
   if(isLoading){
     return (
-      <div>
+      <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
         <h1>Loading...</h1>
       </div>
     )
@@ -261,6 +261,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
                     limitExceeded={limitExceeded}
                     totalCostDebt={totalCostDebt}
                     setTotalCostDebt={setTotalCostDebt}
+                    customer={customer}
                   />
                 ))}
               </div>

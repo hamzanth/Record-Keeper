@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../dashboard.module.css'
 
 const SingProduct = ({handleShowProductDetail, prod}) => {
-
+    const [ image, setImage ] = useState("null")
+    const getImage = (prod) => {
+      if (!prod.image){
+        return (
+          <div><img alt="No image found" /></div>
+        )
+      }
+      else if (!prod.image.data){
+        return (
+          <div><img alt="No image found" /></div>
+        )
+      }
+      else{
+        const base64String = btoa(String.fromCharCode(...new Uint8Array(prod.image.data.data)))
+        const imgStyle = {width: "100%", height: "130px"}
+        return (
+          <div>
+            <img style={imgStyle} src={`data:image/jpg;base64, ${base64String}`} />
+          </div>
+        )
+      }
+    }
     return (
         <>
             <div className={styles.prodCard}>
+                {getImage(prod)}
                 <div>
                   <h3 style={{fontWeight: "bold", textAlign: "center"}}>{prod.name}</h3>
                 </div>

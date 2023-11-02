@@ -88,6 +88,7 @@
   .headerContainer{
     display: flex;
     justify-content: space-around;
+    align-items: center;
   }
   .mainSection{
     padding: 0 30px;
@@ -202,7 +203,92 @@
     grid-gap: 40px;
   }
   .scrollStyle{
+    scrollbar-color: blue white; 
     height: 60vh; 
     overflow-y: scroll;
-    scrollbar-color: blue white; 
+  }
+
+  .debtLimitStyle{
+    border-radius: 5px;
+    padding: 5px;
+    height: 80px;
+  }
+
+  .updateProductBtn:hover{
+    color: greenyellow
+  }
+  .deleteProductBtn:hover{
+    color: red
+  }
+
+  .homeBackgroundImg{
+    background-image: url("/backImage.jpg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0px -450px;
+    position: relative;
+  }
+  .homeBackgroundOverlay{
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 100%;
+    /* opacity: 0.6; */
+  }
+  .homeBackgroundImg::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    background-color: black;
+  }
+
+  .loginBtnStyle{
+    border: 2px solid gold; 
+    border-radius: 5px;
+    padding: 8px 10px
+  }
+
+  .loginBtnStyle:hover{
+    color: gold;
+  }
+  
+  @media screen and (max-width: 1100px){
+    .customerBox{
+      /* justify-content: center; */
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 10px;
+    }
+    .overViewBox{
+      justify-content: center;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 10px;
+    }
+    .debtLimitStyle{
+      display: none;
+    }
+    .headerContainer{
+      justify-content: space-between;
+    }
+  }
+  @media screen and (max-width: 900px){
+    .overViewBox{
+      /* justify-content: center; */
+      grid-template-columns: 1fr;
+    }
+  }
+  @media screen and (max-width: 700px){
+    .customerBox{
+      /* justify-content: center; */
+      grid-template-columns: 1fr;
+    }
+    .overViewBox{
+      /* justify-content: center; */
+      grid-template-columns: 1fr;
+    }
+    .gridContainer{
+      /* grid-template-columns: 30% 60%; */
+      width: 90%;
+    }
   }
