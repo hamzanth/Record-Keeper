@@ -49,7 +49,7 @@ const TransHistory = () => {
     return (
         <>  
             <div style={{scrollbarColor: "dodgerblue white"}}> 
-                <h3 style={{textAlign: "center"}}>Trans History</h3>
+                <h3 style={{textAlign: "center"}}>Transaction History</h3>
                 <Calendar 
                     onClickDay={(date) => setCurrentDate(date)} 
                     onChange={setCurrentDate} 
@@ -61,24 +61,24 @@ const TransHistory = () => {
                     }}
                 />
                 {transHistory.length === 0 ? (
-                    <p>There are not transaction for this date</p>
+                    <p style={{textAlign: "center"}}>There are not transaction for this date</p>
                 ) : (
                     <div>
                         {/* <div className={styles.scrollStyle}> */}
-                        <Scrollbars 
+                        {/* <Scrollbars 
                             style={{width: 500, height: 140}}
                             renderTrackVertical={props => <div {...props} className='verticalTrack' />}
                             renderThumbVertical={props => <div {...props} className='verticalThumb' />}
-                        >
+                        > */}
                             {transHistory && transHistory.sort((a, b) => new Date(b.date) - new Date(a.date)).map(indHist => (
-                                <div style={{border: "1px solid black"}} key={indHist._id}>
-                                    <p style={{ color: "black", margin: "0"}}>{indHist.name}({moment(indHist.date).fromNow()})</p>
+                                <div style={{border: "3px solid teal", borderRadius: "4px", padding: "6px", margin: "10px 0"}} key={indHist._id}>
+                                    <p style={{ color: "black", margin: "0"}}>{indHist.name} - {moment(indHist.date).calendar()} ({moment(indHist.date).fromNow()})</p>
                                     {indHist.prods && indHist.prods.map(trans => (
                                         <p key={trans._id} style={{ color: "black", margin: "0"}}>{trans.name} {trans.quantity}</p>
                                     ))}
                                 </div>
                             ))}
-                        </Scrollbars>
+                        {/* </Scrollbars> */}
                         {/* </div> */}
                     </div>
                 )}

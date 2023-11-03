@@ -17,8 +17,14 @@ import TopProducts from './miniComponents/topProducts'
 
 const AdminDashBoard = () => {
 
+  const getWindowSize = () => {
+    const { innerWidth, innerHeight } = window
+    return { innerWidth, innerHeight }
+  }
+
   const [ showProductForm, setShowProductForm ] = useState(false)
   const [ showCustomerForm, setShowCustomerForm ] = useState(false)
+  const [ showSideNav, setShowSideNav ] = useState(true)
   const [ selectedNav, setSelectedNav ] = useState("OverView")
   const [ products, setProducts ] = useState(null)
   const [ customers, setCustomers ] = useState(null)
@@ -29,11 +35,11 @@ const AdminDashBoard = () => {
   const [ amountOwing, setAmountOwing ] = useState(0)
   const [ amountOwed, setAmountOwed ] = useState(0)
   const [ debtLimit, setDebtLimit ] = useState(0)
+  const [ windowSize, setWindowSize ] = useState(getWindowSize()) 
 
   const calcTotal = (users) => {
     console.log("the user is ")
-    console.log(users)
-    
+    console.log(users) 
   }
 
   useEffect(() => {
@@ -74,6 +80,15 @@ const AdminDashBoard = () => {
       }
     })
 
+    const handleWindleResize = () => {
+      setShowSideNav(getWindowSize().innerWidth < 900 ? false : true)
+      setWindowSize(getWindowSize())
+    }
+
+    window.addEventListener("resize", handleWindleResize)
+    return () => {
+      window.removeEventListener('resize', handleWindleResize)
+    }
   }, [])
 
   const handleMakeAdmin = (customer) => {
@@ -196,34 +211,38 @@ const AdminDashBoard = () => {
     {name: "Products", id: 3}
   ]
 
+  // const handleHamburgerClick = () => {
+  //   console.log("We are here")
+  //   setShowSideNav(showSideNav => !showSideNav)
+  //   console.log(showSideNav)
+  // }
+
   return (
     <>
+      <div className={styles.hamburger} onClick={() => setShowSideNav(true)}>
+        <span className={styles.ham}></span>
+        <span className={styles.ham}></span>
+        <span className={styles.ham}></span>
+      </div>
       {showProductDetail && (
         <EditProduct 
-        selectedProduct={selectedProduct}
-        setShowProductDetail={setShowProductDetail}
-        editProductList={editProductList}
-        deleteProductList={deleteProductList}
-      />
+          selectedProduct={selectedProduct}
+          setShowProductDetail={setShowProductDetail}
+          editProductList={editProductList}
+          deleteProductList={deleteProductList}
+        />
       )}
 
       <div className={styles.dashboardContainer}>
-        <ul className={styles.ulStyles}>
-          {sideMenuList.map(sideItem => (
-            <li 
-              className={styles.liStyles} 
-              key={sideItem.id} 
-              style={{backgroundColor: selectedNav === sideItem.name && "rgb(42, 42, 94)"}}
-              onClick={() => setSelectedNav(sideItem.name)}  
-            >
-              <DashSideMenu 
-                menuItem={sideItem}
-              />
-            </li>
-          ))}
-        </ul>
+        <DashSideMenu 
+          sideMenuList={sideMenuList}
+          selectedNav={selectedNav}
+          setSelectedNav={setSelectedNav}
+          showSideNav={showSideNav}
+          setShowSideNav={setShowSideNav}
+        />
         <div className={styles.mainSection}>
-          <h2 style={{color: "black", textAlign: "center", fontSize: "35px"}}>Admin Dashboard</h2>
+          <h2 style={{color: "black", textAlign: "center", fontSize: "35px"}}>Admin Dashboard {windowSize.innerWidth}</h2>
         <div style={{display: selectedNav === "Products" ? "block" : "none" }}>
           <div style={{textAlign: "center", marginTop: "30px"}}>
           <button className={styles.productFormButton} type="button" onClick={handleShowProductForm}>Show Product Form</button>

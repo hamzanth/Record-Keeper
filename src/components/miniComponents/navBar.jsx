@@ -42,15 +42,23 @@ const NavBar = () => {
                             <Link style={{color: "gold", display: getDisplay(decToken) }} to="/dashboard">Dashboard</Link>
                         </li>
                         <li style={liStyles}>
-                            <Link style={{color: "gold"}} to="/dashboard">Customers</Link>
+                            <Link style={{color: "gold"}} to="/customers">Customers</Link>
                         </li>
                         <li style={liStyles}>
                             <Link style={{color: "gold"}} to="/">About</Link>
                         </li>
+                        {decToken ? (
+                            <li style={liStyles}>
+                                <Link style={{color: "gold"}} to="/logout">Logout</Link>
+                            </li>
+                        ) : (
+                            <li style={liStyles}>
+                                <Link style={{color: "gold"}} to="/login">Login</Link>
+                            </li>
+                        )}
                     </ul>
                 </div>
-
-                )}
+            )}
         </>
     )
 }
