@@ -1,7 +1,35 @@
 import React from 'react'
 import styles from '../product.module.css'
+import { PaystackButton } from 'react-paystack'
 
-const ShoppingCart = ({ cart, totalCost, setShowCart, buyProduct, discardProducts, showCart }) => {
+const ShoppingCart = ({ customer, cart, totalCost, setShowCart, buyProduct, discardProducts, showCart }) => {
+
+  const publicKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY
+  const componentProps = {
+    email: "johnDoe@gmail.com",
+    amount: totalCost * 100,
+    metadata: {name: customer.username, phone: "08119059930"},
+    publicKey: publicKey,
+    test: "Pay Now",
+    onSuccess: () => {
+      alert("Thanks for doing business with us, Come back soon")
+      const trans = {type: "payment", amount: totalCost, date: new Date()}
+      fetch("http://127.0.0.1:3000/products/makepayment", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({id: customer._id, newTransaction: trans})
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data.message)
+      // setCustomerDetail(data.user)
+    })
+    },
+    onClose: () => alert("Ok bye")
+  }
+
 
   return (
     <>
@@ -47,9 +75,10 @@ const ShoppingCart = ({ cart, totalCost, setShowCart, buyProduct, discardProduct
               </tbody>
             </table>
 
-            <div style={{marginTop: "40px"}}>
-              <button type="button" style={{backgroundColor: "red", color: "white", marginRight: "30px"}} onClick={discardProducts}>Discard</button>
-              <button type="button" style={{backgroundColor: "darkgreen", color: "white"}} onClick={buyProduct}>Buy</button>
+            <div style={{marginTop: "40px", textAlign: "center"}}>
+              <button type="button" style={{backgroundColor: "red", color: "white", marginRight: "15px"}} onClick={discardProducts}>Discard</button>
+              <button type="button" style={{backgroundColor: "darkgreen", color: "white", marginRight: "15px"}} onClick={buyProduct}>Buy on Credit</button>
+              <PaystackButton className={styles.payButton} {...componentProps}>Pay Now</PaystackButton>
             </div>
           </div>
         ) }

@@ -6,12 +6,12 @@ const SingProduct = ({handleShowProductDetail, prod}) => {
     const getImage = (prod) => {
       if (!prod.image){
         return (
-          <div><img alt="No image found" /></div>
+          <div style={{height: "136px"}}><img alt="No image found" /></div>
         )
       }
       else if (!prod.image.data){
         return (
-          <div><img alt="No image found" /></div>
+          <div style={{height: "136px"}}><img alt="No image found" /></div>
         )
       }
       else{
@@ -33,11 +33,11 @@ const SingProduct = ({handleShowProductDetail, prod}) => {
                 </div>
                 <div style={{display: "flex"}}>
                   <p style={{fontWeight: "bold", fontStyle: "italic", margin: "0 40px 0 0"}}>Price</p>
-                  <p style={{fontWeight: "bold", textAlign: "center", margin: "0 40px 0 0"}}>{prod.price}</p>
+                  <p style={{fontWeight: "bold", textAlign: "center", margin: "0 40px 0 0"}}>{prod.price} {prod.priceDescription}</p>
                 </div>
                 <div style={{display: "flex"}}>
                   <p  style={{fontStyle: "italic", fontWeight: "bold", margin: "0 40px 0 0"}}>Quantity</p>
-                  <p style={{fontWeight: "bold", textAlign: "center", margin: "0 40px 0 0"}}>{prod.quantity}</p>
+                  <p style={{fontWeight: "bold", textAlign: "center", margin: "0 40px 0 0", fontSize: "13px"}}>{prod.quantityRange} {prod.quantity} {prod.quantityDescription}</p>
                 </div>
                 <button onClick={() => handleShowProductDetail(prod)} className={styles.prodCardBtn}>Edit</button>
             </div>

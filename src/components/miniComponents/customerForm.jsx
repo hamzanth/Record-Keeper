@@ -36,7 +36,7 @@ const CustomerForm = ({ unCustForm, updateCustomers }) => {
                 <input className={styles.productFormInput} type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <input className={styles.productFormInput} type="text" placeholder="Enter Department" value={department} onChange={(e) => setDepartment(e.target.value)} />
                 <div style={{textAlign: "center", marginTop: "15px"}}>
-                    <button type="submit" onClick={handleSubmit} style={{color: "white", backgroundColor: "teal"}}>Add Customer</button>
+                    <button type="submit" onClick={handleSubmit} style={{color: "white", backgroundColor: "goldenrod"}}>Add Customer</button>
                 </div>
             </form>
         </>

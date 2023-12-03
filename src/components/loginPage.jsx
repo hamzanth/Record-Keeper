@@ -67,20 +67,24 @@ const LoginPage = () => {
   return(
     <>
     <NavBar />
-    <div className={styles.registerContainer}>
-      <h3 style={{color: "black"}}>This is the Login page</h3>
-      <form onSubmit={submitHandler}>
-        <input type="username" value={username} onChange={(e)=>setUsername(e.target.value)} className={styles.inputStyles} placeholder="Enter Username" />
-        <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className={styles.inputStyles} placeholder="Enter Password" />
-        {error && <p style={{color: "red"}}>** username or password do not match({error.message})</p>}
-        <button style={{color: "white", backgroundColor: "black", fontSize: "15px"}} type="submit">Login</button>
-        {error && (
-          <div>
-            <h2>Don't have an account ?</h2>
-            <h2>Contact the Owner of the Store to add you to the records</h2>
+    <div className={styles.loginContainer}>
+      <div className={styles.loginOverlay}>
+        <h3 style={{color: "black", textAlign: "center"}}>Login to Your Account</h3>
+        <form onSubmit={submitHandler} className={styles.loginFormStyle}>
+          <input type="username" value={username} onChange={(e)=>setUsername(e.target.value)} className={styles.inputStyles} placeholder="Enter Username" />
+          <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className={styles.inputStyles} placeholder="Enter Password" />
+          {error && <p style={{color: "red"}}>** username or password do not match({error.message})</p>}
+          <div style={{textAlign: "center"}}>
+            <button style={{color: "white", backgroundColor: "black", fontSize: "15px"}} type="submit">Login</button>
           </div>
-        )}
-      </form>
+          {error && (
+            <div>
+              <h2>Don't have an account ?</h2>
+              <h2>Contact the Owner of the Store</h2>
+            </div>
+          )}
+        </form>
+      </div>
     </div>
     </>
   )

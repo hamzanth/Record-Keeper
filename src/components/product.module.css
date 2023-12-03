@@ -3,6 +3,7 @@
 }
 .productHeading{
   color: black;
+  text-align: center;
 }
 .gridContainer{
   display: grid;
@@ -118,19 +119,31 @@
 }
 .totalCost{
   position: fixed;
-  top: 5%;
+  top: 11%;
   right: 5%;
   display: inline-block;
   color: white;
-  background-color: red;
+  /* background-color: red; */
   font-size: 23px;
   border-radius: 20px;
   padding: 6px;
   z-index: 20;
   cursor: pointer;
 }
+.netCost{
+  position: fixed;
+  top: 11%;
+  right: 13%;
+  display: inline-block;
+  color: white;
+  background-color: goldenrod;
+  font-size: 20px;
+  border-radius: 20px;
+  padding: 6px;
+  z-index: 20;
+}
 .totalCost:hover{
-  background-color: darkred;
+  /* background-color: darkred; */
 }
 .shoppingCart{
   position: fixed;
@@ -157,6 +170,11 @@
 .closeCart:hover{
   border: 2px solid red;
   color: red;
+}
+.payButton{
+  /* color: red;
+  background-color: blue;
+  border: none; */
 }
 @keyframes scaleCart{
   from{

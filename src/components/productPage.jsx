@@ -2,13 +2,16 @@ import React, { useState, useEffect, useContext, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 import { CustomerContext } from '../context'
+import { useMonnifyPayment, MonnifyButton, MonnifyConsumer } from 'react-monnify'
 import Product from './miniComponents/product'
 import styles from './product.module.css'
 import ShoppingCart from './miniComponents/ShoppingCart'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart' 
 
 const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, setLimitExceeded}) => {
 
   const productCategory = ["All Categories", "food Stuff", "snacks", "ingredients", "drinks"]
+  // const productionPublicKey = "pk_test_ed2321c55f182ec43ade54b4c155143f887e4075"
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
@@ -25,6 +28,15 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
     setSearchTerm("")
     const newProducts = category.toLowerCase() === "all categories" ? products : products.filter((prod) => prod.category.toLowerCase() === category.toLowerCase())
     setProductDisplay(newProducts)
+  }
+
+  const initialMonifyState = {
+    currency: "NGN",
+    reference: "" + Math.floor(Math.random() * 1000000000 + 1),
+    customerName: customer.username,
+    customerEmail: "monnify@monnify.com",
+    customerMobileNumber: "08119059930",
+
   }
 
   const [products, setProduct] = useState([])
@@ -55,6 +67,12 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
       setError("Could not connect to the backend servers")
       setIsLoading(false)
     })
+    if (customer.amountOwing >= customer.debtLimit){
+      setLimitExceeded(true)
+    }
+    else{
+      setLimitExceeded(false)
+    }
   }, [])
 
   // const { saveTransaction } = useContext(CustomerContext)
@@ -100,16 +118,16 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
   const changeTotalPrice = (price, quantityBought) => {
     const total = totalCost + price * quantityBought
     // console.log(`price ${price} : quantityBought ${quantityBought}: totalCost ${total}`)
-    console.log(total + customer.amountOwing)
+    console.log(total + customer.amountOwing - customer.amountOwed)
     setTotalCostDebt(total + customer.amountOwing)
-    if(total + customer.amountOwing === customer.debtLimit) {
+    if(total + customer.amountOwing - customer.amountOwed === customer.debtLimit) {
       setTotalCost(total)
       setLimitExceeded(true)
     }
-    else if(total + customer.amountOwing > customer.debtLimit) {
+    else if(total + customer.amountOwing - customer.amountOwed > customer.debtLimit) {
       // setLimitExceeded(true)
       // setAboveLimit(true)
-      alert("You cannot have debt above 1000")
+      alert(`You cannot have debt above ${customer.debtLimit}`)
     }
     else{
       setTotalCost(total)
@@ -203,6 +221,14 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
     setCart({})
   }
 
+  const completePayment = () => {
+    console.log("payment completed")
+  }
+
+  const closePayment = () => {
+    console.log("payment close")
+  }
+
   if(isLoading){
     return (
       <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
@@ -224,7 +250,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
             <ul className={styles.categoryUl}>
               { productCategory.map((category) => (
                 <li
-                  style={{backgroundColor: categoryChoice === category && "green", color: categoryChoice === category && "white"}}
+                  style={{backgroundColor: categoryChoice === category && "goldenrod", color: categoryChoice === category && "white"}}
                   className={`${styles.categoryLi}`}
                   key={category}
                   onClick={() => handleCategory(category)}
@@ -236,6 +262,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
           </div>
           <div className={styles.productContainer}>
             <ShoppingCart
+              customer={customer}
               cart={cart}
               totalCost={totalCost}
               setShowCart={setShowCart}
@@ -244,7 +271,12 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
               showCart={showCart}
               setLimitExceeded={setLimitExceeded}
             />
-            <span className={styles.totalCost} onClick={() => setShowCart(!showCart)}>#{totalCost}</span>
+            {/* <span className={styles.totalCost} onClick={() => setShowCart(!showCart)}>#{totalCost}</span> */}
+            <div className={styles.totalCost} onClick={() => setShowCart(!showCart)}>
+              <ShoppingCartIcon sx={{color: "goldenrod", fontSize: "50px"}} />
+              <span style={{position: "absolute", top: "0px", right: "5px", padding: "4px", fontSize: "10px", fontWeight: "bold", color: "white", backgroundColor: "red", borderRadius: "50%"}}>{totalCost}</span>
+            </div>
+            <span className={styles.netCost}>{totalCost + customer.amountOwing - customer.amountOwed}</span>
             <input className={styles.searchInput} type="text" value={searchTerm} placeholder="Search for a product" onChange={handleChange} />
             <h2 className={styles.productHeading}>All Product</h2>
             { productDisplay.length !== 0 ? (
@@ -267,7 +299,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
               </div>
             ): (
               <div>
-                <p>There are no products yet in the store</p>
+                <p style={{textAlign: "center"}}>There are no products yet in the store</p>
               </div>
             ) }
           </div>

@@ -17,9 +17,9 @@ const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, re
   }, [resetPrice])
 
   const increaseQuantity = () => {
-    console.log(totalCostDebt + product.price)
-    if (totalCostDebt + product.price * 1 > customer.debtLimit){
-      alert("YOu cannot exceed 1000")
+    console.log(totalCostDebt + product.price - customer.amountOwed)
+    if (totalCostDebt + product.price * 1 - customer.amountOwed > customer.debtLimit){
+      alert(`YOu cannot exceed ${customer.debtLimit}`)
     }
     else{
       setQuantity(quantity + 1)
@@ -99,11 +99,11 @@ const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, re
       <div style={{margin: "20px 0"}}>
         <div style={{display: "flex"}}>
           <span className={styles.det} style={{ display: "inline-block", marginRight: "30px"}}>Quantity: </span>
-          <span className={styles.det}>{product.quantity}</span>
+          <span className={styles.det}>{product.quantityRange} {product.quantity} {product.quantityDescription}</span>
         </div>
         <div style={{display: "flex"}}>
           <span className={styles.det} style={{ display: "inline-block", marginRight: "45px"}}>Price: </span>
-          <span className={styles.det}>#{product.price}</span>
+          <span className={styles.det}>#{product.price} {product.priceDescription}</span>
         </div>
       </div>
       { outOfStock ? (
@@ -113,7 +113,7 @@ const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, re
       ): (
         <div>
           {limitExceeded ? (
-            <h3>You cannot exceed the #1000 limit</h3>
+            <h3>You cannot exceed the #{customer.debtLimit} limit</h3>
           ) : (
             <div>
               <button className={`${styles.btn} ${styles.plusStyle}`} style={{ display: product.quantity < 1 ? "none" : "inline-block"}} onClick={()=> increaseQuantity()}>+</button>
