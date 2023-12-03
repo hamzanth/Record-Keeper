@@ -10,6 +10,8 @@ import AdminDashBoard from './components/adminDashboard'
 import LoginPage from './components/loginPage'
 import RegisterPage from './components/registerPage'
 import NavBar from './components/miniComponents/navBar'
+import Logout from './components/logout'
+import About from './components/about'
 import './App.css'
 
 function App() {
@@ -20,8 +22,10 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/dashboard" element={<AdminDashBoard/>} />
         <Route path="/login" element={<LoginPage/>} />
+        <Route path="/logout" element={<Logout/>} />
         <Route path="/register" element={<RegisterPage/>} />
         <Route path="/customers" element={<Customers/>} />
+        <Route path="/about" element={<About/>} />
         <Route path="/customers/:id" element={<CustomerDetail/>} />
         <Route path="/products" element={<Products/>} />
       </Routes>

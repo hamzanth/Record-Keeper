@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, Navigate } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 import ProductForm from './miniComponents/productForm'
 import DashSideMenu from './miniComponents/dashSideMenu'
@@ -30,6 +30,7 @@ const AdminDashBoard = () => {
   const [ customers, setCustomers ] = useState(null)
   const [ error, setError ] = useState(null)
   const [ isLoading, setIsLoading ] = useState(null)
+  const [ decodedToken, setDecodedToken ] = useState(null)
   const [ showProductDetail, setShowProductDetail ] = useState(false)
   const [ selectedProduct, setSelectedProduct ] = useState({})
   const [ amountOwing, setAmountOwing ] = useState(0)
@@ -37,12 +38,23 @@ const AdminDashBoard = () => {
   const [ debtLimit, setDebtLimit ] = useState(0)
   const [ windowSize, setWindowSize ] = useState(getWindowSize()) 
 
+  const navigate = useNavigate()
+
   const calcTotal = (users) => {
     console.log("the user is ")
     console.log(users) 
   }
 
   useEffect(() => {
+    const token = localStorage.getItem("token")
+    try{
+      const decToken = jwtDecode(token)
+      console.log("We are here")
+      setDecodedToken(decToken)
+    }
+    catch(error){
+      // navigate("/")
+    }
     fetch("http://127.0.0.1:3000/products")
     .then(response => response.json())
     .then(data => {
@@ -217,6 +229,8 @@ const AdminDashBoard = () => {
   //   console.log(showSideNav)
   // }
 
+  if(decodedToken && decodedToken.role === "basic") return <Navigate to="/" replace />
+
   return (
     <>
       <div className={styles.hamburger} onClick={() => setShowSideNav(true)}>
@@ -240,9 +254,13 @@ const AdminDashBoard = () => {
           setSelectedNav={setSelectedNav}
           showSideNav={showSideNav}
           setShowSideNav={setShowSideNav}
+          windowSize={windowSize}
         />
         <div className={styles.mainSection}>
-          <h2 style={{color: "black", textAlign: "center", fontSize: "35px"}}>Admin Dashboard {windowSize.innerWidth}</h2>
+          <div className={styles.dashNavCont}>
+            
+            <h2 style={{color: "black", textAlign: "center", fontSize: "35px"}}>Admin Dashboard</h2>
+          </div>
         <div style={{display: selectedNav === "Products" ? "block" : "none" }}>
           <div style={{textAlign: "center", marginTop: "30px"}}>
           <button className={styles.productFormButton} type="button" onClick={handleShowProductForm}>Show Product Form</button>
@@ -282,7 +300,7 @@ const AdminDashBoard = () => {
           <div style={{textAlign: "center"}}>
             <button className={styles.productFormButton} type="button" onClick={() => setShowCustomerForm(true)}>Add a Customer</button>
           </div>
-          <div className={styles.customerFormStyle} style={{display: showCustomerForm ? "block" : "none", border: "3px solid teal", borderRadius: "4px"}}>
+          <div className={styles.customerFormStyle} style={{display: showCustomerForm ? "block" : "none", border: "3px solid goldenrod", borderRadius: "4px"}}>
             <CustomerForm 
               unCustForm={handleCustShow}
               updateCustomers={updateCustomers}

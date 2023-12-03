@@ -1,13 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useParams, useNavigate, useLocation } from 'react-router-dom'
+import { useParams, useNavigate, useLocation, Navigate } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 import moment from 'moment'
 import Products from './productPage'
 import TimeLine from './miniComponents/timeLine'
 import NavBar from './miniComponents/navBar'
 import styles from './customer.module.css'
+import HomeSideMenu from './miniComponents/homeSideMenu'
 
 const CustomerDetail = () => {
+
+  const getShowHam = () => {
+    const { innerWidth } = window
+    return innerWidth < 900 ? true : false
+  }
+
+  const getWindowSize = () => {
+    const { innerWidth, innerHeight } = window
+    return { innerWidth, innerHeight }
+  }
 
   const [customerDetail, setCustomerDetail] = useState({})
   const [categoryHead, setCategoryHead] = useState("recent")
@@ -19,32 +30,52 @@ const CustomerDetail = () => {
   const [decodedToken, setDecodedToken] = useState(null)
   const [error, setError] = useState("")
   const [limitExceeded, setLimitExceeded] = useState(false)
+  const [showHamburger, setShowHamburger] = useState(getShowHam())
+  const [showSideNav, setShowSideNav] = useState(false)
+  const [windowSize, setWindowSize] = useState(getWindowSize())
+
   const navigate = useNavigate()
   const params = useParams()
   // const saveTransaction = location.state
   // console.log(saveTransaction)
   // console.log(customers)
   useEffect(() => {
-    const customerId = params.id
-    const token = localStorage.getItem("token")
-    try{
-      const decodedData = jwtDecode(token)
-      console.log(decodedData)
-      setDecodedToken(decodedData) 
+
+    const fetchData = async () => {
+      const customerId = params.id
+      const token = localStorage.getItem("token")
+      try{
+        const decodedData = await jwtDecode(token)
+        console.log(decodedData)
+        setDecodedToken(decodedData) 
+      }
+      catch(error){
+        setError(error)
+      }
+      fetch("http://127.0.0.1:3000/accounts/users/" + customerId)
+      .then(resp => resp.json())
+      .then(data => {
+        // console.log(data.message)
+        console.log(data.user)
+        setCustomerDetail(data.user)
+      })
+      .catch(error => {
+        console.log(error)
+      })
     }
-    catch(error){
-      setError(error)
+
+    const handleWindowResize = () => {
+      setWindowSize(getWindowSize())
+      setShowHamburger(getWindowSize().innerWidth < 900 ? true : false)
     }
-    fetch("http://127.0.0.1:3000/accounts/users/" + customerId)
-    .then(resp => resp.json())
-    .then(data => {
-      // console.log(data.message)
-      console.log(data.user)
-      setCustomerDetail(data.user)
-    })
-    .catch(error => {
-      console.log(error)
-    })
+
+    window.addEventListener("resize", handleWindowResize)
+    fetchData()
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize)
+    }
+
   }, [])
 
   const handleCategories = (category) => {
@@ -163,16 +194,27 @@ const CustomerDetail = () => {
     setDeposit("")
   }
 
+  if(decodedToken && (!decodedToken.id || !(decodedToken.id === params.id || (decodedToken.role === "super" || decodedToken.role === "admin")))) return <Navigate to="/" replace />
+  // if(!decodedToken) return <h1>Loading</h1>
+
+  if (customerDetail && !customerDetail) return <h1 style={{textAlign: "center", marginTop: "30%"}}>Loading...</h1>
 
   return (
     <>
-      <NavBar />
+      <HomeSideMenu 
+        showSideNav={showSideNav}
+        setShowSideNav={setShowSideNav}
+        decodedData={decodedToken}
+      />
+      <NavBar 
+          showHamburger={showHamburger} 
+          setShowSideNav={setShowSideNav}
+        />
       <div className={styles.showTransDet} style={{display: showTransactionDetail ? "block" : "none"}}>
         <span onClick={() => setShowTransactionDetail(false)} className={styles.cancelTransShow}>x</span>
-        <h2>This is the Transaction Detail Dialog</h2>
+        <h2>Transaction Detail Dialog</h2>
       </div>
-      <div className={styles.container}>
-        <h2 style={{textAlign: "center"}}>This is the customer detail page</h2>
+      <div className={styles.container} style={{marginTop: "5%"}}>
         <p style={{textAlign: "center"}}>{customerDetail.username} ({customerDetail.department})</p>
         <div style={{display: "flex", justifyContent: "space-around"}}>
           <span style={{color: "red", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>Owing : #{customerDetail.amountOwing}</span>
@@ -182,7 +224,7 @@ const CustomerDetail = () => {
           </span>
         </div>
         <div className={styles.categoryName}>
-          <h5 className={styles.categoryHd} style={{backgroundColor: categoryHead === "history" && "teal", color: categoryHead === "history" && "white"}}>
+          <h5 className={styles.categoryHd} style={{backgroundColor: categoryHead === "history" && "goldenrod", color: categoryHead === "history" && "white"}}>
             <span
               className={styles.categorySpan}
               onClick={() => handleCategories("history")}
@@ -190,7 +232,7 @@ const CustomerDetail = () => {
                 Transaction History
               </span>
           </h5>
-          <h5 className={styles.categoryHd} style={{backgroundColor: categoryHead === "recent" && "teal", color: categoryHead === "recent" && "white"}}>
+          <h5 className={styles.categoryHd} style={{backgroundColor: categoryHead === "recent" && "goldenrod", color: categoryHead === "recent" && "white"}}>
             <span
               className={styles.categorySpan}
               onClick={() => handleCategories("recent")}
@@ -198,7 +240,7 @@ const CustomerDetail = () => {
                 Recent Transactions
               </span>
           </h5>
-          <h5 className={styles.categoryHd} style={{backgroundColor: categoryHead === "shop" && "teal", color: categoryHead === "shop" && "white"}}>
+          <h5 className={styles.categoryHd} style={{backgroundColor: categoryHead === "shop" && "goldenrod", color: categoryHead === "shop" && "white"}}>
             <span
               className={styles.categorySpan}
               onClick={() => handleCategories("shop")}
@@ -209,12 +251,16 @@ const CustomerDetail = () => {
         </div>
         <div className={styles.categoryGrid}>
           <div className={styles.historySide} style={{display: categoryHead === "history" ? "block" : "none"}}>
-            <h3>Transactions History</h3>
-            <div onClick={() => handleDebtReset(customerDetail._id)} style={{textAlign: "right", marginBottom: "22px"}}><button className={styles.clearAllBtn}>clear All</button></div>
+            <h3 style={{textAlign: "center"}}>Transactions History</h3>
+            {decodedToken && !decodedToken.role === "basic" && (
+              <div onClick={() => handleDebtReset(customerDetail._id)} style={{textAlign: "right", marginBottom: "22px"}}><button className={styles.clearAllBtn}>clear All</button></div>
+            )}
             {customerDetail.timeLine && customerDetail.timeLine.sort((a, b) => new Date(b.date) - new Date(a.date)).map((transaction, higherIndex) => (
               <div key={higherIndex} style={{border: "1px solid teal", borderRadius: "4px", position: "relative", marginBottom: "25px"}}>
                 <h4>{moment(transaction.date).fromNow().toString()} </h4>
-                <button onClick={() => handleClear(transaction._id, customerDetail._id)} className={styles.unclear} style={{display: transaction.type === "sale" ? "inline-block" : "none"}}>{transaction.cleared ? "Unclear" : "Clear"}</button>
+                {!decodedToken.role === "basic" && (
+                  <button onClick={() => handleClear(transaction._id, customerDetail._id)} className={styles.unclear} style={{display: transaction.type === "sale" ? "inline-block" : "none"}}>{transaction.cleared ? "Unclear" : "Clear"}</button>
+                )}
                 <TimeLine
                   customerDetail = {customerDetail}
                   transaction = {transaction}
@@ -223,14 +269,18 @@ const CustomerDetail = () => {
 
               </div>
             ))}
-            <button type="button" onClick={() => navigate(-1)}>go back</button>
+            <div style={{textAlign: "center"}}>
+              <button type="button" onClick={() => navigate(-1)}>go back</button>
+            </div>
           </div>
           <div style={{display: categoryHead === "recent" ? "block" : "none"}} className={styles.unclearTrans}>
             <h3 style={{textAlign: "center"}}>Uncleared Transactions</h3>
-            <div style={{margin: "20px 0", textAlign: "center"}}>
-              <input className={styles.depositInput} type="number" placeholder="Record Deposit" value={deposit} onChange={(e) => setDeposit(e.target.value)} />
-              <button style={{fontSize: "10px"}} onClick={handleDeposit}>Deposit</button>
-            </div>
+            {decodedToken && decodedToken.role !== "basic" && (
+              <div style={{margin: "20px 0", textAlign: "center"}}>
+                <input className={styles.depositInput} type="number" placeholder="Record Deposit" value={deposit} onChange={(e) => setDeposit(e.target.value)} />
+                <button style={{fontSize: "10px"}} onClick={handleDeposit}>Deposit</button>
+              </div>
+            )}
             {customerDetail.timeLine && customerDetail.timeLine.filter(trans => trans.type === "sale" && trans.cleared === false).sort((a, b) => new Date(b.date) - new Date(a.date)).map((transact, index) => (
               <div className={styles.transactRecord} key={index}>
                 <p style={{fontSize: "12px", fontStyle:"italic", margin:"12px"}}>{moment(transact.date).fromNow()}</p>

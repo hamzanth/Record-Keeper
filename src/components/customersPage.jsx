@@ -29,7 +29,7 @@ const Customers = () => {
     .then(resp => resp.json())
     .then(data => {
       console.log(data)
-      data.users ? setCustomers(data.users) : setErrors(error)
+      data.users ? setCustomers(data.users) : setErrors(data.error)
     })
     .catch(error => {
       if (error){
@@ -65,11 +65,11 @@ const Customers = () => {
     <>
       <NavBar />
       {!decToken || decToken.role === "basic" ? (
-        <div>
-          <p>Your are not authorized to view this page</p>
+        <div style={{marginTop: "5%"}}>
+          <p style={{textAlign: "center"}}>Your are not authorized to view this page</p>
         </div>
       ) : (
-        <div className={styles.customerContainer}>
+        <div className={styles.customerContainer} style={{marginTop: "5%"}}>
         <h2 style={{textAlign: "center"}}>Customer's page</h2>
         {errors ? (
           <h3>There was error while loading the data</h3>

@@ -8,7 +8,10 @@ const ProductForm = ({unDisplayForm, showProductForm, updateProducts}) => {
     const [ price, setPrice ] = useState("")
     const [ quantity, setQuantity ] = useState("")
     const [ image, setImage ] = useState("")
+    const [ priceDescription, setPriceDescription ] = useState("")
+    const [ quantityDescription, setQuantityDescription ] = useState("")
     const [ category, setCategory ] = useState("Snacks")
+    const [ quantityRange, setQuantityRange ] = useState("less than")
 
     const submitHandler = (evt) => {
         evt.preventDefault()
@@ -19,6 +22,9 @@ const ProductForm = ({unDisplayForm, showProductForm, updateProducts}) => {
         formData.append("price", price)
         formData.append("quantity", quantity)
         formData.append("category", category)
+        formData.append("priceDescription", priceDescription)
+        formData.append("quantityDescription", quantityDescription)
+        formData.append("quantityRange", quantityRange)
 
         axios.post("http://127.0.0.1:3000/products", formData)
         .then(res => {
@@ -36,7 +42,7 @@ const ProductForm = ({unDisplayForm, showProductForm, updateProducts}) => {
         <>
         <div className={styles.productForm} style={{display: showProductForm ? "block" : "none"}}>
           <button type="submit" className={styles.productFormClose} onClick={unDisplayForm}>X</button>
-          <h3>Add a product to the store</h3>
+          <h3 style={{textAlign: "center"}}>Add a product to the store</h3>
           <form onSubmit={submitHandler}>
           <label>Enter product name</label>
             <input className={styles.productFormInput} type="text" value={name} onChange={(e)=>setName(e.target.value)} />
@@ -49,8 +55,18 @@ const ProductForm = ({unDisplayForm, showProductForm, updateProducts}) => {
             </select>
             <label>Enter product price</label>
             <input className={styles.productFormInput} type="text" value={price} onChange={(e)=>setPrice(e.target.value)} />
+            <label>Enter price description</label>
+            <input className={styles.productFormInput} type="text" value={priceDescription} onChange={(e)=>setPriceDescription(e.target.value)} />
             <label>Enter Quantity</label>
             <input className={styles.productFormInput} type="text" value={quantity} onChange={(e)=>setQuantity(e.target.value)} />
+            <label>Enter Quantity description</label>
+            <input className={styles.productFormInput} type="text" value={quantityDescription} onChange={(e)=>setQuantityDescription(e.target.value)} />
+            <label>Select Quantity Range</label>
+            <select className={styles.productFormInput} onChange={(e) => setQuantityRange(e.target.value)} value={quantityRange}>
+              <option value="Less than">Less than</option>
+              <option value="Equal to">Equal to</option>
+              <option value="Greater than">Greater than</option>
+            </select>
             <label>Choose Product Image</label>
             <input className={styles.productFormInput} style={{margin: 0, padding: 0}} type="file" onChange={(e) => setImage(e.target.files[0])} accept=".png, .jpg" />
             <div style={{textAlign: "center"}}>

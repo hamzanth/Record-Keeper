@@ -1,7 +1,7 @@
 .productForm{
     position: absolute;
     width: 50%;
-    top: 20%;
+    top: 15%;
     background-color: white;
     left: 30%;
     /* transform: translateX(-50%); */
@@ -11,9 +11,14 @@
     animation: scaleProdForm 0.5s ease-in;
   }
   .productFormButton{
-    color: green;
+    color: goldenrod;
     /* background-color: green; */
-    border: 1px solid green;
+    border: 1px solid goldenrod;
+  }
+  .productFormButton:hover{
+    /* border: none; */
+    border: 1px solid black;
+    color: black;
   }
   .productFormClose{
     position: absolute;
@@ -34,10 +39,10 @@
     margin: 5px 0;
     font-size: 15px;
     border-radius: 5px;
-    padding: 10px;
+    padding: 8px;
   }
   .productAddButton{
-    background-color: cornflowerblue;
+    background-color: goldenrod;
     color: white;
     box-sizing: border-box;
   }
@@ -64,10 +69,11 @@
     margin: 0;
     padding: 0;
     color: white;
-    background-color: rgb(1, 1, 32);
+    /* background-color: rgb(1, 1, 32); */
+    background: linear-gradient(130deg,gold 10%, rgb(82, 72, 15) 65%);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     box-sizing: border-box;
     position: fixed;
     top: 0;
@@ -83,7 +89,8 @@
     text-align: center;
   }
   .liStyles:hover{
-    background-color: rgb(42, 42, 94);
+    /* background-color: rgb(42, 42, 94); */
+    background-color: rgba(0, 0, 0, 0.8);
   }
   .headerContainer{
     display: flex;
@@ -110,29 +117,31 @@
   .prodCardBtn{
     display: block;
     color: white;
-    background-color: rgb(3, 3, 61);
+    /* background-color: rgb(3, 3, 61); */
+    background-color: goldenrod;
     width: 100%;
     border-radius: 0;
     margin-top: 19px;
   }
   .prodCardBtn:hover{
-    background-color: rgb(5, 5, 104);
-    /* border: none; */
+    background-color: gold;
+    border: none;
   }
   .prodDetailModal{
-    position: absolute;
-    top: 30%;
-    left: 40%;
+    position: fixed;
+    top: 3%;
+    left: 30%;
     background-color: white;
-    width: 30%;
+    width: 50%;
     border: 3px solid yellowgreen;
     border-radius: 5px;
     padding: 30px;
+    color: rgb(223, 163, 11)
   }
   .owCard{
     border: 1px solid rgb(161, 180, 122);
     padding: 6px 13px;
-    background-color: teal;
+    background: linear-gradient(130deg,gold 10%, rgb(82, 72, 15) 65%);
     color: white;
     /* width: 10%;
     height: 10%; */
@@ -192,7 +201,7 @@
     width: 40%;
     background-color: white;
     padding: 19px;
-    border: 1px solid greenyellow;
+    border: 1px solid goldenrod;
   }
   .customerLink:hover{
     color: black;
@@ -224,26 +233,27 @@
   .homeBackgroundImg{
     background-image: url("/backImage.jpg");
     height: 100vh;
-    min-height: 100vh;
+    max-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0px -450px;
     position: relative;
   }
   .homeBackgroundOverlay{
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.95);
     height: 100%;
-    /* opacity: 0.6; */
+    /* border: 3px solid yellow; */
+    /* width: 100%; */
   }
 
   .loginBtnStyle{
-    border: 2px solid gold; 
+    border: 2px solid goldenrod; 
     border-radius: 5px;
     padding: 8px 10px
   }
 
   .loginBtnStyle:hover{
-    color: gold;
+    color: goldenrod;
   }
 
   .hamburger{
@@ -251,7 +261,7 @@
     top: 40px;
     left: 40px;
     cursor: pointer;
-    border: 3px solid teal;
+    border: 3px solid goldenrod;
     padding: 0 3px;
     
   }
@@ -278,16 +288,90 @@
     padding: 0px 15px;
     border-radius: 4px;
     cursor: pointer;
+    display: none;
   }
   .closeSideNav:hover{
     color: red;
     border: 1px solid red;
   }
 
+  .navBrandName{
+    text-align: center; 
+    margin: 65px 0 100px; 
+    color: white;
+  }
+  .navBrandName:hover{ 
+    color: gold;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .lowerLimitStyle{
+    width: 50%; 
+    margin: 10px auto 10px;
+    display: none;
+  }
+
+  .homeSideNav{
+    overflow: hidden; 
+    background-color: rgba(0, 0, 0, 0.97);
+    transition: 0.5s ease-in-out;
+    position: fixed;
+    height: 100%;
+    z-index: 50;
+  }
+  .homeNavClose{
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    cursor: pointer;
+    font-size: 40px;
+    color: white;
+  }
+  .homeNavClose:hover{
+    color: goldenrod;
+  }
+  .homeNavLi:hover{
+    /* background-color: white; */
+  }
   /* .scrollStyle{
     width: 80%;
     margin: 0 auto;
   } */
+
+  .hamDiv{
+    cursor: pointer;
+  }
+  .hamDiv:hover .hamSpan{
+    background-color: gold;
+  }
+  .hamSpan{
+    width: 40px;
+    height: 5px;
+    margin: 6px;
+    background-color: goldenrod;
+    display: block;
+  }
+  .customerLinkOpen{
+    cursor: pointer;
+    margin: 0;
+  }
+  .customerLinkOpen:hover{
+    color: goldenrod;
+  }
+
+  .motto{
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%)
+  }
+  .loginLinkStyle{
+    position: absolute;
+    top: 60%;
+    width: 100%
+  }
+  .aboutContainer{
+    padding-top: 10%;
+  }
 
   @media screen and (max-width: 1250px){
     .homeBackgroundImg {
@@ -319,6 +403,9 @@
     .debtLimitStyle{
       display: none;
     }
+    .lowerLimitStyle{
+      display: block;
+    }
     .headerContainer{
       justify-content: space-between;
     }
@@ -330,6 +417,7 @@
     }
     .homeBackgroundImg{
       background-position: 0px -20px;
+      height: 70vh;
     }
     .prodContainer{
       grid-gap: 50px;
@@ -345,6 +433,20 @@
     .scrollStyle{
       width: 100%;
     }
+    .dashNavCont{
+      position: relative;
+      /* top: 40px; */
+      right: -80px;
+    }
+    .closeSideNav{
+      display: block;
+    }
+    .motto{
+      top: 40%;
+    }
+    .aboutContainer{
+      padding-top: 30%;
+    }
   }
   @media screen and (max-width: 800px){
     .overViewBox{
@@ -352,11 +454,15 @@
       grid-template-columns: 1fr;
     }
     .homeBackgroundImg{
-      background-position: 0px 0px;
+      background-position: 0px -130px;
     }
     .prodContainer{
       grid-gap: 20px;
     }
+    .loginLinkStyle{
+      top: 70%;
+    }
+    
   }
   @media screen and (max-width: 700px){
     .prodContainer{
@@ -364,7 +470,7 @@
       padding-right: 20px;
     }
     .homeBackgroundImg{
-      background-position: -50px 0px;
+      background-position: 0px 0px;
     }
     .customerBox{
       /* justify-content: center; */
@@ -381,9 +487,12 @@
     .mainSection{
       width: 80%
     }
+    .aboutContainer{
+      padding-top: 30%;
+    }
   }
   @media screen and (max-width: 600px){
     .homeBackgroundImg{
-      background-position: -130px -0px;
+      background-position: 0px -0px;
     }
   }
