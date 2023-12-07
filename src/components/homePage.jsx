@@ -11,6 +11,7 @@ import EmailIcon from '@mui/icons-material/Email'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import HomeIcon from '@mui/icons-material/Home'
 import { Grid } from '@mui/material'
+import { motion, AnimatePresence, spring } from 'framer-motion'
 
 const Home = () => {
 
@@ -101,9 +102,27 @@ const Home = () => {
     </div>
     <div className={styles.mainBody} style={{width: "80%", margin: "0 auto"}}>
       <div className="subhero">
-        <h1 style={{textAlign: "center", marginBottom: "0px"}}>Explore Our Market</h1>
+        <motion.h1 
+          style={{textAlign: "center", marginBottom: "0px"}}
+          whileHover={{scale: 1.2}}
+          whileTap={{scale: 0.8}}
+          drag="x"
+          dragConstraints={{left: -100, right: 100}}
+        >
+          Explore Our Market
+        </motion.h1>
         <hr style={{width: "15%", height: "3px", backgroundColor: "goldenrod", borderRadius: "5px", marginTop: "0"}} />
-        <h3 style={{textAlign: "center"}}>We offer good and quality products within and beyond the campus premises</h3>
+        <motion.div 
+          style={{textAlign: "center"}}
+          initial={{opacity: 0, x: "50px"}}
+          whileInView={{
+            opacity: 1, 
+            x: "0px",
+            transition: {duration: 0.9}
+          }}
+        >
+          <h2 style={{textAlign: "center"}}>We offer good and quality products within and beyond the campus premises</h2>
+        </motion.div>
         <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={3}>
               <div style={{position: "relative"}}>
