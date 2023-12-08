@@ -193,7 +193,7 @@ const Home = () => {
       <div style={{marginTop: "60px"}}>
         <h1 style={{textAlign: "center", marginBottom: "15px"}}>Our Logistics Unit</h1>
         <h3 style={{textAlign: "center", margin: "0px 0px 50px", fontStyle: "italic", wordSpacing: "19px", letterSpacing: "5px"}}>...Connecting Continents, Delivering Confidence...</h3>
-        <Grid container spacing={4} style={{backgroundColor: "goldenrod", marginLeft: "0px", marginRight: "29px", borderRadius: "5px", border: "1px solid red", paddingBottom: "25px", paddingRight: "30px"}}>
+        <Grid container style={{backgroundColor: "goldenrod", marginLeft: "0px", borderRadius: "5px", paddingBottom: "25px"}}>
           <Grid style={{display: "flex", alignItems: "center"}} item xs={12} md={6}>
             <p style={{fontSize: "18px", textAlign: "justify", color: "white"}}>
               AL-MUWAFAFAQ LOGISTICS has finally kicked off it's delivery service by delivering from UNIBEN
@@ -202,7 +202,7 @@ const Home = () => {
               Contact us for safe and reliable deliveries within campus, around campus, and beyond campus
             </p>
           </Grid>
-          <Grid item xs={12} md={6} style={{border: "1px solid green"}}>
+          <Grid item xs={12} md={6}>
             <img style={{width: "100%", borderRadius: "15px"}} src="/bicycle1.jpeg" alt="image not found"/>
           </Grid>
         </Grid>
