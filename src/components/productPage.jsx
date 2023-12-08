@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode'
 import { CustomerContext } from '../context'
 import Product from './miniComponents/product'
 import styles from './product.module.css'
-// import ShoppingCart from './miniComponents/ShoppingCart'
+import ShoppingCart from './miniComponents/shoppingCart'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart' 
 
 const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, setLimitExceeded}) => {
@@ -260,7 +260,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
             </ul>
           </div>
           <div className={styles.productContainer}>
-            {/* <ShoppingCart
+            <ShoppingCart
               customer={customer}
               cart={cart}
               totalCost={totalCost}
@@ -269,7 +269,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
               discardProducts={discardProducts}
               showCart={showCart}
               setLimitExceeded={setLimitExceeded}
-            /> */}
+            />
             {/* <span className={styles.totalCost} onClick={() => setShowCart(!showCart)}>#{totalCost}</span> */}
             <div className={styles.totalCost} onClick={() => setShowCart(!showCart)}>
               <ShoppingCartIcon sx={{color: "goldenrod", fontSize: "50px"}} />
