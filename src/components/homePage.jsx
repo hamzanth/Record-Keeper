@@ -155,11 +155,21 @@ const Home = () => {
         <hr style={{width: "15%", height: "3px", backgroundColor: "goldenrod", borderRadius: "5px", marginTop: "0"}} />
         <Grid style={{display: "flex", alignItems: "center"}} container spacing={8}>
           <Grid item xs={12} md={6}>
+          <motion.div 
+            style={{textAlign: "center"}}
+            initial={{opacity: 0, y: "70px"}}
+            whileInView={{
+              opacity: 1, 
+              y: "0px",
+              transition: {duration: 0.9}
+            }}
+          >
             <h3 style={{textAlign: "center", fontSize: "25px"}}>Blending Service</h3>
             <p style={{fontSize: "22px", textAlign: "justify"}}>
               Our Blender machine are available 24 hours of the day.
               Dont hesitate to hit us as soon as you have need to do so
             </p>
+          </motion.div>
           </Grid>
           <Grid item xs={12} md={6}>
             <img style={{width: "100%", height: "50vh", borderRadius: "10px"}} src="/blender1.png" alt="image not found"/>
@@ -167,11 +177,21 @@ const Home = () => {
         </Grid>
         <Grid style={{display: "flex", alignItems: "center", marginTop: "3px"}} container spacing={8}>
           <Grid item xs={12} md={6}>
+          <motion.div 
+            style={{textAlign: "center"}}
+            initial={{opacity: 0, y: "70px"}}
+            whileInView={{
+              opacity: 1, 
+              y: "0px",
+              transition: {duration: 0.9}
+            }}
+          >
             <h3 style={{textAlign: "center", fontSize: "25px"}}>Bicycle Service</h3>
             <p style={{fontSize: "22px", textAlign: "justify"}}>
               We also offer bicycle services within the campus premises and beyond.
               Our bicycles work at 100% efficency
             </p>
+          </motion.div>
           </Grid>
           <Grid item xs={12} md={6}>
             <img style={{width: "100%", height: "50vh", borderRadius: "10px"}} src="/bicycle2.jpeg" alt="image not found"/>
@@ -179,11 +199,21 @@ const Home = () => {
         </Grid>
         <Grid style={{display: "flex", alignItems: "center", marginTop: "3px"}} container spacing={8}>
           <Grid item xs={12} md={6}>
+          <motion.div 
+            style={{textAlign: "center"}}
+            initial={{opacity: 0, y: "70px"}}
+            whileInView={{
+              opacity: 1, 
+              y: "0px",
+              transition: {duration: 0.9}
+            }}
+          >
             <h3 style={{textAlign: "center", fontSize: "25px"}}>Grinding Service</h3>
             <p style={{fontSize: "22px", textAlign: "justify"}}>
               We also offer services for grinding of food items like pepper, melon
               or anything that needs to be grinded.
             </p>
+          </motion.div>
           </Grid>
           <Grid item xs={12} md={6}>
             <img style={{width: "100%", height: "50vh", borderRadius: "10px"}} src="/grindingmachine2.jpg" alt="image not found"/>
@@ -193,7 +223,7 @@ const Home = () => {
       <div style={{marginTop: "60px"}}>
         <h1 style={{textAlign: "center", marginBottom: "15px"}}>Our Logistics Unit</h1>
         <h3 style={{textAlign: "center", margin: "0px 0px 50px", fontStyle: "italic", wordSpacing: "19px", letterSpacing: "5px"}}>...Connecting Continents, Delivering Confidence...</h3>
-        <Grid container style={{backgroundColor: "goldenrod", marginLeft: "0px", borderRadius: "5px", paddingBottom: "25px"}}>
+        <Grid container spacing={3} style={{backgroundColor: "goldenrod", marginLeft: "0px", borderRadius: "5px", padding: "10px 20px 10px 0px"}}>
           <Grid style={{display: "flex", alignItems: "center"}} item xs={12} md={6}>
             <p style={{fontSize: "18px", textAlign: "justify", color: "white"}}>
               AL-MUWAFAFAQ LOGISTICS has finally kicked off it's delivery service by delivering from UNIBEN
