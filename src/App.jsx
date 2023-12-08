@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './components/homePage'
 import Products from './components/productPage'
 import Customers from './components/customersPage'
-import CustomerDetail from './components/CustomerDetail'
+// import CustomerDetail from './components/CustomerDetail'
 import AdminDashBoard from './components/adminDashboard'
 import LoginPage from './components/loginPage'
 import RegisterPage from './components/registerPage'
@@ -26,7 +26,7 @@ function App() {
         <Route path="/register" element={<RegisterPage/>} />
         <Route path="/customers" element={<Customers/>} />
         <Route path="/about" element={<About/>} />
-        <Route path="/customers/:id" element={<CustomerDetail/>} />
+        {/* <Route path="/customers/:id" element={<CustomerDetail/>} /> */}
         <Route path="/products" element={<Products/>} />
       </Routes>
     </>
