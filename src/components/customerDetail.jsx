@@ -52,7 +52,7 @@ const CustomerDetail = () => {
       catch(error){
         setError(error)
       }
-      fetch("http://127.0.0.1:3000/accounts/users/" + customerId)
+      fetch("https://record-keeper-api.onrender.com/accounts/users/" + customerId)
       .then(resp => resp.json())
       .then(data => {
         // console.log(data.message)
@@ -83,7 +83,7 @@ const CustomerDetail = () => {
   }
 
   const saveTransaction = (id, transObj, owing, owed) => {
-    fetch("http://127.0.0.1:3000/products/makedeposit", {
+    fetch("https://record-keeper-api.onrender.com/products/makedeposit", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -112,7 +112,7 @@ const CustomerDetail = () => {
 
   const handleClear = (transId, userId) => {
 
-    fetch("http://127.0.0.1:3000/products/cleartransaction/" + userId + "/transact/" + transId, {
+    fetch("https://record-keeper-api.onrender.com/products/cleartransaction/" + userId + "/transact/" + transId, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -133,7 +133,7 @@ const CustomerDetail = () => {
   }
 
   const handleDebtReset = (userid) => {
-    fetch("http://127.0.0.1:3000/products/allreset", {
+    fetch("https://record-keeper-api.onrender.com/products/allreset", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"

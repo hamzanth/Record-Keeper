@@ -223,14 +223,17 @@ const Home = () => {
       <div style={{marginTop: "60px"}}>
         <h1 style={{textAlign: "center", marginBottom: "15px"}}>Our Logistics Unit</h1>
         <h3 style={{textAlign: "center", margin: "0px 0px 50px", fontStyle: "italic", wordSpacing: "19px", letterSpacing: "5px"}}>...Connecting Continents, Delivering Confidence...</h3>
-        <Grid container spacing={3} style={{backgroundColor: "goldenrod", marginLeft: "0px", borderRadius: "5px", padding: "10px 20px 10px 0px"}}>
+        <Grid container spacing={3} style={{backgroundColor: "goldenrod", marginLeft: "0px", borderRadius: "5px", boxSizing: "border-box", marginRight: "44px", padding: "10px 20px 0px 0px"}}>
           <Grid style={{display: "flex", alignItems: "center"}} item xs={12} md={6}>
-            <p style={{fontSize: "18px", textAlign: "justify", color: "white"}}>
-              AL-MUWAFAFAQ LOGISTICS has finally kicked off it's delivery service by delivering from UNIBEN
-              to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
-              it's riders are ACTIVE & EQUAL to your various tasks... <br/>
-              Contact us for safe and reliable deliveries within campus, around campus, and beyond campus
-            </p>
+            <div style={{width: "100%"}}>
+              <p style={{fontSize: "18px", textAlign: "justify", color: "white"}}>
+                AL-MUWAFAFAQ LOGISTICS has finally kicked off it's delivery service by delivering from UNIBEN
+                to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
+                it's riders are ACTIVE & EQUAL to your various tasks... <br/>
+                Contact us for safe and reliable deliveries within campus, around campus, and beyond campus
+              </p>
+
+            </div>
           </Grid>
           <Grid item xs={12} md={6}>
             <img style={{width: "100%", borderRadius: "15px"}} src="/bicycle1.jpeg" alt="image not found"/>

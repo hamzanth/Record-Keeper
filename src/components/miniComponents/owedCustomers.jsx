@@ -28,7 +28,7 @@ const OwedCustomers = ({ customers, updateOwedCustomers }) => {
             amountOwed = 0
             amountOwing = 0
         }
-        await fetch("http://127.0.0.1:3000/products/" + customerClicked._id + "/pay-owed", {
+        await fetch("https://record-keeper-api.onrender.com/products/" + customerClicked._id + "/pay-owed", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

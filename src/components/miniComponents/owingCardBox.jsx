@@ -11,7 +11,7 @@ const OwingCardBox = ({amountOwing, amountOwed, debtLimit, setDebtLimit}) => {
 
     const handleDebtUpdate = async (e) => {
         e.preventDefault()
-        await fetch(`http://127.0.0.1:3000/accounts/debt-limit-update`, {
+        await fetch(`https://record-keeper-api.onrender.com/accounts/debt-limit-update`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

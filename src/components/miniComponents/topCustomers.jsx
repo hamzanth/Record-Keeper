@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 const TopProducts = () => {
     const [ topCustomers, setTopCustomers ] = useState([])
     useEffect(() => {
-        fetch("http://127.0.0.1:3000/accounts/top-customers")
+        fetch("https://record-keeper-api.onrender.com/accounts/top-customers")
         .then(resp => resp.json())
         .then(data => {
             console.log(data.message)

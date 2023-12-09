@@ -26,7 +26,7 @@ const ProductForm = ({unDisplayForm, showProductForm, updateProducts}) => {
         formData.append("quantityDescription", quantityDescription)
         formData.append("quantityRange", quantityRange)
 
-        axios.post("http://127.0.0.1:3000/products", formData)
+        axios.post("https://record-keeper-api.onrender.com/products", formData)
         .then(res => {
           // console.log(res)
           setName("")
