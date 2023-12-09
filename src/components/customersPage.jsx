@@ -25,7 +25,7 @@ const Customers = () => {
     }
 
     // const decodedtoken = jwtDecode(localStorage.getItem("token")) 
-    fetch("http://127.0.0.1:3000/accounts/users")
+    fetch("https://record-keeper-api.onrender.com/accounts/users")
     .then(resp => resp.json())
     .then(data => {
       console.log(data)
@@ -41,7 +41,7 @@ const Customers = () => {
 
   const handleMakeAdmin = (id) => {
     console.log(id)
-    fetch("http://127.0.0.1:3000/accounts/update", {
+    fetch("https://record-keeper-api.onrender.com/accounts/update", {
       method: "PUT",
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify({id: id, role: "admin"})

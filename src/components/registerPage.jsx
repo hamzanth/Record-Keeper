@@ -55,7 +55,7 @@ const RegisterPage = () => {
       setError("The passwords do not match")
     }
     else{
-      fetch("http://127.0.0.1:3000/accounts/register", {
+      fetch("https://record-keeper-api.onrender.com/accounts/register", {
         method: "POST",
       headers: {
         "Content-Type": "application/json"

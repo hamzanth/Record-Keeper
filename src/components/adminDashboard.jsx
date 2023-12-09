@@ -55,7 +55,7 @@ const AdminDashBoard = () => {
     catch(error){
       // navigate("/")
     }
-    fetch("http://127.0.0.1:3000/products")
+    fetch("https://record-keeper-api.onrender.com/products")
     .then(response => response.json())
     .then(data => {
       console.log(data)
@@ -67,7 +67,7 @@ const AdminDashBoard = () => {
       setIsLoading(false)
     })
 
-    fetch("http://127.0.0.1:3000/accounts/users")
+    fetch("https://record-keeper-api.onrender.com/accounts/users")
     .then(resp => resp.json())
     .then(data => {
       // console.log(data)
@@ -105,7 +105,7 @@ const AdminDashBoard = () => {
 
   const handleMakeAdmin = (customer) => {
     const id = customer._id
-    fetch("http://127.0.0.1:3000/accounts/make-admin", {
+    fetch("https://record-keeper-api.onrender.com/accounts/make-admin", {
       method: "PUT",
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify({id: id, role: "admin"})
@@ -122,7 +122,7 @@ const AdminDashBoard = () => {
 
   const handleMakeBasic = (customer) => {
     const id = customer._id
-    fetch("http://127.0.0.1:3000/accounts/make-basic", {
+    fetch("https://record-keeper-api.onrender.com/accounts/make-basic", {
       method: "PUT",
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify({id: id, role: "basic"})
@@ -180,7 +180,7 @@ const AdminDashBoard = () => {
     setShowProductDetail(false)
   }
   const handleUpdateCustomer = (selCust, updateObj) => {
-    fetch(`http://127.0.0.1:3000/accounts/${selCust._id}/update`, {
+    fetch(`https://record-keeper-api.onrender.com/accounts/${selCust._id}/update`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -204,7 +204,7 @@ const AdminDashBoard = () => {
     })
   }
   const handleDeleteCustomer = (selCust) => {
-    fetch(`http://127.0.0.1:3000/accounts/${selCust._id}/delete`, {
+    fetch(`https://record-keeper-api.onrender.com/accounts/${selCust._id}/delete`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"

@@ -14,7 +14,7 @@ const ShoppingCart = ({ customer, cart, totalCost, setShowCart, buyProduct, disc
     onSuccess: () => {
       alert("Thanks for doing business with us, Come back soon")
       const trans = {type: "payment", amount: totalCost, date: new Date()}
-      fetch("http://127.0.0.1:3000/products/makepayment", {
+      fetch("https://record-keeper-api.onrender.com/products/makepayment", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"

@@ -79,7 +79,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
   // const { setCustomers } = useContext(CustomerContext)
 
   const saveTransaction = (id, transObj, owing, owed) => {
-    fetch("http://127.0.0.1:3000/products/addtotimeline", {
+    fetch("https://record-keeper-api.onrender.com/products/addtotimeline", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -15,7 +15,7 @@ const LoginPage = () => {
   const submitHandler = (event) => {
     event.preventDefault()
     console.log("The form has been submitted")
-    fetch("http://127.0.0.1:3000/accounts/login", {
+    fetch("https://record-keeper-api.onrender.com/accounts/login", {
         method: "POST",
       headers: {
         "Content-Type": "application/json"

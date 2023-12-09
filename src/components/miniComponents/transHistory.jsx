@@ -15,7 +15,7 @@ const TransHistory = () => {
         //     setTransHistory(data.transactions)
         // })
         console.log(moment(new Date()).dayOfYear())
-        fetch("http://127.0.0.1:3000/transactions/get-day", {
+        fetch("https://record-keeper-api.onrender.com/transactions/get-day", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
