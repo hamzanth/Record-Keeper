@@ -112,6 +112,21 @@ const Home = () => {
           Explore Our Market
         </motion.h1>
         <hr style={{width: "15%", height: "3px", backgroundColor: "goldenrod", borderRadius: "5px", marginTop: "0"}} />
+
+          {/* <motion.div
+            // initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ 
+              // opacity: 1, 
+              scale: [1, 2, 2, 1, 1],
+              rotate: [0, 0, 270, 270, 0],
+              borderRadius: ["20%", "20%", "50%", "50%", "20%"] 
+            }}
+            // transition={{ duration: 0.5 }}
+          >
+            <h1 style={{textAlign: "center"}}>Ok Practising with Framer Motion</h1>
+          </motion.div>
+
+        <hr style={{width: "50%", height: "3px", backgroundColor: "goldenrod", borderRadius: "5px", marginTop: "10px"}} /> */}
         <motion.div 
           style={{textAlign: "center"}}
           initial={{opacity: 0, x: "50px"}}

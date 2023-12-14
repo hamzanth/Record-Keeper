@@ -9,10 +9,12 @@ const LoginPage = () => {
   const [showError, setShowError] = useState(false)
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [ loginLoading, setLoginLoading ] = useState(false)
 
   const navigate = useNavigate()
 
   const submitHandler = (event) => {
+    setLoginLoading(true)
     event.preventDefault()
     console.log("The form has been submitted")
     fetch("https://record-keeper-api.onrender.com/accounts/login", {
@@ -75,12 +77,12 @@ const LoginPage = () => {
           <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className={styles.inputStyles} placeholder="Enter Password" />
           {error && <p style={{color: "red"}}>** username or password do not match({error.message})</p>}
           <div style={{textAlign: "center"}}>
-            <button style={{color: "white", backgroundColor: "black", fontSize: "15px"}} type="submit">Login</button>
+            <button style={{color: "white", backgroundColor: "black", fontSize: "15px"}} type="submit">{loginLoading && <span className={styles.logLoader}></span>}Login</button>
           </div>
           {error && (
             <div>
-              <h2>Don't have an account ?</h2>
-              <h2>Contact the Owner of the Store</h2>
+              <h4>Don't have an account ?</h4>
+              <h4>Contact the Owner of the Store</h4>
             </div>
           )}
         </form>

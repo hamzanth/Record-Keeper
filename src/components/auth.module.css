@@ -38,6 +38,28 @@
   padding: 40px;
 }
 
+.logLoader{
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  border-radius: 50%;
+  border: 3px solid black;
+  border-left: 3px solid goldenrod;
+  border-top: 3px solid goldenrod;
+  margin: 0px 5px 0 0;
+  animation: spinner 1s infinite;
+  animation-delay: 0ms;
+}
+@keyframes spinner{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+
 @media screen and (max-width: 1250px){
   .loginContainer {
     background-position: 0px -250px;
