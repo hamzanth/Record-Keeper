@@ -136,7 +136,7 @@ const Home = () => {
             transition: {duration: 0.9}
           }}
         >
-          <h2 style={{textAlign: "center"}}>We offer good and quality products within and beyond the campus premises</h2>
+          <h2 style={{textAlign: "center"}}>We offer good and quality products within and beyond the campus premises.</h2>
         </motion.div>
         <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={3}>
@@ -181,8 +181,9 @@ const Home = () => {
           >
             <h3 style={{textAlign: "center", fontSize: "25px"}}>Blending Service</h3>
             <p style={{fontSize: "22px", textAlign: "justify"}}>
-              Our Blender machine are available 24 hours of the day.
-              Dont hesitate to hit us as soon as you have need to do so
+              Our Blender machine are available 24 hours of the day. We blend things
+              like fruits, beans, corn, tomatoes etc.
+              Dont hesitate to hit us as soon as you have need to do so.
             </p>
           </motion.div>
           </Grid>
@@ -204,7 +205,7 @@ const Home = () => {
             <h3 style={{textAlign: "center", fontSize: "25px"}}>Bicycle Service</h3>
             <p style={{fontSize: "22px", textAlign: "justify"}}>
               We also offer bicycle services within the campus premises and beyond.
-              Our bicycles work at 100% efficency
+              Our bicycles work at 100% efficency.
             </p>
           </motion.div>
           </Grid>
@@ -242,10 +243,10 @@ const Home = () => {
           <Grid style={{display: "flex", alignItems: "center"}} item xs={12} md={6}>
             <div style={{width: "100%"}}>
               <p style={{fontSize: "18px", textAlign: "justify", color: "white"}}>
-                AL-MUWAFAFAQ LOGISTICS has finally kicked off it's delivery service by delivering from UNIBEN
+                AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
                 to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
                 it's riders are ACTIVE & EQUAL to your various tasks... <br/>
-                Contact us for safe and reliable deliveries within campus, around campus, and beyond campus
+                Contact us for safe and reliable deliveries within campus, around campus, and beyond campus.
               </p>
 
             </div>
@@ -257,22 +258,23 @@ const Home = () => {
       </div>
       <section className="contacts" style={{marginTop: "30px"}}>
         <h1 style={{textAlign: "center", marginBottom: "0"}}>Contacts</h1>
-        <h2 style={{textAlign: "center"}}>You can reach us on the follow...</h2>
+        <h2 style={{textAlign: "center"}}>You can reach us on the following...</h2>
         <Grid container>
           <Grid item xs={12} sm={6} md={3}>
             <div style={{textAlign: "center"}}><HomeIcon sx={{fontSize: "80px", color: "goldenrod"}} /></div>
             <h3 style={{textAlign: "center"}}>We are located at University of Benin Central Mosque</h3>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <div style={{textAlign: "center"}}><LocalPhoneIcon sx={{fontSize: "80px", color: "goldenrod"}}neIcon /></div>
-            <h3 style={{textAlign: "center"}}>09030606826</h3>
+            <div style={{textAlign: "center"}}><LocalPhoneIcon sx={{fontSize: "80px", color: "goldenrod"}} /></div>
+            <h3 style={{textAlign: "center", marginBottom: 0}}>07043815052</h3>
+            <h3 style={{textAlign: "center", marginTop: 0}}>08149976598</h3>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <div style={{textAlign: "center"}}><WhatsAppIcon sx={{fontSize: "80px", color: "goldenrod"}}Icon /></div>
-            <h3 style={{textAlign: "center"}}>09032071775</h3>
+            <div style={{textAlign: "center"}}><WhatsAppIcon sx={{fontSize: "80px", color: "goldenrod"}} /></div>
+            <h3 style={{textAlign: "center"}}>07043815052</h3>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <div style={{textAlign: "center"}}><EmailIcon sx={{fontSize: "80px", color: "goldenrod"}}n /></div>
+            <div style={{textAlign: "center"}}><EmailIcon sx={{fontSize: "80px", color: "goldenrod"}} /></div>
             <h3 style={{textAlign: "center", wordWrap:"break-word"}}>almuwaffaqstores1445@gmail.com</h3>
           </Grid>
         </Grid>
