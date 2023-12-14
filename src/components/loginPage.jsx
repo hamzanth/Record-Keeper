@@ -33,6 +33,8 @@ const LoginPage = () => {
       // data.user ? console.log(data.user) : setError(data.error)
       if (data.error){
         setError(data.error)
+        console.log("hey whats going on")
+        setLoginLoading(false)
       }
       else{
         localStorage.setItem("token", data.token)
@@ -62,6 +64,8 @@ const LoginPage = () => {
       if (error) {
         console.log("The error is", error)
         setError(error)
+        console.log("hey whats going on")
+        setLoginLoading(false)
       }
     })
   }
@@ -77,7 +81,7 @@ const LoginPage = () => {
           <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className={styles.inputStyles} placeholder="Enter Password" />
           {error && <p style={{color: "red"}}>** username or password do not match({error.message})</p>}
           <div style={{textAlign: "center"}}>
-            <button style={{color: "white", backgroundColor: "black", fontSize: "15px"}} type="submit">{loginLoading && <span className={styles.logLoader}></span>}Login</button>
+            <button style={{color: "white", backgroundColor: "black", fontSize: "15px"}} type="submit" disabled={loginLoading ? true: false}>{loginLoading && <span className={styles.logLoader}></span>}Login</button>
           </div>
           {error && (
             <div>
