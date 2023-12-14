@@ -101,6 +101,7 @@
     padding: 0 30px;
     width: 75%;
     margin-left: 20%;
+    box-sizing: border-box;
   }
   .prodContainer{
     display: grid;
@@ -447,6 +448,18 @@
     .aboutContainer{
       padding-top: 30%;
     }
+    .customerFormStyle{
+      left: 20%;
+    }
+    .customerUpdateStyle{
+      left: 20%;
+    }
+    .productForm{
+      left: 20%;
+    }
+    .prodDetailModal{
+      left: 20%;
+    }
   }
   @media screen and (max-width: 800px){
     .overViewBox{
@@ -490,6 +503,15 @@
     .aboutContainer{
       padding-top: 30%;
     }
+    .owCard{
+      padding: 1px 4px;
+      width: 120px;
+      height: 120px;
+    }
+    /* .mainSection{
+      margin-left: 0;
+      margin-right: 0; 
+    } */
   }
   @media screen and (max-width: 600px){
     .homeBackgroundImg{

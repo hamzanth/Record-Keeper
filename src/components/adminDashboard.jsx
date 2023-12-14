@@ -257,10 +257,10 @@ const AdminDashBoard = () => {
           windowSize={windowSize}
         />
         <div className={styles.mainSection}>
-          <div className={styles.dashNavCont}>
+          {/* <div className={styles.dashNavCont}>
             
             <h2 style={{color: "black", textAlign: "center", fontSize: "35px"}}>Admin Dashboard</h2>
-          </div>
+          </div> */}
         <div style={{display: selectedNav === "Products" ? "block" : "none" }}>
           <div style={{textAlign: "center", marginTop: "30px"}}>
           <button className={styles.productFormButton} type="button" onClick={handleShowProductForm}>Show Product Form</button>
