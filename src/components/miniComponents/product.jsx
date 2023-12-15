@@ -91,7 +91,7 @@ const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, re
   return (
     <>
     <div className={styles.indProd}>
-      <span className={styles.localPrice} style={{display: quantity === 0 ? "none" : "block"}}>#{quantity * product.price}</span>
+      <span className={styles.localPrice} style={{display: quantity === 0 ? "none" : "block"}}>₦{quantity * product.price}</span>
       <span className={styles.quantityDisplay} style={{display: quantity === 0 ? "none" : "block"}}>{quantity}</span>
       <h2 className={styles.prodBod} style={{color: "black", marginTop: 0}}><span style={catgStyle}>{product.category}</span> {product.name}</h2>
       {/* <img className={styles.prodImage} src={"/productPictures/paper.jpeg"} alt="the image could not be found"/> */}
@@ -103,7 +103,7 @@ const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, re
         </div>
         <div style={{display: "flex"}}>
           <span className={styles.det} style={{ display: "inline-block", marginRight: "45px"}}>Price: </span>
-          <span className={styles.det}>#{product.price} {product.priceDescription}</span>
+          <span className={styles.det}>₦{product.price} {product.priceDescription}</span>
         </div>
       </div>
       { outOfStock ? (
@@ -113,7 +113,7 @@ const Product = ({ product, changeQuantity, changeTotalPrice, createCartData, re
       ): (
         <div>
           {limitExceeded ? (
-            <h3>You cannot exceed the #{customer.debtLimit} limit</h3>
+            <h3>You cannot exceed the ₦{customer.debtLimit} limit</h3>
           ) : (
             <div>
               <button className={`${styles.btn} ${styles.plusStyle}`} style={{ display: product.quantity < 1 ? "none" : "inline-block"}} onClick={()=> increaseQuantity()}>+</button>

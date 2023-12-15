@@ -101,7 +101,7 @@
 }
 .categoryUl{
   list-style-type: none;
-  margin-top: 50px;
+  margin-top: 10px;
   min-width: 180px;
   /* border: 2px solid grey; */
   padding: 0;
@@ -225,5 +225,10 @@
   .gridContainer{
     /* grid-template-columns: 30% 60%; */
     width: 90%;
+  }
+}
+@media screen and (max-width: 600px){
+  .gridContainer{
+    grid-template-columns: 1fr;
   }
 }

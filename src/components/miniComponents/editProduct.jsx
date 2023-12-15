@@ -49,7 +49,7 @@ const EditProduct = ({selectedProduct, setShowProductDetail, editProductList, de
 
     const handleDelete = (e) => {
         e.preventDefault()
-        fetch(`http://127.0.0.1:3000/products/${selectedProduct._id}/delete`, {
+        fetch(`https://record-keeper-api.onrender.com/products/${selectedProduct._id}/delete`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -100,7 +100,7 @@ const EditProduct = ({selectedProduct, setShowProductDetail, editProductList, de
                 {error && (
                     <h3 style={{color: "red"}}></h3>
                 )}
-                <div style={{textAlign: "center"}}>
+                <div style={{textAlign: "center", marginTop: "20px"}}>
                     <button className={styles.updateProductBtn} style={{border: "2px solid greenyellow", marginRight: "30px"}} type="submit" onClick={handleUpdate}>Update</button>
                     <button className={styles.deleteProductBtn} style={{border: "2px solid #f44336"}} type="submit" onClick={handleDelete}>Remove</button>
                 </div>
