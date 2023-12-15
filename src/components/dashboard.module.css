@@ -460,6 +460,33 @@
     .prodDetailModal{
       left: 20%;
     }
+    .lowerLimitStyle{
+      width: 80%; 
+      margin: 10px auto 10px;
+    }
+    .hamburger{
+      top: 25px;
+      left: 20px;
+    }
+    .ham{
+      width: 35px;
+      height: 3px;
+    }
+    .productFormClose{
+      font-size: 25px;
+      padding: 3px 10px;
+    }
+    .productAddButton{
+      display: inline-block;
+      margin-top: 20px;
+    }
+    .productForm{
+      /* transform: translateX(-50%); */
+      border: none;
+      left: 10%;
+      padding: 5px 4px;
+      width: 80%;
+    }
   }
   @media screen and (max-width: 800px){
     .overViewBox{
@@ -475,7 +502,9 @@
     .loginLinkStyle{
       top: 70%;
     }
-    
+    .ulStyles{
+      width: 50%;
+    }
   }
   @media screen and (max-width: 700px){
     .prodContainer{
@@ -507,6 +536,18 @@
       padding: 1px 4px;
       width: 120px;
       height: 120px;
+    }
+    .customerFormStyle{
+      left: 17%;
+    }
+    .customerUpdateStyle{
+      left: 17%;
+    }
+    .productForm{
+      left: 10%;
+    }
+    .prodDetailModal{
+      left: 17%;
     }
     /* .mainSection{
       margin-left: 0;

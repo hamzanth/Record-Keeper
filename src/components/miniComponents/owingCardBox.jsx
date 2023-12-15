@@ -48,7 +48,7 @@ const OwingCardBox = ({amountOwing, amountOwed, debtLimit, setDebtLimit}) => {
             <div className={styles.lowerLimitStyle}>
                 <h3 style={{textAlign: "center", margin: "0 0 0px"}}>Debt Limit</h3>
                 <form style={{textAlign: "center"}}>
-                    <input style={{fontSize: "19px", border: "2px solid grey"}} type="number" value={debtInput} onChange={(e) => setDebtInput(e.target.value)} />
+                    <input style={{fontSize: "19px", border: "2px solid grey", width: "100%", boxSizing: "border-box"}} type="number" value={debtInput} onChange={(e) => setDebtInput(e.target.value)} />
                     <button style={{fontSize: "16px", padding: "6px 5px"}} onClick={handleDebtUpdate}>update</button>
                 </form>
             </div>
