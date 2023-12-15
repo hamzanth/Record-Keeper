@@ -55,7 +55,7 @@ const AdminDashBoard = () => {
     catch(error){
       // navigate("/")
     }
-    fetch("https://record-keeper-api.onrender.com/products")
+    fetch("http://127.0.0.1:3000/products")
     .then(response => response.json())
     .then(data => {
       console.log(data)
@@ -67,7 +67,9 @@ const AdminDashBoard = () => {
       setIsLoading(false)
     })
 
-    fetch("https://record-keeper-api.onrender.com/accounts/users")
+    // https://record-keeper-api.onrender.com/accounts/login
+    // "http://127.0.0.1:3000/accounts/login"
+    fetch("http://127.0.0.1:3000/accounts/users")
     .then(resp => resp.json())
     .then(data => {
       // console.log(data)

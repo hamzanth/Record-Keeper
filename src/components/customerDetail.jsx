@@ -214,13 +214,13 @@ const CustomerDetail = () => {
         <span onClick={() => setShowTransactionDetail(false)} className={styles.cancelTransShow}>x</span>
         <h2>Transaction Detail Dialog</h2>
       </div>
-      <div className={styles.container} style={{marginTop: "5%"}}>
+      <div className={styles.container} style={{marginTop: "10%"}}>
         <p style={{textAlign: "center"}}>{customerDetail.username} ({customerDetail.department})</p>
         <div style={{display: "flex", justifyContent: "space-around"}}>
-          <span style={{color: "red", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>Owing : #{customerDetail.amountOwing}</span>
-          <span style={{color: "#3f51b5", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>#{customerDetail.debtLimit}</span>
+          <span style={{color: "red", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>Owing : ₦{customerDetail.amountOwing}</span>
+          <span style={{color: "#3f51b5", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>₦{customerDetail.debtLimit}</span>
           <span style={{color: "green", fontSize: "20px", fontStyle: "italic", fontWeight: "bold"}}>
-            Owed: #{customerDetail.amountOwed} {decodedToken && decodedToken.role === "admin" && <button style={{fontSize: "10px", border: "1px solid teal"}} type="button" onClick={() => resetOwed(customerDetail._id)}>clear</button>}
+            Owed: ₦{customerDetail.amountOwed} {decodedToken && decodedToken.role === "admin" && <button style={{fontSize: "10px", border: "1px solid teal"}} type="button" onClick={() => resetOwed(customerDetail._id)}>clear</button>}
           </span>
         </div>
         <div className={styles.categoryName}>
@@ -240,7 +240,7 @@ const CustomerDetail = () => {
                 Recent Transactions
               </span>
           </h5>
-          <h5 className={styles.categoryHd} style={{backgroundColor: categoryHead === "shop" && "goldenrod", color: categoryHead === "shop" && "white"}}>
+          <h5 className={styles.categoryHd} style={{display: "flex", alignItems: "center", backgroundColor: categoryHead === "shop" && "goldenrod", color: categoryHead === "shop" && "white"}}>
             <span
               className={styles.categorySpan}
               onClick={() => handleCategories("shop")}

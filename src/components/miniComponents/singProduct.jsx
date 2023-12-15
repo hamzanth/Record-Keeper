@@ -6,12 +6,12 @@ const SingProduct = ({handleShowProductDetail, prod}) => {
     const getImage = (prod) => {
       if (!prod.image){
         return (
-          <div style={{height: "136px"}}><img alt="No image found" /></div>
+          <div style={{height: "10px"}}><img alt="No picture" /></div>
         )
       }
       else if (!prod.image.data){
         return (
-          <div style={{height: "136px"}}><img alt="No image found" /></div>
+          <div style={{height: "10px"}}><img alt="No picture" /></div>
         )
       }
       else{
@@ -19,7 +19,7 @@ const SingProduct = ({handleShowProductDetail, prod}) => {
         const imgStyle = {width: "100%", height: "130px"}
         return (
           <div>
-            <img style={imgStyle} src={`data:image/jpg;base64, ${base64String}`} />
+            <img style={styles.prodImgStyle} src={`data:image/jpg;base64, ${base64String}`} />
           </div>
         )
       }

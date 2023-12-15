@@ -56,12 +56,12 @@ const ShoppingCart = ({ customer, cart, totalCost, setShowCart, buyProduct, disc
                     <tr key={index}>
                       <td className={styles.tableBodyData}><span>{index + 1}</span></td>
                       <td className={styles.tableBodyData} style={{paddingRight: "50px"}}>
-                        <span style={{fontStyle: "italic", fontSize: "18px"}}>{key}(#{cart[key].price})</span>
+                        <span style={{fontStyle: "italic", fontSize: "18px"}}>{key}(₦{cart[key].price})</span>
                       </td>
                       <td className={styles.tableBodyData}>
                         <span style={{fontStyle: "italic", fontSize: "18px"}}>{cart[key].quantity}</span>
                       </td>
-                      <td className={styles.tableBodyData}><span>#{cart[key].quantity * cart[key].price}</span></td>
+                      <td className={styles.tableBodyData}><span>₦{cart[key].quantity * cart[key].price}</span></td>
                     </tr>
                 ))}
                 <tr>
@@ -69,7 +69,7 @@ const ShoppingCart = ({ customer, cart, totalCost, setShowCart, buyProduct, disc
                 <span style={{color: "red", textAlign: "left", fontWeight: "bold", fontStyle: "italic", fontSize: "20px", textDecoration: "underline"}}>Total</span>
                 </td>
                   <td style={{ textAlign: "right"}} colSpan="3">
-                  <span style={{color: "red", fontWeight: "bold", fontStyle: "italic", fontSize: "20px", textDecoration: "underline"}}>#{totalCost}</span>
+                  <span style={{color: "red", fontWeight: "bold", fontStyle: "italic", fontSize: "20px", textDecoration: "underline"}}>₦{totalCost}</span>
                   </td>
                 </tr>
               </tbody>

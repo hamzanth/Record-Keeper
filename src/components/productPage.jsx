@@ -53,7 +53,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
   // const [outOfStockArr, setOutOfStockArr] = useState([])
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3000/products")
+    fetch("https://record-keeper-api.onrender.com/products")
     .then(response => response.json())
     .then(data => {
       // console.log(data)
@@ -245,7 +245,7 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
         ) : (
           <div className={styles.gridContainer}>
           <div>
-            <h2 style={{marginTop: 0}}>Select a Category</h2>
+            <h2 style={{marginTop: 0, marginBottom: 0}}>Select a Category</h2>
             <ul className={styles.categoryUl}>
               { productCategory.map((category) => (
                 <li

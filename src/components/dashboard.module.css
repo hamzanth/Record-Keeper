@@ -129,12 +129,12 @@
     border: none;
   }
   .prodDetailModal{
-    position: fixed;
-    top: 3%;
+    position: absolute;
+    top: 8%;
     left: 30%;
     background-color: white;
     width: 50%;
-    border: 3px solid yellowgreen;
+    border: 3px solid goldenrod;
     border-radius: 5px;
     padding: 30px;
     color: rgb(223, 163, 11)
@@ -373,6 +373,10 @@
   .aboutContainer{
     padding-top: 10%;
   }
+  .prodImageStyle{
+    width: 100%; 
+    height: 130px;
+  }
 
   @media screen and (max-width: 1250px){
     .homeBackgroundImg {
@@ -412,6 +416,9 @@
     }
   }
   @media screen and (max-width: 900px){
+    .mainSection{
+      padding: 0;
+    }
     .overViewBox{
       /* justify-content: center; */
       grid-template-columns: 1fr;
@@ -476,6 +483,12 @@
       font-size: 25px;
       padding: 3px 10px;
     }
+    .prodDetX{
+      font-size: 30px;
+      top: 7px;
+      right: 13px;
+      padding: 3px 12px;
+    }
     .productAddButton{
       display: inline-block;
       margin-top: 20px;
@@ -486,6 +499,28 @@
       left: 10%;
       padding: 5px 4px;
       width: 80%;
+    }
+    .prodDetailModal{
+      left: 10%;
+      width: 80%;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .customerUpdateStyle{
+      /* border: none; */
+      left: 10%;
+      padding: 5px 4px;
+      width: 80%;
+      /* background-color: blue; */
+    }
+    .updateProductBtn{
+      font-size: 15px;
+    }
+    .deleteProductBtn{
+      font-size: 15px;
+    }
+    .prodImageStyle{ 
+      height: 60px;
     }
   }
   @media screen and (max-width: 800px){
@@ -541,13 +576,13 @@
       left: 17%;
     }
     .customerUpdateStyle{
-      left: 17%;
+      left: 10%;
     }
     .productForm{
       left: 10%;
     }
     .prodDetailModal{
-      left: 17%;
+      left: 10%;
     }
     /* .mainSection{
       margin-left: 0;
