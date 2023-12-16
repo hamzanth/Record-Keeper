@@ -38,11 +38,27 @@ const Home = () => {
     width: "100%",
   }
 
-  const [inp, setInp] = useState("")
+  const [ inp, setInp ] = useState("")
   const [ decodedData, setDecodedData ] = useState(null)
   const [ windowSize, setWindowSize ] = useState(getWindowSize())
   const [ showHamburger, setShowHamburger ] = useState(getShowHam())
   const [ showSideNav, setShowSideNav ] = useState(false)
+  const [ blendingIndex, setBlendingIndex ] = useState(0)
+
+  // const changeBlending = () => {
+    // setTimeout(() => {
+    //   console.log(blendingIndex)
+    //   if (blendingIndex === 4){
+    //     setBlendingIndex(0)
+    //   }
+    //   else{
+    //     setBlendingIndex(blendingIndex + 1)
+    //   }
+    //   changeBlending()
+    // }, 15000)
+  // }
+
+  // changeBlending()
 
   useEffect(() => {
     const token = localStorage.getItem("token")
@@ -90,7 +106,7 @@ const Home = () => {
         />
         {/* <div style={{marginBottom: "130px"}}></div> */}
         <div className={styles.motto}>
-          <h1 style={{color: "white", textAlign: "center", marginTop: 0, marginBottom: 0}}>Al Muwaffaq Stores</h1>
+          <h2 style={{color: "white", fontSize: "36px", textAlign: "center", marginTop: 0, marginBottom: 0}}><span style={{fontSize: "48px"}}>Welcome to</span><br/> <span style={{color: "goldenrod", fontSize: "30px"}}>Al Muwaffaq Stores</span><br/>Your Campus Convenience Hub!</h2>
           <h5 style={{color: "goldenrod", textAlign: "center", fontStyle: "italic", marginTop:0}}>(Providing Essentials with care)</h5>
         </div>
         {!decodedData && (
@@ -189,6 +205,10 @@ const Home = () => {
           </Grid>
           <Grid item xs={12} md={6}>
             <img style={{width: "100%", height: "50vh", borderRadius: "10px"}} src="/blender1.png" alt="image not found"/>
+            {/* <img style={{width: "100%", height: "50vh", borderRadius: "10px", display: blendingIndex === 1 ? "inline" : "none"}} src="/blender3.jpg" alt="image not found"/>
+            <img style={{width: "100%", height: "50vh", borderRadius: "10px", display: blendingIndex === 2 ? "inline" : "none"}} src="/blender4.jpg" alt="image not found"/>
+            <img style={{width: "100%", height: "50vh", borderRadius: "10px", display: blendingIndex === 3 ? "inline" : "none"}} src="/blender5.jpg" alt="image not found"/>
+            <img style={{width: "100%", height: "50vh", borderRadius: "10px", display: blendingIndex === 4 ? "inline" : "none"}} src="/blender6.jpg" alt="image not found"/>           */}
           </Grid>
         </Grid>
         <Grid style={{display: "flex", alignItems: "center", marginTop: "3px"}} container spacing={8}>
@@ -204,7 +224,7 @@ const Home = () => {
           >
             <h3 style={{textAlign: "center", fontSize: "25px"}}>Bicycle Service</h3>
             <p style={{fontSize: "22px", textAlign: "justify"}}>
-              We also offer bicycle services within the campus premises and beyond.
+              We also offer bicycle services within the campus premises and beyond at affordable prices.
               Our bicycles work at 100% efficency.
             </p>
           </motion.div>
@@ -242,11 +262,18 @@ const Home = () => {
         <Grid container spacing={3} style={{backgroundColor: "goldenrod", marginLeft: "0px", borderRadius: "5px", boxSizing: "border-box", marginRight: "44px", padding: "10px 20px 0px 0px"}}>
           <Grid style={{display: "flex", alignItems: "center"}} item xs={12} md={6}>
             <div style={{width: "100%"}}>
+              <h2 style={{color: "white", textAlign: "center", fontSize: "31px"}}>Welcome to Al Muwaffaq Logistics</h2>
               <p style={{fontSize: "18px", textAlign: "justify", color: "white"}}>
-                AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
+                {/* AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
                 to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
                 it's riders are ACTIVE & EQUAL to your various tasks... <br/>
-                Contact us for safe and reliable deliveries within campus, around campus, and beyond campus.
+                Contact us for safe and reliable deliveries within campus, around campus, and beyond campus. */}
+                At AL-MUWAFAFAQ LOGISTICS, we redefine the way goods move from point A to point B. With a focus on efficiency,
+                reliability, and customer satisfaction, we take pride in delivering logistics solutions that go beyond
+                transportation. <br />
+                AL-MUWAFAFAQ LOGISTICS is not just a logistics company; we are your strategic partner in navigating the
+                complexities of supply chain management. With a commitment to excellence, we leverage cutting-edge technology
+                and a delicate team to ensure your cargo reaches its destination seamlessly.
               </p>
 
             </div>

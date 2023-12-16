@@ -6,7 +6,10 @@ const CustomerForm = ({ unCustForm, updateCustomers }) => {
     const [ password, setPassword ]= useState("")
     const [ department, setDepartment ] = useState("")
     const [ error, setError ] = useState("")
+    const [ loading, setLoading ] = useState(false)
+    // disabled={loginLoading ? true: false}>{loginLoading && <span className={styles.logLoader}></span>
     const handleSubmit = (e) => {
+        setLoading(true)
         e.preventDefault()
         fetch("https://record-keeper-api.onrender.com/accounts/register", {
             method: "POST",
@@ -22,9 +25,11 @@ const CustomerForm = ({ unCustForm, updateCustomers }) => {
             setPassword("")
             setDepartment("")
             updateCustomers(data.user)
+            setLoading(false)
         })
         .catch(error => {
             setError(error)
+            setLoading(false)
         })
     }
     return (
@@ -36,7 +41,7 @@ const CustomerForm = ({ unCustForm, updateCustomers }) => {
                 <input className={styles.productFormInput} type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <input className={styles.productFormInput} type="text" placeholder="Enter Department" value={department} onChange={(e) => setDepartment(e.target.value)} />
                 <div style={{textAlign: "center", marginTop: "15px"}}>
-                    <button type="submit" onClick={handleSubmit} style={{color: "white", backgroundColor: "goldenrod"}}>Add Customer</button>
+                    <button type="submit" onClick={handleSubmit} style={{color: "white", backgroundColor: "goldenrod"}} disabled={loading ? true: false}>{loading && <span className={styles.logLoader}></span>}Add Customer</button>
                 </div>
             </form>
         </>

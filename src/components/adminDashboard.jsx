@@ -69,7 +69,7 @@ const AdminDashBoard = () => {
 
     // https://record-keeper-api.onrender.com/accounts/login
     // "http://127.0.0.1:3000/accounts/login"
-    fetch("http://127.0.0.1:3000/accounts/users")
+    fetch("https://record-keeper-api.onrender.com/accounts/users")
     .then(resp => resp.json())
     .then(data => {
       // console.log(data)

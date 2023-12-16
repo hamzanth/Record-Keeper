@@ -31,12 +31,12 @@ const TimeLine = ({transaction, higherIndex, customerDetail}) => {
             <tr key={lowerIndex}>
               <td className={styles.tableBodyData}><span>{lowerIndex + 1}</span></td>
               <td className={styles.tableBodyData} style={{paddingRight: "50px"}}>
-                <span style={{fontStyle: "italic", fontSize: "18px"}}>{transObj.name}(#{transObj.price})</span>
+                <span style={{fontStyle: "italic", fontSize: "18px"}}>{transObj.name}(₦{transObj.price})</span>
               </td>
               <td className={styles.tableBodyData}>
                 <span style={{fontStyle: "italic", fontSize: "18px"}}>{transObj.quantity}</span>
               </td>
-              <td className={styles.tableBodyData}><span>#{transObj.quantity * transObj.price}</span></td>
+              <td className={styles.tableBodyData}><span>₦{transObj.quantity * transObj.price}</span></td>
             </tr>
           ))}
             <tr>
@@ -44,7 +44,7 @@ const TimeLine = ({transaction, higherIndex, customerDetail}) => {
             <span style={{color: "red", textAlign: "left", fontWeight: "bold", fontStyle: "italic", fontSize: "20px", textDecoration: "underline"}}>Total</span>
             </td>
               <td style={{ textAlign: "right", paddingRight: "40px"}} colSpan="3">
-              <span style={{color: "red", fontWeight: "bold", fontStyle: "italic", fontSize: "20px", textDecoration: "underline"}}>#{calculateIndAmount(higherIndex)}</span>
+              <span style={{color: "red", fontWeight: "bold", fontStyle: "italic", fontSize: "20px", textDecoration: "underline"}}>₦{calculateIndAmount(higherIndex)}</span>
               </td>
             </tr>
           </tbody>
