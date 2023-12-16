@@ -55,7 +55,7 @@ const AdminDashBoard = () => {
     catch(error){
       // navigate("/")
     }
-    fetch("http://127.0.0.1:3000/products")
+    fetch("https://record-keeper-api.onrender.com/products")
     .then(response => response.json())
     .then(data => {
       console.log(data)
