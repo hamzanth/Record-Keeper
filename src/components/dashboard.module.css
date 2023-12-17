@@ -367,16 +367,34 @@
   }
   .loginLinkStyle{
     position: absolute;
-    top: 60%;
+    top: 73%;
     width: 100%
   }
   .aboutContainer{
     padding-top: 10%;
   }
+  .prodImageCont{
+    /* width: 199px; */
+    /* border: 1px solid red; */
+    /* overflow: hidden; */
+  }
   .prodImageStyle{
     width: 100%; 
-    height: 130px;
+    height: 190px;
+    border-radius: 6px;
+    /* border: 3px solid blue; */
   }
+
+  .welcome{
+    font-size: 48px;
+  }
+  .almuwaf{
+    color: goldenrod; 
+    font-size: 30px;
+  }
+  /* .conv{
+
+  } */
 
   @media screen and (max-width: 1250px){
     .homeBackgroundImg {
@@ -523,7 +541,17 @@
       height: 60px;
     }
   }
+  /* .welcome
+  .almuwaf
+  .conv */
+
   @media screen and (max-width: 800px){
+    .welcome{
+      font-size: 25px;
+    }
+    .conv{
+      font-size: 22px;
+    }
     .overViewBox{
       /* justify-content: center; */
       grid-template-columns: 1fr;
@@ -592,5 +620,14 @@
   @media screen and (max-width: 600px){
     .homeBackgroundImg{
       background-position: 0px -0px;
+    }
+    .welcome{
+      display: none;
+    }
+    .conv{
+      display: none;
+    }
+    .almuwaf{
+      color: white;
     }
   }

@@ -65,11 +65,11 @@ const Customers = () => {
     <>
       <NavBar />
       {!decToken || decToken.role === "basic" ? (
-        <div style={{marginTop: "15%"}}>
+        <div style={{marginTop: "10%"}}>
           <p style={{textAlign: "center"}}>Your are not authorized to view this page</p>
         </div>
       ) : (
-        <div className={styles.customerContainer} style={{marginTop: "15%"}}>
+        <div className={styles.customerContainer} style={{marginTop: "10%"}}>
         <h2 style={{textAlign: "center"}}>Customer's page</h2>
         {errors ? (
           <h3>There was error while loading the data</h3>

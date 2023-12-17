@@ -24,6 +24,7 @@ const EditProduct = ({selectedProduct, setShowProductDetail, editProductList, de
         formData.append("quantityDescription", quantityDescription)
         formData.append("quantityRange", quantityRange)
 
+        // https://record-keeper-api.onrender.com
         axios.put(`https://record-keeper-api.onrender.com/products/${selectedProduct._id}/update`, formData)
         .then(res => {
             console.log(res.data.message)
