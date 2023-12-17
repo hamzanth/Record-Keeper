@@ -6,20 +6,20 @@ const SingProduct = ({handleShowProductDetail, prod}) => {
     const getImage = (prod) => {
       if (!prod.image){
         return (
-          <div style={{height: "10px"}}><img alt="No picture" /></div>
+          <div style={{height: "197px"}}><img alt="No picture" /></div>
         )
       }
       else if (!prod.image.data){
         return (
-          <div style={{height: "10px"}}><img alt="No picture" /></div>
+          <div style={{height: "197px"}}><img alt="No picture" /></div>
         )
       }
       else{
         const base64String = btoa(String.fromCharCode(...new Uint8Array(prod.image.data.data)))
         const imgStyle = {width: "100%", height: "130px"}
         return (
-          <div>
-            <img style={styles.prodImgStyle} src={`data:image/jpg;base64, ${base64String}`} />
+          <div className={styles.prodImageCont}>
+            <img className={styles.prodImageStyle} src={`data:image/jpg;base64, ${base64String}`} />
           </div>
         )
       }

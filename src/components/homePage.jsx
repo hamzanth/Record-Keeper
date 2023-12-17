@@ -106,7 +106,7 @@ const Home = () => {
         />
         {/* <div style={{marginBottom: "130px"}}></div> */}
         <div className={styles.motto}>
-          <h2 style={{color: "white", fontSize: "36px", textAlign: "center", marginTop: 0, marginBottom: 0}}><span style={{fontSize: "48px"}}>Welcome to</span><br/> <span style={{color: "goldenrod", fontSize: "30px"}}>Al Muwaffaq Stores</span><br/>Your Campus Convenience Hub!</h2>
+          <h2 style={{color: "white", fontSize: "36px", textAlign: "center", marginTop: 0, marginBottom: 0}}><span className={styles.welcome}>Welcome to</span><br/> <span className={styles.almuwaf}>Al Muwaffaq Stores</span><br/><span className={styles.conv}>Your Campus Convenience Hub!</span></h2>
           <h5 style={{color: "goldenrod", textAlign: "center", fontStyle: "italic", marginTop:0}}>(Providing Essentials with care)</h5>
         </div>
         {!decodedData && (
@@ -263,11 +263,12 @@ const Home = () => {
           <Grid style={{display: "flex", alignItems: "center"}} item xs={12} md={6}>
             <div style={{width: "100%"}}>
               <h2 style={{color: "white", textAlign: "center", fontSize: "31px"}}>Welcome to Al Muwaffaq Logistics</h2>
+
               <p style={{fontSize: "18px", textAlign: "justify", color: "white"}}>
-                {/* AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
+                AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
                 to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
                 it's riders are ACTIVE & EQUAL to your various tasks... <br/>
-                Contact us for safe and reliable deliveries within campus, around campus, and beyond campus. */}
+                Contact us for safe and reliable deliveries within campus, around campus, and beyond campus.
                 At AL-MUWAFAFAQ LOGISTICS, we redefine the way goods move from point A to point B. With a focus on efficiency,
                 reliability, and customer satisfaction, we take pride in delivering logistics solutions that go beyond
                 transportation. <br />
@@ -283,6 +284,31 @@ const Home = () => {
           </Grid>
         </Grid>
       </div>
+      <section className="setApart" style={{marginTop: "30px"}}>
+        <h1 style={{textAlign: "center"}}>What Sets Us Apart</h1>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6} md={3}>
+            <div>
+              <h3 style={{textAlign: "center"}}>Variety and Quality</h3>
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <div>
+              <h3 style={{textAlign: "center"}}>Affordability</h3>
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <div>
+              <h3 style={{textAlign: "center"}}>Student-Centric Approach</h3>
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <div>
+              <h3 style={{textAlign: "center"}}>Accountability</h3>
+            </div>
+          </Grid>
+        </Grid>
+      </section>
       <section className="contacts" style={{marginTop: "30px"}}>
         <h1 style={{textAlign: "center", marginBottom: "0"}}>Contacts</h1>
         <h2 style={{textAlign: "center"}}>You can reach us on the following...</h2>
