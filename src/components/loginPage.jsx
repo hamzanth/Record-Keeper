@@ -81,7 +81,7 @@ const LoginPage = () => {
         <form onSubmit={submitHandler} className={styles.loginFormStyle}>
           <input type="username" value={username} onChange={(e)=>setUsername(e.target.value)} className={styles.inputStyles} placeholder="Enter Username" />
           <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className={styles.inputStyles} placeholder="Enter Password" />
-          {error && <p style={{color: "red"}}>** username or password do not match({error.message})</p>}
+          {error && <p style={{color: "red"}}>** username or password do not match</p>}
           <div style={{textAlign: "center"}}>
             <button style={{color: "white", backgroundColor: "black", fontSize: "15px"}} type="submit" disabled={loginLoading ? true: false}>{loginLoading && <span className={styles.logLoader}></span>}Login</button>
           </div>
