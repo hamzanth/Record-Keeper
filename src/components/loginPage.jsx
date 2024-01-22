@@ -17,7 +17,7 @@ const LoginPage = () => {
     setLoginLoading(true)
     event.preventDefault()
     console.log("The form has been submitted completely")
-    fetch("http://127.0.0.1:3000/accounts/login", {
+    fetch("https://record-keeper-api.onrender.com/accounts/login", {
       // https://record-keeper-api.onrender.com/accounts/login
       // "http://127.0.0.1:3000/accounts/login"
         method: "POST",
