@@ -55,12 +55,18 @@ const OwedCustomers = ({ customers, updateOwedCustomers }) => {
                 </div>
                 )}
                 <h4 style={{textAlign: "center"}}>List of Customers that are Owed</h4>
-                {customers && customers.filter(cust => cust.amountOwed > 0).map(customer => (
-                    <div key={customer._id} className={styles.indCustStyle}>
-                        <Link className={styles.customerLink} style={{fontSize: "19px"}} to={"/customers/" + customer._id}>{customer.username}</Link>
-                        <span onClick={() => handleAmountClicked(customer)} className={styles.owNumber} style={{backgroundColor: "#4caf50", cursor: "pointer"}}>{customer.amountOwed}</span>
+                {customers ? (
+                    customers.filter(cust => cust.amountOwed > 0).map(customer => (
+                        <div key={customer._id} className={styles.indCustStyle}>
+                            <Link className={styles.customerLink} style={{fontSize: "19px"}} to={"/customers/" + customer._id}>{customer.username}</Link>
+                            <span onClick={() => handleAmountClicked(customer)} className={styles.owNumber} style={{backgroundColor: "#4caf50", cursor: "pointer"}}>{customer.amountOwed}</span>
+                        </div>
+                    ))
+                ):(
+                    <div>
+                        <h2 style={{textAlign: "center"}}>Loading...</h2>
                     </div>
-                ))}
+                ) }
             </div>
         </>
     )

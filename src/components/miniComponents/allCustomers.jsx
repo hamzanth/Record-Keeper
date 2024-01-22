@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import styles from '../dashboard.module.css'
+import authStyles from '../auth.module.css'
 import moment from 'moment'
 
 const AllCustomers = ({customers, handleMakeBasic, handleMakeAdmin, handleUpdateCustomer, handleDeleteCustomer}) => {
@@ -12,6 +13,8 @@ const AllCustomers = ({customers, handleMakeBasic, handleMakeAdmin, handleUpdate
     const [ password, setPassword ] = useState("")
     const [ department, setDepartment ] = useState("")
     const [ image, setImage ] = useState("")
+    const [ uloading, setULoading ] = useState(false)
+    const [ dloading, setDLoading ] = useState(false)
 
     const handleEditCustomer = (customer) => {
         // console.log(customer)
@@ -23,19 +26,23 @@ const AllCustomers = ({customers, handleMakeBasic, handleMakeAdmin, handleUpdate
     }
 
     const handleUpdate = (selCust) => {
+        setULoading(true)
         const updateObj = {
             username: username,
             password: password,
             department: department,
             image: image 
         }
-        setShowUpdateCustomer(false)
         handleUpdateCustomer(selCust, updateObj)
+        setShowUpdateCustomer(false)
+        setULoading(false)
     }
 
     const handleDelete = (selCust) => {
+        setDLoading(true)
         setShowUpdateCustomer(false)
         handleDeleteCustomer(selCust)
+        setDLoading(false)
     }
     const handleCustomerClicked = (customer) => {
         console.log(customer)
@@ -82,24 +89,30 @@ const AllCustomers = ({customers, handleMakeBasic, handleMakeAdmin, handleUpdate
                         <label>Change Image or leave blank</label>
                         <input className={styles.productFormInput} type="text" value={image} onChange={(e) => setImage(e.target.value)} />
                         <div className="botButton" style={{textAlign: "center"}}>
-                            <button type="button" onClick={() => handleUpdate(selectedCustomer)}>Update</button>
-                            <button type="button" onClick={() => handleDelete(selectedCustomer)}>Delete</button>
+                            <button type="button" onClick={() => handleUpdate(selectedCustomer)}>{uloading && <span className={authStyles.logLoader}></span>}Update</button>
+                            <button type="button" onClick={() => handleDelete(selectedCustomer)}>{dloading && <span className={authStyles.logLoader}></span>} Delete</button>
                         </div>
                     </form>
                 </div>
                 )}
                 <h4 style={{textAlign: "center"}}>All Customers</h4>
-                {customers && customers.filter(cust => cust.role !== "super").map(customer => (
-                <div key={customer._id} className={styles.indCustStyle}>
-                    <p className={styles.customerLinkOpen} style={{fontSize: "19px"}} onClick={() => handleCustomerClicked(customer)}>{customer.username}</p>
-                    <button type="button" onClick={() => handleEditCustomer(customer)} style={{padding: "6px 13px"}}>Edit</button>
-                    {customer.role === "admin" ? (
-                    <button type="button" onClick={() => handleMakeBasic(customer)} style={{padding: "6px 4px", marginLeft: "15px"}}>remove admin</button>
-                    ) : (
-                    <button type="button" onClick={() => handleMakeAdmin(customer)} style={{padding: "6px 4px", marginLeft: "15px"}}>make admin</button>
-                    )}
-                </div>
-                ))}
+                {customers ? (
+                    customers.filter(cust => cust.role !== "super").map(customer => (
+                        <div key={customer._id} className={styles.indCustStyle}>
+                            <p className={styles.customerLinkOpen} style={{fontSize: "19px"}} onClick={() => handleCustomerClicked(customer)}>{customer.username}</p>
+                            <button type="button" onClick={() => handleEditCustomer(customer)} style={{padding: "6px 13px"}}>Edit</button>
+                            {customer.role === "admin" ? (
+                            <button type="button" onClick={() => handleMakeBasic(customer)} style={{padding: "6px 4px", marginLeft: "15px"}}>remove admin</button>
+                            ) : (
+                            <button type="button" onClick={() => handleMakeAdmin(customer)} style={{padding: "6px 4px", marginLeft: "15px"}}>make admin</button>
+                            )}
+                        </div>
+                        ))
+                ) : (
+                    <div>
+                        <h2>Loading</h2>
+                    </div>
+                ) }
             </div>
         </>
     )

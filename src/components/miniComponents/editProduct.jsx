@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import styles from '../dashboard.module.css'
+import authStyles from '../auth.module.css'
 import axios from 'axios'
 
 const EditProduct = ({selectedProduct, setShowProductDetail, editProductList, deleteProductList}) => {
@@ -12,8 +13,11 @@ const EditProduct = ({selectedProduct, setShowProductDetail, editProductList, de
     const [ priceDescription, setPriceDescription ] = useState(selectedProduct.priceDescription)
     const [ quantityDescription, setQuantityDescription ] = useState(selectedProduct.quantityDescription)
     const [ quantityRange, setQuantityRange ] = useState(selectedProduct.quantityRange)
+    const [ uloading, setULoading ] = useState(false)
+    const [ dloading, setDLoading ] = useState(false)
 
     const handleUpdate = (e) => {
+        setULoading(true)
         e.preventDefault()
         const formData = new FormData()
         formData.append("name", name)
@@ -25,12 +29,16 @@ const EditProduct = ({selectedProduct, setShowProductDetail, editProductList, de
         formData.append("quantityRange", quantityRange)
 
         // https://record-keeper-api.onrender.com
+        // http://127.0.0.1:3000/products/${selectedProduct._id}/update
+        // https://record-keeper-api.onrender.com/products/${selectedProduct._id}/update
         axios.put(`https://record-keeper-api.onrender.com/products/${selectedProduct._id}/update`, formData)
         .then(res => {
             console.log(res.data.message)
             editProductList(selectedProduct, res.data.product)
+            setULoading(false)
         })
         .catch(error => console.log(error))
+        setULoading(false)
         // fetch(`http://127.0.0.1:3000/products/${selectedProduct._id}/update`, {
         //     method: "PUT",
         //     headers: {
@@ -49,6 +57,7 @@ const EditProduct = ({selectedProduct, setShowProductDetail, editProductList, de
     }
 
     const handleDelete = (e) => {
+        setDLoading(true)
         e.preventDefault()
         fetch(`https://record-keeper-api.onrender.com/products/${selectedProduct._id}/delete`, {
             method: "DELETE",
@@ -61,9 +70,11 @@ const EditProduct = ({selectedProduct, setShowProductDetail, editProductList, de
             console.log(data.message)
             console.log(data.product)
             deleteProductList(data.product)
+            setDLoading(false)
         })
         .catch(error => {
             setError(error)
+            setDLoading(false)
         })
     }
 
@@ -102,8 +113,8 @@ const EditProduct = ({selectedProduct, setShowProductDetail, editProductList, de
                     <h3 style={{color: "red"}}></h3>
                 )}
                 <div style={{textAlign: "center", marginTop: "20px"}}>
-                    <button className={styles.updateProductBtn} style={{border: "2px solid greenyellow", marginRight: "30px"}} type="submit" onClick={handleUpdate}>Update</button>
-                    <button className={styles.deleteProductBtn} style={{border: "2px solid #f44336"}} type="submit" onClick={handleDelete}>Remove</button>
+                    <button className={styles.updateProductBtn} style={{border: "2px solid greenyellow", marginRight: "30px"}} type="submit" onClick={handleUpdate}>{uloading && <span className={authStyles.logLoader}></span>} Update</button>
+                    <button className={styles.deleteProductBtn} style={{border: "2px solid #f44336"}} type="submit" onClick={handleDelete}>{dloading && <span className={authStyles.logLoader}></span>} Remove</button>
                 </div>
             </form>
         </div>

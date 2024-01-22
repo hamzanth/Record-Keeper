@@ -2,15 +2,20 @@ import React, { useState, useEffect } from 'react'
 
 const TopProducts = () => {
     const [ topCustomers, setTopCustomers ] = useState([])
+    const [ loading, setLoading ] = useState(true)
     useEffect(() => {
+        // http://127.0.0.1:3000/accounts/top-customers
+        // https://record-keeper-api.onrender.com/accounts/top-customers
         fetch("https://record-keeper-api.onrender.com/accounts/top-customers")
         .then(resp => resp.json())
         .then(data => {
             console.log(data.message)
             setTopCustomers(data.customers)
+            setLoading(false)
         })
         .catch(error => console.log(error))
     }, [])
+    if(loading) return <h2 style={{textAlign: "center"}}>Loading...</h2>
     return (
         <>
             <div>

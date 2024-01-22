@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from '../dashboard.module.css'
+import authStyles from '../auth.module.css'
 import axios from 'axios'
 
 const ProductForm = ({unDisplayForm, showProductForm, updateProducts}) => {
@@ -12,8 +13,10 @@ const ProductForm = ({unDisplayForm, showProductForm, updateProducts}) => {
     const [ quantityDescription, setQuantityDescription ] = useState("")
     const [ category, setCategory ] = useState("Snacks")
     const [ quantityRange, setQuantityRange ] = useState("less than")
+    const [ loading, setLoading ] = useState(false)
 
     const submitHandler = (evt) => {
+        setLoading(true)
         evt.preventDefault()
         console.log("The form has been submitted")
         const formData = new FormData()
@@ -27,6 +30,8 @@ const ProductForm = ({unDisplayForm, showProductForm, updateProducts}) => {
         formData.append("quantityRange", quantityRange)
 
         // https://record-keeper-api.onrender.com
+        // http://127.0.0.1:3000/products
+        // https://record-keeper-api.onrender.com/products
         axios.post("https://record-keeper-api.onrender.com/products", formData)
         .then(res => {
           // console.log(res)
@@ -35,8 +40,10 @@ const ProductForm = ({unDisplayForm, showProductForm, updateProducts}) => {
           setQuantity("")
           setImage("")
           updateProducts(res.data.product)
+          setLoading(false)
         })
         .catch(error => console.log(error))
+        setLoading(false)
     }
 
     return (
@@ -71,7 +78,7 @@ const ProductForm = ({unDisplayForm, showProductForm, updateProducts}) => {
             <label>Choose Product Image</label>
             <input className={styles.productFormInput} style={{margin: 0, padding: 0}} type="file" onChange={(e) => setImage(e.target.files[0])} accept=".png, .jpg" />
             <div style={{textAlign: "center"}}>
-            <button className={styles.productAddButton} type="submit">Add</button>
+            <button className={styles.productAddButton} type="submit">{loading && <span className={authStyles.logLoader}></span>}Add</button>
             </div>
           </form>
         </div>

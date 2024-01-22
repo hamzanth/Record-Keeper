@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from '../dashboard.module.css'
+import authStyles from '../auth.module.css'
 
 const CustomerForm = ({ unCustForm, updateCustomers }) => {
     const [ username, setUsername ]= useState("")
@@ -11,6 +12,8 @@ const CustomerForm = ({ unCustForm, updateCustomers }) => {
     const handleSubmit = (e) => {
         setLoading(true)
         e.preventDefault()
+        // http://127.0.0.1:3000/accounts/register
+        // https://record-keeper-api.onrender.com/accounts/register
         fetch("https://record-keeper-api.onrender.com/accounts/register", {
             method: "POST",
             headers: {
@@ -41,7 +44,7 @@ const CustomerForm = ({ unCustForm, updateCustomers }) => {
                 <input className={styles.productFormInput} type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <input className={styles.productFormInput} type="text" placeholder="Enter Department" value={department} onChange={(e) => setDepartment(e.target.value)} />
                 <div style={{textAlign: "center", marginTop: "15px"}}>
-                    <button type="submit" onClick={handleSubmit} style={{color: "white", backgroundColor: "goldenrod"}} disabled={loading ? true: false}>{loading && <span className={styles.logLoader}></span>}Add Customer</button>
+                    <button type="submit" onClick={handleSubmit} style={{color: "white", backgroundColor: "goldenrod"}} disabled={loading ? true: false}>{loading && <span className={authStyles.logLoader}></span>}Add Customer</button>
                 </div>
             </form>
         </>

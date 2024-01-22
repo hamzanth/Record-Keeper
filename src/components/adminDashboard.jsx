@@ -55,6 +55,8 @@ const AdminDashBoard = () => {
     catch(error){
       // navigate("/")
     }
+    // http://127.0.0.1:3000/products
+    // https://record-keeper-api.onrender.com/products
     fetch("https://record-keeper-api.onrender.com/products")
     .then(response => response.json())
     .then(data => {
@@ -67,8 +69,8 @@ const AdminDashBoard = () => {
       setIsLoading(false)
     })
 
-    // https://record-keeper-api.onrender.com/accounts/login
-    // "http://127.0.0.1:3000/accounts/login"
+    // https://record-keeper-api.onrender.com/accounts/users
+    // "http://127.0.0.1:3000/accounts/users"
     fetch("https://record-keeper-api.onrender.com/accounts/users")
     .then(resp => resp.json())
     .then(data => {
@@ -182,6 +184,8 @@ const AdminDashBoard = () => {
     setShowProductDetail(false)
   }
   const handleUpdateCustomer = (selCust, updateObj) => {
+    // `http://127.0.0.1:3000/accounts/${selCust._id}/update`
+    // `https://record-keeper-api.onrender.com/accounts/${selCust._id}/update`
     fetch(`https://record-keeper-api.onrender.com/accounts/${selCust._id}/update`, {
       method: "PUT",
       headers: {
