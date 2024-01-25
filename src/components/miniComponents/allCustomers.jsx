@@ -59,7 +59,7 @@ const AllCustomers = ({customers, handleMakeBasic, handleMakeAdmin, handleUpdate
                         <button className={styles.productFormClose} onClick={() => setShowSelectedCustomerMod(selectedCustomerMod => !selectedCustomerMod)}>X</button>            
                         {selectedCustomerMod.timeLine && selectedCustomerMod.timeLine.length === 0 ? (
                             <div> 
-                                <p style={{textAlign: "center"}}>There are record yet</p>
+                                <p style={{textAlign: "center"}}>There are no record yet</p>
                             </div>
                         ) : (
                             <div>

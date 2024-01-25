@@ -12,6 +12,7 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import HomeIcon from '@mui/icons-material/Home'
 import { Grid } from '@mui/material'
 import { motion, AnimatePresence, spring } from 'framer-motion'
+// import TradeViewChart from 'react-crypto-chart'
 
 const Home = () => {
 
@@ -197,7 +198,7 @@ const Home = () => {
           >
             <h3 style={{textAlign: "center", fontSize: "25px"}}>Blending Service</h3>
             <p style={{fontSize: "22px", textAlign: "justify"}}>
-              Our Blender machine are available 24 hours of the day. We blend things
+              Our Blending machines are available 24 hours of the day. We blend things
               like fruits, beans, corn, tomatoes etc.
               Dont hesitate to hit us as soon as you have need to do so.
             </p>
@@ -224,7 +225,7 @@ const Home = () => {
           >
             <h3 style={{textAlign: "center", fontSize: "25px"}}>Bicycle Service</h3>
             <p style={{fontSize: "22px", textAlign: "justify"}}>
-              We also offer bicycle services within the campus premises and beyond at affordable prices.
+              We also offer bicycle services by renting our bicycles to our customers to aid their movement from one locaton to another within the campus premises and beyond at affordable prices to reduce the cost of transportation.
               Our bicycles work at 100% efficency.
             </p>
           </motion.div>
@@ -256,7 +257,34 @@ const Home = () => {
           </Grid>
         </Grid>
       </div>
-      <div style={{marginTop: "60px"}}>
+      <section className="logistics">
+        <h1 style={{textAlign: "center"}}>Our Logistics Unit</h1>
+        <h3 style={{textAlign: "center", fontStyle: "italic", wordSpacing: "19px", letterSpacing: "5px"}}>...Connecting Continents, Delivering Confidence...</h3>
+        <Grid container style={{border: "2px solid green", padding: "20px"}}>
+          <Grid item xs={12} md={6}>
+            {/* <h2 style={{color: "black", textAlign: "center", fontSize: "31px"}}>Welcome to Al Muwaffaq Logistics</h2> */}
+            <div style={{ paddingRight: "10px", boxSizing: "border-box"}}>
+              <p style={{fontSize: "18px", textAlign: "justify", color: "black"}}>
+                AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
+                to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
+                AL-MUWAFAFAQ LOGISTICS is not just a logistics company; we are your strategic partner in navigating the
+                complexities of supply chain management. With a commitment to excellence, we leverage cutting-edge technology
+                and a delicate team to ensure your cargo reaches its destination seamlessly. <br />
+                it's riders are ACTIVE & EQUAL to your various tasks... <br/>
+                Contact us for safe and reliable deliveries within campus, around campus, and beyond campus.
+                At AL-MUWAFAFAQ LOGISTICS, we redefine the way goods move from point A to point B. With a focus on efficiency,
+                reliability, and customer satisfaction, we take pride in delivering logistics solutions that go beyond transportation. 
+              </p>
+            </div>
+          </Grid>
+          <Grid item xs={12} md={6} style={{border: "1px solid red"}}>
+            <div style={{border: "1px solid red", width: "100%", height: "100%"}}>
+              <img style={{width: "100%", height: "100%", borderRadius: "15px"}} src="/bicycle1.jpeg" alt="image not found"/>
+            </div>
+          </Grid>
+        </Grid>
+      </section>
+      {/* <div style={{marginTop: "60px"}}>
         <h1 style={{textAlign: "center", marginBottom: "15px"}}>Our Logistics Unit</h1>
         <h3 style={{textAlign: "center", margin: "0px 0px 50px", fontStyle: "italic", wordSpacing: "19px", letterSpacing: "5px"}}>...Connecting Continents, Delivering Confidence...</h3>
         <Grid container spacing={3} style={{backgroundColor: "goldenrod", marginLeft: "0px", borderRadius: "5px", boxSizing: "border-box", marginRight: "44px", padding: "10px 20px 0px 0px"}}>
@@ -267,14 +295,13 @@ const Home = () => {
               <p style={{fontSize: "18px", textAlign: "justify", color: "white"}}>
                 AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
                 to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
+                AL-MUWAFAFAQ LOGISTICS is not just a logistics company; we are your strategic partner in navigating the
+                complexities of supply chain management. With a commitment to excellence, we leverage cutting-edge technology
+                and a delicate team to ensure your cargo reaches its destination seamlessly. <br />
                 it's riders are ACTIVE & EQUAL to your various tasks... <br/>
                 Contact us for safe and reliable deliveries within campus, around campus, and beyond campus.
                 At AL-MUWAFAFAQ LOGISTICS, we redefine the way goods move from point A to point B. With a focus on efficiency,
-                reliability, and customer satisfaction, we take pride in delivering logistics solutions that go beyond
-                transportation. <br />
-                AL-MUWAFAFAQ LOGISTICS is not just a logistics company; we are your strategic partner in navigating the
-                complexities of supply chain management. With a commitment to excellence, we leverage cutting-edge technology
-                and a delicate team to ensure your cargo reaches its destination seamlessly.
+                reliability, and customer satisfaction, we take pride in delivering logistics solutions that go beyond transportation. 
               </p>
 
             </div>
@@ -283,7 +310,7 @@ const Home = () => {
             <img style={{width: "100%", borderRadius: "15px"}} src="/bicycle1.jpeg" alt="image not found"/>
           </Grid>
         </Grid>
-      </div>
+      </div> */}
       <section className="setApart" style={{marginTop: "30px"}}>
         <h1 style={{textAlign: "center"}}>What Sets Us Apart</h1>
         <Grid container spacing={3}>
