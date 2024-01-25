@@ -123,8 +123,6 @@ const Home = () => {
           style={{textAlign: "center", marginBottom: "0px"}}
           whileHover={{scale: 1.2}}
           whileTap={{scale: 0.8}}
-          drag="x"
-          dragConstraints={{left: -100, right: 100}}
         >
           Explore Our Market
         </motion.h1>
@@ -141,15 +139,15 @@ const Home = () => {
             // transition={{ duration: 0.5 }}
           >
             <h1 style={{textAlign: "center"}}>Ok Practising with Framer Motion</h1>
-          </motion.div>
+          </motion.div> */}
 
-        <hr style={{width: "50%", height: "3px", backgroundColor: "goldenrod", borderRadius: "5px", marginTop: "10px"}} /> */}
+        {/* <hr style={{width: "50%", height: "3px", backgroundColor: "goldenrod", borderRadius: "5px", marginTop: "10px"}} /> */}
         <motion.div 
           style={{textAlign: "center"}}
-          initial={{opacity: 0, x: "50px"}}
+          initial={{opacity: 0}}
           whileInView={{
             opacity: 1, 
-            x: "0px",
+            // x: "0px",
             transition: {duration: 0.9}
           }}
         >
@@ -206,10 +204,6 @@ const Home = () => {
           </Grid>
           <Grid item xs={12} md={6}>
             <img style={{width: "100%", height: "50vh", borderRadius: "10px"}} src="/blender1.png" alt="image not found"/>
-            {/* <img style={{width: "100%", height: "50vh", borderRadius: "10px", display: blendingIndex === 1 ? "inline" : "none"}} src="/blender3.jpg" alt="image not found"/>
-            <img style={{width: "100%", height: "50vh", borderRadius: "10px", display: blendingIndex === 2 ? "inline" : "none"}} src="/blender4.jpg" alt="image not found"/>
-            <img style={{width: "100%", height: "50vh", borderRadius: "10px", display: blendingIndex === 3 ? "inline" : "none"}} src="/blender5.jpg" alt="image not found"/>
-            <img style={{width: "100%", height: "50vh", borderRadius: "10px", display: blendingIndex === 4 ? "inline" : "none"}} src="/blender6.jpg" alt="image not found"/>           */}
           </Grid>
         </Grid>
         <Grid style={{display: "flex", alignItems: "center", marginTop: "3px"}} container spacing={8}>
@@ -260,11 +254,10 @@ const Home = () => {
       <section className="logistics">
         <h1 style={{textAlign: "center"}}>Our Logistics Unit</h1>
         <h3 style={{textAlign: "center", fontStyle: "italic", wordSpacing: "19px", letterSpacing: "5px"}}>...Connecting Continents, Delivering Confidence...</h3>
-        <Grid container style={{border: "2px solid green", padding: "20px"}}>
+        <Grid container style={{padding: "20px", backgroundColor: "goldenrod"}}>
           <Grid item xs={12} md={6}>
-            {/* <h2 style={{color: "black", textAlign: "center", fontSize: "31px"}}>Welcome to Al Muwaffaq Logistics</h2> */}
-            <div style={{ paddingRight: "10px", boxSizing: "border-box"}}>
-              <p style={{fontSize: "18px", textAlign: "justify", color: "black"}}>
+            <div style={{ padding: "10px", boxSizing: "border-box"}}>
+              <p style={{fontSize: "18px", textAlign: "justify", color: "white"}}>
                 AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
                 to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
                 AL-MUWAFAFAQ LOGISTICS is not just a logistics company; we are your strategic partner in navigating the
@@ -277,8 +270,8 @@ const Home = () => {
               </p>
             </div>
           </Grid>
-          <Grid item xs={12} md={6} style={{border: "1px solid red"}}>
-            <div style={{border: "1px solid red", width: "100%", height: "100%"}}>
+          <Grid item xs={12} md={6}>
+            <div style={{width: "100%", height: "100%"}}>
               <img style={{width: "100%", height: "100%", borderRadius: "15px"}} src="/bicycle1.jpeg" alt="image not found"/>
             </div>
           </Grid>
@@ -360,7 +353,7 @@ const Home = () => {
         </Grid>
       </section>
     </div>
-    <section className='footer' style={{backgroundColor: "black", padding: "20px", marginTop: "50px"}}>
+    <section className='footer' style={{backgroundColor: "black", padding: "20px", boxSizing: "border-box", marginTop: "50px"}}>
           <p style={{textAlign: "center", color: "white", margin: "0"}}>&copy;copyright Al Muwaffaq Stores 2023</p>
     </section>
     </>

@@ -69,7 +69,7 @@ const Customers = () => {
           <p style={{textAlign: "center"}}>Your are not authorized to view this page</p>
         </div>
       ) : (
-        <div className={styles.customerContainer} style={{marginTop: "10%"}}>
+        <div className={styles.customerContainer} style={{marginTop: "13%"}}>
         <h2 style={{textAlign: "center"}}>Customer's page</h2>
         {errors ? (
           <h3>There was error while loading the data</h3>

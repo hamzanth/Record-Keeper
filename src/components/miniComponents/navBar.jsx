@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 import styles from '../dashboard.module.css'
 import Logo from '/logo.png'
 
 const NavBar = ({ showHamburger, setShowSideNav }) => {
     const [ decToken, setDecToken ] = useState(null)
+    const location = useLocation()
 
     useEffect(() => {
         const token = localStorage.getItem("token")
@@ -86,9 +87,11 @@ const NavBar = ({ showHamburger, setShowSideNav }) => {
                                     <Link style={{color: "goldenrod"}} to={"/customers/" + decToken.id}>My Page</Link>
                                 </li>
                             ) : (
-                                <li style={liStyles}>
-                                    <Link style={{color: "goldenrod"}} to="/customers">Customers</Link>
-                                </li>
+                                // {location.pathname !=="/customers" && (
+                                    <li style={{padding: "5px 19px", display: location.pathname === "/customers" ? "none" : "block"}}>
+                                        <Link style={{color: "goldenrod"}} to="/customers">Customers</Link>
+                                    </li>
+                                // )}
                             )}
                             <li style={liStyles}>
                                 <Link style={{color: "goldenrod"}} to="/about">About</Link>
