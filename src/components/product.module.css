@@ -148,14 +148,16 @@
 }
 .shoppingCart{
   position: fixed;
-  top: 30%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 40%;
   z-index: 50;
   background-color: cornflowerblue;
   color: white;
   border-radius: 10px;
-  padding: 20px 50px;
-  animation: scaleCart 0.5s ease-in;
+  padding: 20px 40px;
+  /* animation: scaleCart 0.5s ease-in; */
 }
 .closeCart{
   position: absolute;
@@ -209,6 +211,9 @@
     width: 96%;
     margin: 0 auto;
   }
+  .shoppingCart{
+    width: 75%;
+  }
 }
 
 @media screen and (max-width: 1100px){
@@ -216,6 +221,9 @@
     /* justify-content: center; */
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 10px;
+  }
+  .shoppingCart{
+    width: 85%;
   }
 }
 @media screen and (max-width: 700px){
@@ -234,5 +242,9 @@
   }
   .netCost{
     right: 22%;
+  }
+  .shoppingCart{
+    width: 100%;
+    padding: 20px 5px;
   }
 }

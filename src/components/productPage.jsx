@@ -52,7 +52,8 @@ const Products = ({customer, setTotalDebt, setCustomerDetail, limitExceeded, set
   const [totalCostDebt, setTotalCostDebt] = useState(0)
   // const [outOfStockArr, setOutOfStockArr] = useState([])
 
-  // http://127.0.0.1:3000
+  // http://127.0.0.1:3000/products
+  // "https://record-keeper-api.onrender.com/products"
   useEffect(() => {
     fetch("https://record-keeper-api.onrender.com/products")
     .then(response => response.json())

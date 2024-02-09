@@ -25,6 +25,8 @@ const Customers = () => {
     }
 
     // const decodedtoken = jwtDecode(localStorage.getItem("token")) 
+    // "http://127.0.0.1:3000/accounts/users"
+    // "https://record-keeper-api.onrender.com/accounts/users"
     fetch("https://record-keeper-api.onrender.com/accounts/users")
     .then(resp => resp.json())
     .then(data => {
@@ -72,7 +74,7 @@ const Customers = () => {
         <div className={styles.customerContainer} style={{marginTop: "13%"}}>
         <h2 style={{textAlign: "center"}}>Customer's page</h2>
         {errors ? (
-          <h3>There was error while loading the data</h3>
+          <h3 style={{textAlign: "center"}}>There was error while loading the data</h3>
         ): (
           <div>
             { customers.filter(customer => customer.role !== "super").map((customer) => (

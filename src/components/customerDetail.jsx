@@ -52,6 +52,8 @@ const CustomerDetail = () => {
       catch(error){
         setError(error)
       }
+      "http://127.0.0.1:3000/accounts/users/"
+      "https://record-keeper-api.onrender.com/accounts/users/"
       fetch("https://record-keeper-api.onrender.com/accounts/users/" + customerId)
       .then(resp => resp.json())
       .then(data => {
@@ -224,29 +226,26 @@ const CustomerDetail = () => {
           </span>
         </div>
         <div className={styles.categoryName}>
-          <h5 className={styles.categoryHd} style={{backgroundColor: categoryHead === "history" && "goldenrod", color: categoryHead === "history" && "white"}}>
-            <span
-              className={styles.categorySpan}
-              onClick={() => handleCategories("history")}
-              >
-                Transaction History
-              </span>
+          <h5 
+            className={styles.categoryHd} 
+            style={{backgroundColor: categoryHead === "history" && "goldenrod", color: categoryHead === "history" && "white"}}
+            onClick={() => handleCategories("history")}
+          >
+            <span className={styles.categorySpan}>Transaction History</span>
           </h5>
-          <h5 className={styles.categoryHd} style={{backgroundColor: categoryHead === "recent" && "goldenrod", color: categoryHead === "recent" && "white"}}>
-            <span
-              className={styles.categorySpan}
-              onClick={() => handleCategories("recent")}
-              >
-                Recent Transactions
-              </span>
+          <h5 
+            className={styles.categoryHd} 
+            style={{backgroundColor: categoryHead === "recent" && "goldenrod", color: categoryHead === "recent" && "white"}}
+            onClick={() => handleCategories("recent")}
+          >
+            <span className={styles.categorySpan}>Recent Transactions</span>
           </h5>
-          <h5 className={styles.categoryHd} style={{display: "flex", alignItems: "center", backgroundColor: categoryHead === "shop" && "goldenrod", color: categoryHead === "shop" && "white"}}>
-            <span
-              className={styles.categorySpan}
-              onClick={() => handleCategories("shop")}
-              >
-                Shop
-            </span>
+          <h5 
+            className={styles.categoryHd} 
+            style={{backgroundColor: categoryHead === "shop" && "goldenrod", color: categoryHead === "shop" && "white"}}
+            onClick={() => handleCategories("shop")}
+            >
+            <span className={styles.categorySpan}>Shop</span>
           </h5>
         </div>
         <div className={styles.categoryGrid}>

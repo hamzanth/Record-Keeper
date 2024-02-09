@@ -33,9 +33,9 @@ const ShoppingCart = ({ customer, cart, totalCost, setShowCart, buyProduct, disc
 
   return (
     <>
-      <div className={styles.shoppingCart} style={{display: showCart ? "block": "none"}}>
+      <div className={styles.shoppingCart} style={{display: showCart ? "block": "none", boxSizing: "border-box"}}>
         <span className={styles.closeCart} onClick={() => setShowCart(false)}>x</span>
-        <h3 style={{margin: "0 0 30px"}}>Shopping Cart</h3>
+        <h3 style={{margin: "0 0 30px", textAlign: "center"}}>Shopping Cart</h3>
         {totalCost === 0 ? (
           <div>
             <h3>Your Cart is currently empty</h3>
