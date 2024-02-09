@@ -16,7 +16,7 @@ const SingProduct = ({handleShowProductDetail, prod}) => {
       }
       else{
         const base64String = btoa(String.fromCharCode(...new Uint8Array(prod.image.data.data)))
-        const imgStyle = {width: "100%", height: "130px"}
+        const imgStyle = {width: "100%", height: "250px"}
         return (
           <div className={styles.prodImageCont}>
             <img className={styles.prodImageStyle} src={`data:image/jpg;base64, ${base64String}`} />

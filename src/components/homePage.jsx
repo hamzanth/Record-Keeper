@@ -12,7 +12,6 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import HomeIcon from '@mui/icons-material/Home'
 import { Grid } from '@mui/material'
 import { motion, AnimatePresence, spring } from 'framer-motion'
-// import TradeViewChart from 'react-crypto-chart'
 
 const Home = () => {
 
@@ -107,7 +106,7 @@ const Home = () => {
         />
         {/* <div style={{marginBottom: "130px"}}></div> */}
         <div className={styles.motto}>
-          <h2 style={{color: "white", fontSize: "36px", textAlign: "center", marginTop: 0, marginBottom: 0}}><span className={styles.welcome}>Welcome to</span><br/> <span className={styles.almuwaf}>Al Muwaffaq Stores</span><br/><span className={styles.conv}>Your Campus Convenience Hub!</span></h2>
+          <h2 style={{color: "white", fontSize: "36px", textAlign: "center", marginTop: 0, marginBottom: 0}}><span className={styles.almuwaf}>Al Muwaffaq Stores</span><br/><span className={styles.conv}>Your Campus Convenience Hub!</span></h2>
           <h5 style={{color: "goldenrod", textAlign: "center", fontStyle: "italic", marginTop:0}}>(Providing Essentials with care)</h5>
         </div>
         {!decodedData && (
@@ -220,7 +219,7 @@ const Home = () => {
             <h3 style={{textAlign: "center", fontSize: "25px"}}>Bicycle Service</h3>
             <p style={{fontSize: "22px", textAlign: "justify"}}>
               We also offer bicycle services by renting our bicycles to our customers to aid their movement from one locaton to another within the campus premises and beyond at affordable prices to reduce the cost of transportation.
-              Our bicycles work at 100% efficency.
+              Our bicycles work at 100% efficiency.
             </p>
           </motion.div>
           </Grid>
