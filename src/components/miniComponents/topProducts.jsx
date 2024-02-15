@@ -4,13 +4,14 @@ const TopProducts = () => {
     const [ topProducts, setTopProducts ] = useState([])
     const [ loading, setLoading ] = useState(true)
     useEffect(() => {
-        // http://127.0.0.1:3000/accounts/top-products
-        // https://record-keeper-api.onrender.com/accounts/top-products
+        // http://127.0.0.1:3000/products/top-products
+        // https://record-keeper-api.onrender.com/products/top-products
         fetch("https://record-keeper-api.onrender.com/products/top-products")
         .then(resp => resp.json())
         .then(data => {
             console.log(data.message)
             setTopProducts(data.products)
+            console.log(data.products)
             setLoading(false)
         })
         .catch(error => console.log(error))

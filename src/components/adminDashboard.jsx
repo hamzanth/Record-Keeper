@@ -97,6 +97,7 @@ const AdminDashBoard = () => {
     })
 
     const handleWindleResize = () => {
+      console.log("resizing")
       setShowSideNav(getWindowSize().innerWidth < 900 ? false : true)
       setWindowSize(getWindowSize())
     }
