@@ -272,7 +272,7 @@ const AdminDashBoard = () => {
           <div style={{textAlign: "center", marginTop: "30px"}}>
           <button className={styles.productFormButton} type="button" onClick={handleShowProductForm}>Show Product Form</button>
           </div>
-          <div className={styles.prodContainer}>
+          {/* <div className={styles.prodContainer}>
             {products ? (
               products.map(prod => (
                 <SingProduct 
@@ -284,7 +284,7 @@ const AdminDashBoard = () => {
             ):(
               <h2 style={{textAlign: "center"}}>Loading...</h2>
             ) }
-          </div>
+          </div> */}
           <ProductForm 
             unDisplayForm={() => setShowProductForm(showProductForm => !showProductForm)}
             showProductForm={showProductForm}
