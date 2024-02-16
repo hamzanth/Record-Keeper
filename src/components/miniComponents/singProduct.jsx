@@ -24,26 +24,26 @@ const SingProduct = ({handleShowProductDetail, prod}) => {
         )
       }
     }
-    return <h1>{prod.name}</h1>
-    // return (
-    //     <>
-    //         <div className={styles.prodCard}>
-    //             {getImage(prod)}
-    //             <div>
-    //               <h3 style={{fontWeight: "bold", textAlign: "center"}}>{prod.name}</h3>
-    //             </div>
-    //             <div style={{display: "flex"}}>
-    //               <p style={{fontWeight: "bold", fontStyle: "italic", margin: "0 40px 0 0"}}>Price</p>
-    //               <p style={{fontWeight: "bold", textAlign: "center", margin: "0 40px 0 0"}}>{prod.price} {prod.priceDescription}</p>
-    //             </div>
-    //             <div style={{display: "flex"}}>
-    //               <p  style={{fontStyle: "italic", fontWeight: "bold", margin: "0 40px 0 0"}}>Quantity</p>
-    //               <p style={{fontWeight: "bold", textAlign: "center", margin: "0 40px 0 0", fontSize: "13px"}}>{prod.quantityRange} {prod.quantity} {prod.quantityDescription}</p>
-    //             </div>
-    //             <button onClick={() => handleShowProductDetail(prod)} className={styles.prodCardBtn}>Edit</button>
-    //         </div>
-    //     </>
-    // )
+    // return <h1>{prod.name}</h1>
+    return (
+        <>
+            <div className={styles.prodCard}>
+                {/* {getImage(prod)} */}
+                <div>
+                  <h3 style={{fontWeight: "bold", textAlign: "center"}}>{prod.name}</h3>
+                </div>
+                <div style={{display: "flex"}}>
+                  <p style={{fontWeight: "bold", fontStyle: "italic", margin: "0 40px 0 0"}}>Price</p>
+                  <p style={{fontWeight: "bold", textAlign: "center", margin: "0 40px 0 0"}}>{prod.price} {prod.priceDescription}</p>
+                </div>
+                <div style={{display: "flex"}}>
+                  <p  style={{fontStyle: "italic", fontWeight: "bold", margin: "0 40px 0 0"}}>Quantity</p>
+                  <p style={{fontWeight: "bold", textAlign: "center", margin: "0 40px 0 0", fontSize: "13px"}}>{prod.quantityRange} {prod.quantity} {prod.quantityDescription}</p>
+                </div>
+                <button onClick={() => handleShowProductDetail(prod)} className={styles.prodCardBtn}>Edit</button>
+            </div>
+        </>
+    )
 }
 
 export default SingProduct
