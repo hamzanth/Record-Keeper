@@ -86,8 +86,8 @@ const AllCustomers = ({customers, handleMakeBasic, handleMakeAdmin, handleUpdate
                         <input className={styles.productFormInput} type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                         <label>Change department</label>
                         <input className={styles.productFormInput} type="text" value={department} onChange={(e) => setDepartment(e.target.value)} />
-                        <label>Change Image or leave blank</label>
-                        <input className={styles.productFormInput} type="text" value={image} onChange={(e) => setImage(e.target.value)} />
+                        {/* <label>Change Image or leave blank</label>
+                        <input className={styles.productFormInput} type="text" value={image} onChange={(e) => setImage(e.target.value)} /> */}
                         <div className="botButton" style={{textAlign: "center"}}>
                             <button type="button" onClick={() => handleUpdate(selectedCustomer)}>{uloading && <span className={authStyles.logLoader}></span>}Update</button>
                             <button type="button" onClick={() => handleDelete(selectedCustomer)}>{dloading && <span className={authStyles.logLoader}></span>} Delete</button>
