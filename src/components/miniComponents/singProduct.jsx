@@ -28,7 +28,7 @@ const SingProduct = ({handleShowProductDetail, prod}) => {
     return (
         <>
             <div className={styles.prodCard}>
-                {/* {getImage(prod)} */}
+                {getImage(prod)}
                 <div>
                   <h3 style={{fontWeight: "bold", textAlign: "center"}}>{prod.name}</h3>
                 </div>
