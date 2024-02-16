@@ -301,9 +301,9 @@ const AdminDashBoard = () => {
             setDebtLimit={setDebtLimit}
           />
           <div className={styles.overViewBox}>
-            {/* <TransHistory />
+            <TransHistory />
             <TopProducts />
-            <TopCustomers /> */}
+            <TopCustomers />
           </div>
         </div>
         <div style={{display: selectedNav === "Customers" ? "block" : "none" }}>
