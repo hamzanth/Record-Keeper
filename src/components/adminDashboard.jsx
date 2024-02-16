@@ -26,7 +26,7 @@ const AdminDashBoard = () => {
   const [ showCustomerForm, setShowCustomerForm ] = useState(false)
   const [ showSideNav, setShowSideNav ] = useState(true)
   const [ selectedNav, setSelectedNav ] = useState("OverView")
-  const [ products, setProducts ] = useState(null)
+  const [ products, setProducts ] = useState([])
   const [ customers, setCustomers ] = useState(null)
   const [ error, setError ] = useState(null)
   const [ isLoading, setIsLoading ] = useState(null)
@@ -272,8 +272,8 @@ const AdminDashBoard = () => {
           <div style={{textAlign: "center", marginTop: "30px"}}>
           <button className={styles.productFormButton} type="button" onClick={handleShowProductForm}>Show Product Form</button>
           </div>
-          {/* <div className={styles.prodContainer}>
-            {products ? (
+          <div className={styles.prodContainer}>
+            {products.length !== 0 ? (
               products.map(prod => (
                 <SingProduct 
                   key={prod._id}
@@ -284,7 +284,7 @@ const AdminDashBoard = () => {
             ):(
               <h2 style={{textAlign: "center"}}>Loading...</h2>
             ) }
-          </div> */}
+          </div>
           <ProductForm 
             unDisplayForm={() => setShowProductForm(showProductForm => !showProductForm)}
             showProductForm={showProductForm}
