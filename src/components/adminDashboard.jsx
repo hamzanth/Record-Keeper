@@ -119,7 +119,7 @@ const AdminDashBoard = () => {
     .then(data => {
       const customerClone = [...customers]
       const index = customerClone.indexOf(customer)
-      customerClone[index] = data.user
+      customerClone[index] = data.usernp
       setCustomers(customerClone)
     })
     .catch(error => setError(error))
@@ -302,8 +302,7 @@ const AdminDashBoard = () => {
           />
           <div className={styles.overViewBox}>
             <TransHistory />
-            <TopProducts />
-            <TopCustomers />
+            
           </div>
         </div>
         <div style={{display: selectedNav === "Customers" ? "block" : "none" }}>
