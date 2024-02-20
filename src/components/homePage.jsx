@@ -119,7 +119,7 @@ const Home = () => {
       </div>
     </div>
     <div className={styles.mainBody} style={{}}>
-      <div className="subhero" style={{width: "70%", margin: "0 auto"}}>
+      <div className="subhero" style={{width: "70%", margin: "100px auto"}}>
         <motion.h1 
           style={{textAlign: "left", marginBottom: "0px", fontSize: "30px"}}
           whileHover={{scale: 1.2}}
@@ -128,7 +128,7 @@ const Home = () => {
           Explore Our Market
         </motion.h1>
         {/* <hr style={{width: "35%", height: "7px", backgroundColor: "goldenrod", borderRadius: "5px", marginTop: "10px"}} /> */}
-          <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", marginTop: "19px", borderRadius: "20px"}}></div>
+          <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", margin: "19px 0", borderRadius: "20px"}}></div>
           {/* <motion.div
             // initial={{ opacity: 0, scale: 0.5 }}
             animate={{ 
@@ -144,7 +144,7 @@ const Home = () => {
 
         {/* <hr style={{width: "50%", height: "3px", backgroundColor: "goldenrod", borderRadius: "5px", marginTop: "10px"}} /> */}
         <motion.div 
-          style={{textAlign: "center"}}
+          style={{textAlign: "center", margin: "40px 0"}}
           initial={{opacity: 0}}
           whileInView={{
             opacity: 1, 
@@ -157,57 +157,57 @@ const Home = () => {
         <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={3}>
               <div style={{position: "relative"}}>
-                <motion.img whileHover={{scale: 1.2, duration: 1}} style={imgStyle} src="/deepfreezer1.jpeg" alt="image not found"/>
+                <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/deepfreezer1.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Deep Freezer</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <div style={{position: "relative"}}>
-                <img style={imgStyle} src="/drinks1.jpeg" alt="image not found"/>
+              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/drinks1.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Drinks</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <div style={{position: "relative"}}>
-                <img style={imgStyle} src="/foodstuff1.jpeg" alt="image not found"/>
+              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/foodstuff1.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Food Stuff</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <div style={{position: "relative"}}>
-                <img style={imgStyle} src="/snacks1.jpeg" alt="image not found"/>
+              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/snacks1.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Snacks</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <div style={{position: "relative"}}>
-                <motion.img whileHover={{scale: 1.2, duration: 1}} style={imgStyle} src="/deepfreezer1.jpeg" alt="image not found"/>
+                <motion.img whileHover={{scale: 1.2, duration: 0.7}} style={imgStyle} src="/deepfreezer1.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Deep Freezer</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <div style={{position: "relative"}}>
-                <img style={imgStyle} src="/drinks1.jpeg" alt="image not found"/>
+                <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/deepfreezer1.jpeg" alt="image not found"/>
+              </div>
+              <h3 style={captionStyle}>Deep Freezer</h3>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <div style={{position: "relative"}}>
+              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/drinks1.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Drinks</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <div style={{position: "relative"}}>
-                <img style={imgStyle} src="/foodstuff1.jpeg" alt="image not found"/>
+              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/foodstuff1.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Food Stuff</h3>
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <div style={{position: "relative"}}>
-                <img style={imgStyle} src="/snacks1.jpeg" alt="image not found"/>
-              </div>
-              <h3 style={captionStyle}>Snacks</h3>
             </Grid>
         </Grid>
       </div>
-      <div style={{width: "70%", margin: "0 auto"}}> 
+      <div style={{width: "70%", margin: "100px auto"}}> 
         <h1 style={{textAlign: "left", marginBottom: "0px", fontSize: "30px"}}>Services We Render</h1>
-        <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", margin: "19px 0 10px", borderRadius: "20px"}}></div>
+        <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", margin: "19px 0 50px", borderRadius: "20px"}}></div>
         <Grid style={{display: "flex", alignItems: "center"}} container spacing={8}>
           <Grid item xs={12} md={6} lg={4}>
           <motion.div 
@@ -272,7 +272,7 @@ const Home = () => {
         <Grid container spacing={8}>
           <Grid item xs={12} md={6}>
             <div style={{ padding: "10px", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", height: "100%"}}>
-              <p style={{fontSize: "15px", textAlign: "justify", color: "black"}}>
+              <p style={{fontSize: "15px", textAlign: "justify", color: "black", letterSpacing: "1px"}}>
                 AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
                 to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
                 AL-MUWAFAFAQ LOGISTICS is not just a logistics company; we are your strategic partner in navigating the
