@@ -266,7 +266,7 @@ const Home = () => {
           </Grid>
         </Grid>
       </div>
-      <section className="logistics" style={{padding: "50px 50px 50px", margin: "50px 0", backgroundColor: "#d8d8d8"}}>
+      <section className="logistics" style={{padding: "50px 50px 90px", margin: "50px 0", backgroundColor: "#d8d8d8"}}>
         <h1 style={{textAlign: "center"}}>Our Logistics Unit</h1>
         <h3 style={{textAlign: "center", fontStyle: "italic", wordSpacing: "19px", letterSpacing: "5px", marginBottom: "50px"}}>...Connecting Continents, Delivering Confidence...</h3>
         <Grid container spacing={8}>
