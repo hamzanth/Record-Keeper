@@ -16,7 +16,7 @@ const EditProduct = ({selectedProduct, setShowProductDetail, editProductList, de
     const [ uloading, setULoading ] = useState(false)
     const [ dloading, setDLoading ] = useState(false)
 
-    const handleUpdate = (e) => {
+    const handleUpdate = async (e) => {
         setULoading(true)
         e.preventDefault()
         const formData = new FormData()
@@ -31,7 +31,7 @@ const EditProduct = ({selectedProduct, setShowProductDetail, editProductList, de
         // https://record-keeper-api.onrender.com
         // http://127.0.0.1:3000/products/${selectedProduct._id}/update
         // https://record-keeper-api.onrender.com/products/${selectedProduct._id}/update
-        axios.put(`https://record-keeper-api.onrender.com/products/${selectedProduct._id}/update`, formData)
+        await axios.put(`https://record-keeper-api.onrender.com/products/${selectedProduct._id}/update`, formData)
         .then(res => {
             console.log(res.data.message)
             editProductList(selectedProduct, res.data.product)
