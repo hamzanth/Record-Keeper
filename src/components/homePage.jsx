@@ -25,17 +25,17 @@ const Home = () => {
   }
   const imgStyle = {
     width: "100%",
-    height: "40vh",
-    borderRadius: "15px"
+    height: "30vh",
+    borderRadius: "25px"
   }
   const captionStyle = {
-    position: "absolute",
-    bottom: "-15px",
-    left: "0px",
+    // position: "absolute",
+    // bottom: "-15px",
+    // left: "0px",
     color: "white",
     backgroundColor: "rgba(0,0,0,0.5)",
     textAlign: "center",
-    width: "100%",
+    // width: "100%",
   }
 
   const [ inp, setInp ] = useState("")
@@ -116,17 +116,17 @@ const Home = () => {
         )}
       </div>
     </div>
-    <div className={styles.mainBody} style={{width: "80%", margin: "0 auto"}}>
+    <div className={styles.mainBody} style={{width: "70%", margin: "0 auto"}}>
       <div className="subhero">
         <motion.h1 
-          style={{textAlign: "center", marginBottom: "0px"}}
+          style={{textAlign: "left", marginBottom: "0px", fontSize: "30px"}}
           whileHover={{scale: 1.2}}
           whileTap={{scale: 0.8}}
         >
           Explore Our Market
         </motion.h1>
-        <hr style={{width: "15%", height: "3px", backgroundColor: "goldenrod", borderRadius: "5px", marginTop: "0"}} />
-
+        {/* <hr style={{width: "35%", height: "7px", backgroundColor: "goldenrod", borderRadius: "5px", marginTop: "10px"}} /> */}
+          <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", marginTop: "19px", borderRadius: "20px"}}></div>
           {/* <motion.div
             // initial={{ opacity: 0, scale: 0.5 }}
             animate={{ 
@@ -150,32 +150,32 @@ const Home = () => {
             transition: {duration: 0.9}
           }}
         >
-          <h2 style={{textAlign: "center"}}>We offer good and quality products within and beyond the campus premises.</h2>
+          <h2 style={{textAlign: "left"}}>We offer good and quality products within and beyond the campus premises.</h2>
         </motion.div>
         <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={3}>
               <div style={{position: "relative"}}>
                 <img style={imgStyle} src="/deepfreezer1.jpeg" alt="image not found"/>
-                <h3 style={captionStyle}>Deep Freezer</h3>
               </div>
+              <h3 style={captionStyle}>Deep Freezer</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <div style={{position: "relative"}}>
                 <img style={imgStyle} src="/drinks1.jpeg" alt="image not found"/>
-                <h3 style={captionStyle}>Drinks</h3>
               </div>
+              <h3 style={captionStyle}>Drinks</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <div style={{position: "relative"}}>
                 <img style={imgStyle} src="/foodstuff1.jpeg" alt="image not found"/>
-                <h3 style={captionStyle}>Food Stuff</h3>
               </div>
+              <h3 style={captionStyle}>Food Stuff</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <div style={{position: "relative"}}>
                 <img style={imgStyle} src="/snacks1.jpeg" alt="image not found"/>
-                <h3 style={captionStyle}>Snacks</h3>
               </div>
+              <h3 style={captionStyle}>Snacks</h3>
             </Grid>
         </Grid>
       </div>
