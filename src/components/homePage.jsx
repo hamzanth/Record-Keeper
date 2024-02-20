@@ -117,8 +117,8 @@ const Home = () => {
         )}
       </div>
     </div>
-    <div className={styles.mainBody} style={{width: "70%", margin: "0 auto"}}>
-      <div className="subhero">
+    <div className={styles.mainBody} style={{}}>
+      <div className="subhero" style={{width: "70%", margin: "0 auto"}}>
         <motion.h1 
           style={{textAlign: "left", marginBottom: "0px", fontSize: "30px"}}
           whileHover={{scale: 1.2}}
@@ -180,7 +180,7 @@ const Home = () => {
             </Grid>
         </Grid>
       </div>
-      <div> 
+      <div style={{width: "70%", margin: "0 auto"}}> 
         <h1 style={{textAlign: "left", marginBottom: "0px", fontSize: "30px"}}>Services We Render</h1>
         <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", marginTop: "19px", borderRadius: "20px"}}></div>
         <Grid style={{display: "flex", alignItems: "center"}} container spacing={8}>
