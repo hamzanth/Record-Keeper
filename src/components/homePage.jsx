@@ -156,7 +156,7 @@ const Home = () => {
         <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={3}>
               <div style={{position: "relative"}}>
-                <img style={imgStyle} src="/deepfreezer1.jpeg" alt="image not found"/>
+                <motion.img whileHover={{scale: 1.2, duration: 1}} style={imgStyle} src="/deepfreezer1.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Deep Freezer</h3>
             </Grid>
@@ -181,8 +181,8 @@ const Home = () => {
         </Grid>
       </div>
       <div> 
-        <h1 style={{textAlign: "center", marginBottom: "0px"}}>Services We Render</h1>
-        <hr style={{width: "15%", height: "3px", backgroundColor: "goldenrod", borderRadius: "5px", marginTop: "0"}} />
+        <h1 style={{textAlign: "left", marginBottom: "0px", fontSize: "30px"}}>Services We Render</h1>
+        <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", marginTop: "19px", borderRadius: "20px"}}></div>
         <Grid style={{display: "flex", alignItems: "center"}} container spacing={8}>
           <Grid item xs={12} md={6}>
           <motion.div 
@@ -194,8 +194,8 @@ const Home = () => {
               transition: {duration: 0.9}
             }}
           >
-            <h3 style={{textAlign: "center", fontSize: "25px"}}>Blending Service</h3>
-            <p style={{fontSize: "22px", textAlign: "justify"}}>
+            <h3 style={{textAlign: "center", fontSize: "20px"}}>Blending Service</h3>
+            <p style={{fontSize: "15px", textAlign: "justify"}}>
               Our Blending machines are available 24 hours of the day. We blend things
               like fruits, beans, corn, tomatoes etc.
               Dont hesitate to hit us as soon as you have need to do so.
@@ -217,8 +217,8 @@ const Home = () => {
               transition: {duration: 0.9}
             }}
           >
-            <h3 style={{textAlign: "center", fontSize: "25px"}}>Bicycle Service</h3>
-            <p style={{fontSize: "22px", textAlign: "justify"}}>
+            <h3 style={{textAlign: "center", fontSize: "20px"}}>Bicycle Service</h3>
+            <p style={{fontSize: "15px", textAlign: "justify"}}>
               We also offer bicycle services by renting our bicycles to our customers to aid their movement from one locaton to another within the campus premises and beyond at affordable prices to reduce the cost of transportation.
               Our bicycles work at 100% efficiency.
             </p>
@@ -239,8 +239,8 @@ const Home = () => {
               transition: {duration: 0.9}
             }}
           >
-            <h3 style={{textAlign: "center", fontSize: "25px"}}>Grinding Service</h3>
-            <p style={{fontSize: "22px", textAlign: "justify"}}>
+            <h3 style={{textAlign: "center", fontSize: "20px"}}>Grinding Service</h3>
+            <p style={{fontSize: "15px", textAlign: "justify"}}>
               We also offer services for grinding of food items like pepper, melon
               or anything that needs to be grinded.
             </p>
@@ -257,7 +257,7 @@ const Home = () => {
         <Grid container style={{padding: "20px"}}>
           <Grid item xs={12} md={6}>
             <div style={{ padding: "10px", boxSizing: "border-box"}}>
-              <p style={{fontSize: "18px", textAlign: "justify", color: "black"}}>
+              <p style={{fontSize: "15px", textAlign: "justify", color: "black"}}>
                 AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
                 to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
                 AL-MUWAFAFAQ LOGISTICS is not just a logistics company; we are your strategic partner in navigating the
