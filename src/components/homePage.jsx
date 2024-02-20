@@ -33,7 +33,8 @@ const Home = () => {
     // bottom: "-15px",
     // left: "0px",
     color: "white",
-    backgroundColor: "rgba(0,0,0,0.5)",
+    // backgroundColor: "rgba(0,0,0,0.5)",
+    backgroundColor: "black",
     textAlign: "center",
     // width: "100%",
   }
@@ -253,10 +254,10 @@ const Home = () => {
       <section className="logistics">
         <h1 style={{textAlign: "center"}}>Our Logistics Unit</h1>
         <h3 style={{textAlign: "center", fontStyle: "italic", wordSpacing: "19px", letterSpacing: "5px"}}>...Connecting Continents, Delivering Confidence...</h3>
-        <Grid container style={{padding: "20px", backgroundColor: "goldenrod"}}>
+        <Grid container style={{padding: "20px"}}>
           <Grid item xs={12} md={6}>
             <div style={{ padding: "10px", boxSizing: "border-box"}}>
-              <p style={{fontSize: "18px", textAlign: "justify", color: "white"}}>
+              <p style={{fontSize: "18px", textAlign: "justify", color: "black"}}>
                 AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
                 to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
                 AL-MUWAFAFAQ LOGISTICS is not just a logistics company; we are your strategic partner in navigating the
