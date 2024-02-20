@@ -182,9 +182,9 @@ const Home = () => {
       </div>
       <div style={{width: "70%", margin: "0 auto"}}> 
         <h1 style={{textAlign: "left", marginBottom: "0px", fontSize: "30px"}}>Services We Render</h1>
-        <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", marginTop: "19px", borderRadius: "20px"}}></div>
+        <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", margin: "19px 0 10px", borderRadius: "20px"}}></div>
         <Grid style={{display: "flex", alignItems: "center"}} container spacing={8}>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} lg={4}>
           <motion.div 
             style={{textAlign: "center"}}
             initial={{opacity: 0, y: "70px"}}
@@ -194,20 +194,16 @@ const Home = () => {
               transition: {duration: 0.9}
             }}
           >
+            <img style={{width: "100%", height: "30vh", borderRadius: "10px"}} src="/blender1.png" alt="image not found"/>
             <h3 style={{textAlign: "center", fontSize: "20px"}}>Blending Service</h3>
             <p style={{fontSize: "15px", textAlign: "justify"}}>
               Our Blending machines are available 24 hours of the day. We blend things
               like fruits, beans, corn, tomatoes etc.
               Dont hesitate to hit us as soon as you have need to do so.
             </p>
-          </motion.div>
+            </motion.div>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <img style={{width: "100%", height: "50vh", borderRadius: "10px"}} src="/blender1.png" alt="image not found"/>
-          </Grid>
-        </Grid>
-        <Grid style={{display: "flex", alignItems: "center", marginTop: "3px"}} container spacing={8}>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} lg={4}>
           <motion.div 
             style={{textAlign: "center"}}
             initial={{opacity: 0, y: "70px"}}
@@ -217,19 +213,15 @@ const Home = () => {
               transition: {duration: 0.9}
             }}
           >
+            <img style={{width: "100%", height: "30vh", borderRadius: "10px"}} src="/bicycle2.jpeg" alt="image not found"/>
             <h3 style={{textAlign: "center", fontSize: "20px"}}>Bicycle Service</h3>
             <p style={{fontSize: "15px", textAlign: "justify"}}>
               We also offer bicycle services by renting our bicycles to our customers to aid their movement from one locaton to another within the campus premises and beyond at affordable prices to reduce the cost of transportation.
               Our bicycles work at 100% efficiency.
             </p>
           </motion.div>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <img style={{width: "100%", height: "50vh", borderRadius: "10px"}} src="/bicycle2.jpeg" alt="image not found"/>
-          </Grid>
         </Grid>
-        <Grid style={{display: "flex", alignItems: "center", marginTop: "3px"}} container spacing={8}>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} lg={4}>
           <motion.div 
             style={{textAlign: "center"}}
             initial={{opacity: 0, y: "70px"}}
@@ -239,15 +231,13 @@ const Home = () => {
               transition: {duration: 0.9}
             }}
           >
+            <img style={{width: "100%", height: "50vh", borderRadius: "10px"}} src="/grindingmachine2.jpg" alt="image not found"/>
             <h3 style={{textAlign: "center", fontSize: "20px"}}>Grinding Service</h3>
             <p style={{fontSize: "15px", textAlign: "justify"}}>
               We also offer services for grinding of food items like pepper, melon
               or anything that needs to be grinded.
             </p>
           </motion.div>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <img style={{width: "100%", height: "50vh", borderRadius: "10px"}} src="/grindingmachine2.jpg" alt="image not found"/>
           </Grid>
         </Grid>
       </div>
@@ -256,7 +246,7 @@ const Home = () => {
         <h3 style={{textAlign: "center", fontStyle: "italic", wordSpacing: "19px", letterSpacing: "5px"}}>...Connecting Continents, Delivering Confidence...</h3>
         <Grid container style={{padding: "20px"}}>
           <Grid item xs={12} md={6}>
-            <div style={{ padding: "10px", boxSizing: "border-box"}}>
+            <div style={{ padding: "10px", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", height: "100%"}}>
               <p style={{fontSize: "15px", textAlign: "justify", color: "black"}}>
                 AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
                 to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
