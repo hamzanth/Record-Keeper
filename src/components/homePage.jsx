@@ -36,6 +36,7 @@ const Home = () => {
     // backgroundColor: "rgba(0,0,0,0.5)",
     backgroundColor: "black",
     textAlign: "center",
+    borderRadius: "10px"
     // width: "100%",
   }
 
@@ -178,6 +179,30 @@ const Home = () => {
               </div>
               <h3 style={captionStyle}>Snacks</h3>
             </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <div style={{position: "relative"}}>
+                <motion.img whileHover={{scale: 1.2, duration: 1}} style={imgStyle} src="/deepfreezer1.jpeg" alt="image not found"/>
+              </div>
+              <h3 style={captionStyle}>Deep Freezer</h3>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <div style={{position: "relative"}}>
+                <img style={imgStyle} src="/drinks1.jpeg" alt="image not found"/>
+              </div>
+              <h3 style={captionStyle}>Drinks</h3>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <div style={{position: "relative"}}>
+                <img style={imgStyle} src="/foodstuff1.jpeg" alt="image not found"/>
+              </div>
+              <h3 style={captionStyle}>Food Stuff</h3>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <div style={{position: "relative"}}>
+                <img style={imgStyle} src="/snacks1.jpeg" alt="image not found"/>
+              </div>
+              <h3 style={captionStyle}>Snacks</h3>
+            </Grid>
         </Grid>
       </div>
       <div style={{width: "70%", margin: "0 auto"}}> 
@@ -241,10 +266,10 @@ const Home = () => {
           </Grid>
         </Grid>
       </div>
-      <section className="logistics">
+      <section className="logistics" style={{padding: "50px 50px 50px", margin: "50px 0", backgroundColor: "#d8d8d8"}}>
         <h1 style={{textAlign: "center"}}>Our Logistics Unit</h1>
-        <h3 style={{textAlign: "center", fontStyle: "italic", wordSpacing: "19px", letterSpacing: "5px"}}>...Connecting Continents, Delivering Confidence...</h3>
-        <Grid container style={{padding: "20px"}}>
+        <h3 style={{textAlign: "center", fontStyle: "italic", wordSpacing: "19px", letterSpacing: "5px", marginBottom: "50px"}}>...Connecting Continents, Delivering Confidence...</h3>
+        <Grid container spacing={8}>
           <Grid item xs={12} md={6}>
             <div style={{ padding: "10px", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", height: "100%"}}>
               <p style={{fontSize: "15px", textAlign: "justify", color: "black"}}>
