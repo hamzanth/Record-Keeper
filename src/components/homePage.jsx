@@ -12,8 +12,17 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import HomeIcon from '@mui/icons-material/Home'
 import { Grid } from '@mui/material'
 import { motion, AnimatePresence, spring } from 'framer-motion'
+import LogisticCarousal from './miniComponents/logisticCarousal'
 
 const Home = () => {
+
+  const images = [
+    "/log1.jpg",
+    "/log2.jpg",
+    "/log3.jpg",
+    "/log4.jpg",
+    "/log5.jpg",
+  ]
 
   const getWindowSize = () => {
     const { innerWidth, innerHeight} = window
@@ -46,6 +55,7 @@ const Home = () => {
   const [ showHamburger, setShowHamburger ] = useState(getShowHam())
   const [ showSideNav, setShowSideNav ] = useState(false)
   const [ blendingIndex, setBlendingIndex ] = useState(0)
+  const [ imageIndex, setImageIndex ] = useState(0)
 
   // const changeBlending = () => {
     // setTimeout(() => {
@@ -78,7 +88,7 @@ const Home = () => {
     return () => {
       window.removeEventListener("resize", handleWindleResize)
     }
-  }, [])
+  }, [imageIndex])
 
   const submitHandler = (e) =>{
     e.preventDefault()
@@ -287,7 +297,10 @@ const Home = () => {
           </Grid>
           <Grid item xs={12} md={6}>
             <div style={{width: "100%", height: "100%"}}>
-              <img style={{width: "100%", height: "100%", borderRadius: "15px"}} src="/bicycle1.jpeg" alt="image not found"/>
+              <LogisticCarousal 
+                images={images}
+                interval={4000}
+              />
             </div>
           </Grid>
         </Grid>
