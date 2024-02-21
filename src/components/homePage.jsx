@@ -337,21 +337,37 @@ const Home = () => {
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
             <div>
+              <img
+                style={{width: "100%"}} 
+                src="/bicycle2.jpeg" 
+                alt="no image found" />
               <h3 style={{textAlign: "center"}}>Variety and Quality</h3>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <div>
+              <img
+                style={{width: "100%"}} 
+                src="/bicycle2.jpeg" 
+                alt="no image found" />
               <h3 style={{textAlign: "center"}}>Affordability</h3>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <div>
+              <img
+                style={{width: "100%"}} 
+                src="/bicycle2.jpeg" 
+                alt="no image found" />
               <h3 style={{textAlign: "center"}}>Student-Centric Approach</h3>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <div>
+              <img
+                style={{width: "100%"}} 
+                src="/bicycle2.jpeg" 
+                alt="no image found" />
               <h3 style={{textAlign: "center"}}>Accountability</h3>
             </div>
           </Grid>
