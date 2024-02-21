@@ -332,7 +332,7 @@ const Home = () => {
           </Grid>
         </Grid>
       </div> */}
-      <section className="setApart"  style={{margin: "100px 80px"}}>
+      <section className={styles.setApart}>
         <h1 style={{textAlign: "center", marginBottom: "40px"}}>What Sets Us Apart</h1>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={3}>

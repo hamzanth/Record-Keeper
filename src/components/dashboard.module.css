@@ -404,6 +404,9 @@
       margin: 50px 0; 
       background-color: #d8d8d8;
   }
+  .setApart{
+    margin: 100px 80px;
+}
 
   @media screen and (max-width: 1250px){
     .homeBackgroundImg {
@@ -626,6 +629,9 @@
     }
     .logistics{
       padding: 50px 10px 90px; 
+  }
+  .setApart{
+      margin: 100px 10px;
   }
     /* .logWriteup{
       display: none;
