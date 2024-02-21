@@ -75,7 +75,7 @@ const NavBar = ({ showHamburger, setShowSideNav }) => {
                         </ul>
                     </div>
                 ) : (
-                    <div style={{display: "flex", justifyContent: "space-around", alignItems: "center", position: "fixed", top: "0px", zIndex: "50", width: "100%", backgroundColor: "rgba(0,0,0,0.5)"}}>
+                    <div style={{display: "flex", justifyContent: "space-around", alignItems: "center", position: "fixed", top: "0px", zIndex: "50", width: "100%", backgroundColor: "rgba(0,0,0,0.5)", borderBottom: "1px solid goldenrod"}}>
                         {/* <h2 style={{textAlign: "center", margin: "5px"}}><Link style={{color: "goldenrod"}} to="/">Logo</Link></h2> */}
                         <Link to="/"><img style={logoStyle} src={Logo} alt="logo not found" /></Link>
                         <ul style={ulStyles}>
