@@ -332,48 +332,62 @@ const Home = () => {
           </Grid>
         </Grid>
       </div> */}
-      <section className="setApart" style={{marginTop: "30px"}}>
-        <h1 style={{textAlign: "center"}}>What Sets Us Apart</h1>
-        <Grid container spacing={3}>
+      <section className="setApart"  style={{margin: "100px 80px"}}>
+        <h1 style={{textAlign: "center", marginBottom: "40px"}}>What Sets Us Apart</h1>
+        <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={3}>
             <div>
               <img
-                style={{width: "100%"}} 
+                style={{width: "100%", height: "100%", borderRadius: "50px"}} 
                 src="/bicycle2.jpeg" 
                 alt="no image found" />
-              <h3 style={{textAlign: "center"}}>Variety and Quality</h3>
+              <h2 style={{textAlign: "center", color: "goldenrod", fontWeight: "bold"}}>Variety and Quality</h2>
+              <p style={{textAlign: "center", lineHeight: "23px", fontSize: "15px"}}>
+                Our Shelves are stocked with a wide range of high-quality products, ensuring
+                that you find everything you need one place.
+              </p>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <div>
               <img
-                style={{width: "100%"}} 
+                style={{width: "100%", height: "100%", borderRadius: "50px"}}
                 src="/bicycle2.jpeg" 
                 alt="no image found" />
-              <h3 style={{textAlign: "center"}}>Affordability</h3>
+              <h2 style={{textAlign: "center", color: "goldenrod", fontWeight: "bold"}}>Affordability</h2>
+              <p style={{textAlign: "center", lineHeight: "23px", fontSize: "15px"}}>
+                We believe that convenience should be accessible to everyone. That's why we offer competitive prices without compromising on quality
+              </p>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <div>
               <img
-                style={{width: "100%"}} 
+                style={{width: "100%", height: "100%", borderRadius: "50px"}}
                 src="/bicycle2.jpeg" 
                 alt="no image found" />
-              <h3 style={{textAlign: "center"}}>Student-Centric Approach</h3>
+              <h2 style={{textAlign: "center", color: "goldenrod", fontWeight: "bold"}}>Student-Centric Approach</h2>
+              <p style={{textAlign: "center", lineHeight: "23px", fontSize: "15px"}}>
+                Al Muwaffaq Stores is more than just a store; it's a community hub. We actively listen to the needs of our customers and strive to enhance campus life.
+              </p>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <div>
               <img
-                style={{width: "100%"}} 
+                style={{width: "100%", height: "100%", borderRadius: "50px"}}
                 src="/bicycle2.jpeg" 
                 alt="no image found" />
-              <h3 style={{textAlign: "center"}}>Accountability</h3>
+              <h2 style={{textAlign: "center", color: "goldenrod", fontWeight: "bold"}}>Accountability</h2>
+              <p style={{textAlign: "center", lineHeight: "23px", fontSize: "15px"}}>
+                We always ensure that our product are the best and they meet standards.
+                You are guranteed to get the best product and services from us
+              </p>
             </div>
           </Grid>
         </Grid>
       </section>
-      <section className="contacts" style={{marginTop: "30px"}}>
+      <section className="contacts" style={{margin: "80px 80px"}}>
         <h1 style={{textAlign: "center", marginBottom: "0"}}>Contacts</h1>
         <h2 style={{textAlign: "center"}}>You can reach us on the following...</h2>
         <Grid container>
