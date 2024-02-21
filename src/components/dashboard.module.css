@@ -395,6 +395,15 @@
   /* .conv{
 
   } */
+  .subhero{
+      width: 70%; 
+      margin: 100px auto;
+  }
+  .logistics{
+      padding: 50px 50px 90px; 
+      margin: 50px 0; 
+      background-color: #d8d8d8;
+  }
 
   @media screen and (max-width: 1250px){
     .homeBackgroundImg {
@@ -612,6 +621,15 @@
     .prodDetailModal{
       left: 10%;
     }
+    .subhero{
+      width: 95%;
+    }
+    .logistics{
+      padding: 50px 10px 90px; 
+  }
+    /* .logWriteup{
+      display: none;
+    } */
     /* .mainSection{
       margin-left: 0;
       margin-right: 0; 

@@ -118,7 +118,7 @@ const Home = () => {
         />
         {/* <div style={{marginBottom: "130px"}}></div> */}
         <div className={styles.motto}>
-          <h2 style={{color: "white", fontSize: "36px", textAlign: "center", marginTop: 0, marginBottom: 0}}><span className={styles.almuwaf}>Al Muwaffaq Stores</span><br/><span className={styles.conv}>Your Campus Convenience Hub!</span></h2>
+          <h2 style={{color: "white", fontSize: "36px", textAlign: "center", marginTop: 0, marginBottom: 0}}><span className={styles.almuwaf}>Al Muwaffaq Stores</span><br/><span className={styles.conv}>Your Campus Convenience <span style={{backgroundColor: "white", color: "black", padding: "5px 8px"}}>Hub!</span></span></h2>
           <h5 style={{color: "goldenrod", textAlign: "center", fontStyle: "italic", marginTop:0}}>(Providing Essentials with care)</h5>
         </div>
         {!decodedData && (
@@ -129,7 +129,7 @@ const Home = () => {
       </div>
     </div>
     <div className={styles.mainBody} style={{}}>
-      <div className="subhero" style={{width: "70%", margin: "100px auto"}}>
+      <div className={styles.subhero}>
         <motion.h1 
           style={{textAlign: "left", marginBottom: "0px", fontSize: "30px"}}
           whileHover={{scale: 1.2}}
@@ -276,13 +276,13 @@ const Home = () => {
           </Grid>
         </Grid>
       </div>
-      <section className="logistics" style={{padding: "50px 50px 90px", margin: "50px 0", backgroundColor: "#d8d8d8"}}>
+      <section className={styles.logistics}>
         <h1 style={{textAlign: "center"}}>Our Logistics Unit</h1>
         <h3 style={{textAlign: "center", fontStyle: "italic", wordSpacing: "19px", letterSpacing: "5px", marginBottom: "50px"}}>...Connecting Continents, Delivering Confidence...</h3>
         <Grid container spacing={8}>
           <Grid item xs={12} md={6}>
             <div style={{ padding: "10px", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", height: "100%"}}>
-              <p style={{fontSize: "15px", textAlign: "justify", color: "black", letterSpacing: "1px"}}>
+              <p className={styles.logWriteup} style={{fontSize: "15px", textAlign: "justify", color: "black", letterSpacing: "1px"}}>
                 AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
                 to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
                 AL-MUWAFAFAQ LOGISTICS is not just a logistics company; we are your strategic partner in navigating the
