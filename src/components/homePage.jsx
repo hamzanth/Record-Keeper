@@ -296,10 +296,10 @@ const Home = () => {
             </div>
           </Grid>
           <Grid item xs={12} md={6}>
-            <div style={{width: "100%", height: "100%"}}>
+            <div>
               <LogisticCarousal 
                 images={images}
-                interval={4000}
+                interval={6000}
               />
             </div>
           </Grid>
