@@ -169,37 +169,37 @@ const Home = () => {
               <div style={{position: "relative"}}>
                 <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/productPictures/prod0.jpeg" alt="image not found"/>
               </div>
-              <h3 style={captionStyle}>Deep Freezer</h3>
+              <h3 style={captionStyle}>Can drinks</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
               <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/productPictures/prod1.png" alt="image not found"/>
               </div>
-              <h3 style={captionStyle}>Drinks</h3>
+              <h3 style={captionStyle}>Breverage</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
               <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/productPictures/prod2.jpeg" alt="image not found"/>
               </div>
-              <h3 style={captionStyle}>Food Stuff</h3>
+              <h3 style={captionStyle}>Soft Drinks</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
               <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/productPictures/prod3.jpeg" alt="image not found"/>
               </div>
-              <h3 style={captionStyle}>Snacks</h3>
+              <h3 style={captionStyle}>Toiletries</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
                 <motion.img whileHover={{scale: 1.2, duration: 0.7}} style={imgStyle} src="/productPictures/prod4.jpeg" alt="image not found"/>
               </div>
-              <h3 style={captionStyle}>Deep Freezer</h3>
+              <h3 style={captionStyle}>Snacks</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
                 <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/productPictures/prod10.jpeg" alt="image not found"/>
               </div>
-              <h3 style={captionStyle}>Deep Freezer</h3>
+              <h3 style={captionStyle}>Toiletries</h3>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
@@ -343,10 +343,9 @@ const Home = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={3}>
             <div>
-              <img
-                style={{width: "100%", height: "100%", borderRadius: "50px"}} 
-                src="/bicycle2.jpeg" 
-                alt="no image found" />
+              <div style={{textAlign: "center"}}>
+                <HomeIcon sx={{fontSize: "80px", color: "grey"}} />
+              </div>
               <h2 style={{textAlign: "center", color: "goldenrod", fontWeight: "bold"}}>Variety and Quality</h2>
               <p style={{textAlign: "center", lineHeight: "23px", fontSize: "15px"}}>
                 Our Shelves are stocked with a wide range of high-quality products, ensuring
@@ -356,10 +355,9 @@ const Home = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <div>
-              <img
-                style={{width: "100%", height: "100%", borderRadius: "50px"}}
-                src="/bicycle2.jpeg" 
-                alt="no image found" />
+              <div style={{textAlign: "center"}}>
+                <HomeIcon sx={{fontSize: "80px", color: "grey"}} />
+              </div>
               <h2 style={{textAlign: "center", color: "goldenrod", fontWeight: "bold"}}>Affordability</h2>
               <p style={{textAlign: "center", lineHeight: "23px", fontSize: "15px"}}>
                 We believe that convenience should be accessible to everyone. That's why we offer competitive prices without compromising on quality
@@ -368,10 +366,9 @@ const Home = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <div>
-              <img
-                style={{width: "100%", height: "100%", borderRadius: "50px"}}
-                src="/bicycle2.jpeg" 
-                alt="no image found" />
+              <div style={{textAlign: "center"}}>
+                <HomeIcon sx={{fontSize: "80px", color: "grey"}} />
+              </div>
               <h2 style={{textAlign: "center", color: "goldenrod", fontWeight: "bold"}}>Student-Centric Approach</h2>
               <p style={{textAlign: "center", lineHeight: "23px", fontSize: "15px"}}>
                 Al Muwaffaq Stores is more than just a store; it's a community hub. We actively listen to the needs of our customers and strive to enhance campus life.
@@ -380,10 +377,9 @@ const Home = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <div>
-              <img
-                style={{width: "100%", height: "100%", borderRadius: "50px"}}
-                src="/bicycle2.jpeg" 
-                alt="no image found" />
+              <div style={{textAlign: "center"}}>
+                <HomeIcon sx={{fontSize: "80px", color: "grey"}} />
+              </div>
               <h2 style={{textAlign: "center", color: "goldenrod", fontWeight: "bold"}}>Accountability</h2>
               <p style={{textAlign: "center", lineHeight: "23px", fontSize: "15px"}}>
                 We always ensure that our product are the best and they meet standards.
