@@ -35,7 +35,7 @@ const Home = () => {
   const imgStyle = {
     width: "100%",
     height: "30vh",
-    borderRadius: "25px"
+    borderRadius: "5px"
   }
   const captionStyle = {
     // position: "absolute",
@@ -164,52 +164,58 @@ const Home = () => {
         >
           <h2 style={{textAlign: "left"}}>We offer good and quality products within and beyond the campus premises.</h2>
         </motion.div>
-        <Grid container spacing={3}>
-            <Grid item xs={12} sm={6} md={3}>
+        <Grid container spacing={1}>
+            <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
-                <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/deepfreezer1.jpeg" alt="image not found"/>
+                <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/productPictures/prod0.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Deep Freezer</h3>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
-              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/drinks1.jpeg" alt="image not found"/>
+              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/productPictures/prod1.png" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Drinks</h3>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
-              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/foodstuff1.jpeg" alt="image not found"/>
+              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/productPictures/prod2.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Food Stuff</h3>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
-              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/snacks1.jpeg" alt="image not found"/>
+              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/productPictures/prod3.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Snacks</h3>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
-                <motion.img whileHover={{scale: 1.2, duration: 0.7}} style={imgStyle} src="/deepfreezer1.jpeg" alt="image not found"/>
+                <motion.img whileHover={{scale: 1.2, duration: 0.7}} style={imgStyle} src="/productPictures/prod4.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Deep Freezer</h3>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
-                <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/deepfreezer1.jpeg" alt="image not found"/>
+                <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/productPictures/prod10.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Deep Freezer</h3>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
-              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/drinks1.jpeg" alt="image not found"/>
+              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/productPictures/prod6.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Drinks</h3>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
               <div style={{position: "relative"}}>
-              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/foodstuff1.jpeg" alt="image not found"/>
+              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/productPictures/prod7.jpeg" alt="image not found"/>
+              </div>
+              <h3 style={captionStyle}>Food Stuff</h3>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <div style={{position: "relative"}}>
+              <motion.img whileHover={{scale: 1.2, transition: {duration: 0.7}}} style={imgStyle} src="/productPictures/prod8.jpeg" alt="image not found"/>
               </div>
               <h3 style={captionStyle}>Food Stuff</h3>
             </Grid>
