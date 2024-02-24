@@ -390,27 +390,27 @@ const Home = () => {
         </Grid>
       </section>
       <section className="contacts" style={{margin: "80px 80px"}}>
-        <h1 style={{textAlign: "center", marginBottom: "0"}}>Contacts</h1>
-        <h2 style={{textAlign: "center"}}>You can reach us on the following...</h2>
-        <Grid container>
-          <Grid item xs={12} sm={6} md={3}>
-            <div style={{textAlign: "center"}}><HomeIcon sx={{fontSize: "80px", color: "goldenrod"}} /></div>
-            <h3 style={{textAlign: "center"}}>We are located at University of Benin Central Mosque</h3>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <div style={{textAlign: "center"}}><LocalPhoneIcon sx={{fontSize: "80px", color: "goldenrod"}} /></div>
-            <h3 style={{textAlign: "center", marginBottom: 0}}>07043815052</h3>
-            <h3 style={{textAlign: "center", marginTop: 0}}>08149976598</h3>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <div style={{textAlign: "center"}}><WhatsAppIcon sx={{fontSize: "80px", color: "goldenrod"}} /></div>
-            <h3 style={{textAlign: "center"}}>07043815052</h3>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <div style={{textAlign: "center"}}><EmailIcon sx={{fontSize: "80px", color: "goldenrod"}} /></div>
-            <h3 style={{textAlign: "center", wordWrap:"break-word"}}>almuwaffaqstores1445@gmail.com</h3>
-          </Grid>
-        </Grid>
+        <h1 style={{ marginBottom: "0"}}>Contacts</h1>
+        <h2>You can reach us on the following...</h2>
+        <div style={{display: "flex", alignItems: "center"}}>
+          <div><HomeIcon sx={{fontSize: "30px", color: "goldenrod"}} /></div>
+            <h3 style={{textAlign: "center", fontWeight: "normal", marginLeft: "25px"}}>We are located at University of Benin Central Mosque</h3>
+        </div>
+        <div style={{display: "flex", alignItems: "center"}}>
+          <div><LocalPhoneIcon sx={{fontSize: "30px", color: "goldenrod"}} /></div>
+          <div style={{marginLeft: "25px"}}>
+            <h3 style={{textAlign: "center", fontWeight: "normal", marginBottom: 0}}>07043815052</h3>
+            <h3 style={{textAlign: "center", fontWeight: "normal", marginTop: 0}}>08149976598</h3>
+          </div>
+        </div>
+        <div style={{display: "flex", alignItems: "center"}}>
+          <div><WhatsAppIcon sx={{fontSize: "30px", color: "goldenrod"}} /></div>
+          <h3 style={{textAlign: "center", fontWeight: "normal", marginLeft: "25px"}}>07043815052</h3>
+        </div>
+        <div style={{display: "flex", alignItems: "center"}}>
+          <div><EmailIcon sx={{fontSize: "30px", color: "goldenrod"}} /></div>
+          <h3 style={{textAlign: "center", fontWeight: "normal", marginLeft: "25px"}}>almuwaffaqstores1445@gmail.com</h3>
+        </div>
       </section>
     </div>
     <section className='footer' style={{backgroundColor: "black", padding: "20px", boxSizing: "border-box", marginTop: "50px"}}>
