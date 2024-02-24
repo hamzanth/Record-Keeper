@@ -131,14 +131,14 @@ const Home = () => {
     <div className={styles.mainBody} style={{}}>
       <div className={styles.subhero}>
         <motion.h1 
-          style={{textAlign: "left", marginBottom: "0px", fontSize: "30px"}}
+          className={styles.marketHeader}
           whileHover={{scale: 1.2}}
           whileTap={{scale: 0.8}}
         >
           Explore Our Market
         </motion.h1>
         {/* <hr style={{width: "35%", height: "7px", backgroundColor: "goldenrod", borderRadius: "5px", marginTop: "10px"}} /> */}
-          <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", margin: "19px 0", borderRadius: "20px"}}></div>
+          <div className={styles.lineDivider}></div>
           {/* <motion.div
             // initial={{ opacity: 0, scale: 0.5 }}
             animate={{ 
@@ -223,7 +223,7 @@ const Home = () => {
       </div>
       <div style={{width: "70%", margin: "100px auto"}}> 
         <h1 style={{textAlign: "left", marginBottom: "0px", fontSize: "30px"}}>Services We Render</h1>
-        <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", margin: "19px 0 50px", borderRadius: "20px"}}></div>
+        <div className={styles.lineDivider}></div>
         <Grid style={{display: "flex", alignItems: "center"}} container spacing={8}>
           <Grid item xs={12} md={6} lg={4}>
           <motion.div 
@@ -313,7 +313,7 @@ const Home = () => {
       </section>
       <section className={styles.setApart}>
         <h1 style={{marginBottom: "10px", fontSize: "30px"}}>What Sets Us Apart</h1>
-        <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", margin: "19px 0 50px", borderRadius: "20px"}}></div>
+        <div className={styles.lineDivider}></div>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={3}>
             <div>
@@ -365,7 +365,7 @@ const Home = () => {
       </section>
       <section className="contacts" style={{margin: "80px 80px"}}>
         <h1 style={{ marginBottom: "0", fontSize: "30px"}}>Contacts</h1>
-        <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", margin: "19px 0 50px", borderRadius: "20px"}}></div>
+        <div className={styles.lineDivider}></div>
         <h2>You can reach us on the following...</h2>
         <div style={{display: "flex", alignItems: "center"}}>
           <div><HomeIcon sx={{fontSize: "30px", color: "goldenrod"}} /></div>

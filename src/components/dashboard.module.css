@@ -407,7 +407,18 @@
   .setApart{
     margin: 100px 80px;
   }
-
+  .marketHeader{
+    text-align: left; 
+    margin-bottom: 0px; 
+    font-size: 30px;
+  }
+  .lineDivider{
+    width: 35%; 
+    height: 7px; 
+    background-color: goldenrod; 
+    margin: 19px 0; 
+    border-radius: 20px;
+  }
   @media screen and (max-width: 1250px){
     .homeBackgroundImg {
       background-position: 0px -250px;
