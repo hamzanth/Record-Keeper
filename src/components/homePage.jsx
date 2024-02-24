@@ -311,35 +311,9 @@ const Home = () => {
           </Grid>
         </Grid>
       </section>
-      {/* <div style={{marginTop: "60px"}}>
-        <h1 style={{textAlign: "center", marginBottom: "15px"}}>Our Logistics Unit</h1>
-        <h3 style={{textAlign: "center", margin: "0px 0px 50px", fontStyle: "italic", wordSpacing: "19px", letterSpacing: "5px"}}>...Connecting Continents, Delivering Confidence...</h3>
-        <Grid container spacing={3} style={{backgroundColor: "goldenrod", marginLeft: "0px", borderRadius: "5px", boxSizing: "border-box", marginRight: "44px", padding: "10px 20px 0px 0px"}}>
-          <Grid style={{display: "flex", alignItems: "center"}} item xs={12} md={6}>
-            <div style={{width: "100%"}}>
-              <h2 style={{color: "white", textAlign: "center", fontSize: "31px"}}>Welcome to Al Muwaffaq Logistics</h2>
-
-              <p style={{fontSize: "18px", textAlign: "justify", color: "white"}}>
-                AL-MUWAFAFAQ LOGISTICS also provides delivery service by delivering from UNIBEN
-                to Second East Circular Road beyond Dawnson (here in Benin City) <br/>
-                AL-MUWAFAFAQ LOGISTICS is not just a logistics company; we are your strategic partner in navigating the
-                complexities of supply chain management. With a commitment to excellence, we leverage cutting-edge technology
-                and a delicate team to ensure your cargo reaches its destination seamlessly. <br />
-                it's riders are ACTIVE & EQUAL to your various tasks... <br/>
-                Contact us for safe and reliable deliveries within campus, around campus, and beyond campus.
-                At AL-MUWAFAFAQ LOGISTICS, we redefine the way goods move from point A to point B. With a focus on efficiency,
-                reliability, and customer satisfaction, we take pride in delivering logistics solutions that go beyond transportation. 
-              </p>
-
-            </div>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <img style={{width: "100%", borderRadius: "15px"}} src="/bicycle1.jpeg" alt="image not found"/>
-          </Grid>
-        </Grid>
-      </div> */}
       <section className={styles.setApart}>
-        <h1 style={{textAlign: "center", marginBottom: "40px"}}>What Sets Us Apart</h1>
+        <h1 style={{marginBottom: "10px", fontSize: "30px"}}>What Sets Us Apart</h1>
+        <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", margin: "19px 0 50px", borderRadius: "20px"}}></div>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={3}>
             <div>
@@ -390,26 +364,27 @@ const Home = () => {
         </Grid>
       </section>
       <section className="contacts" style={{margin: "80px 80px"}}>
-        <h1 style={{ marginBottom: "0"}}>Contacts</h1>
+        <h1 style={{ marginBottom: "0", fontSize: "30px"}}>Contacts</h1>
+        <div style={{width: "35%", height: "7px", backgroundColor: "goldenrod", margin: "19px 0 50px", borderRadius: "20px"}}></div>
         <h2>You can reach us on the following...</h2>
         <div style={{display: "flex", alignItems: "center"}}>
           <div><HomeIcon sx={{fontSize: "30px", color: "goldenrod"}} /></div>
-            <h3 style={{textAlign: "center", fontWeight: "normal", marginLeft: "25px"}}>We are located at University of Benin Central Mosque</h3>
+            <h3 style={{textAlign: "center", fontWeight: "normal", marginLeft: "25px", fontSize: "16px"}}>University of Benin Central Mosque</h3>
         </div>
         <div style={{display: "flex", alignItems: "center"}}>
           <div><LocalPhoneIcon sx={{fontSize: "30px", color: "goldenrod"}} /></div>
           <div style={{marginLeft: "25px"}}>
-            <h3 style={{textAlign: "center", fontWeight: "normal", marginBottom: 0}}>07043815052</h3>
-            <h3 style={{textAlign: "center", fontWeight: "normal", marginTop: 0}}>08149976598</h3>
+            <h3 style={{textAlign: "center", fontWeight: "normal", marginBottom: 0, fontSize: "16px"}}>07043815052</h3>
+            <h3 style={{textAlign: "center", fontWeight: "normal", marginTop: 0, fontSize: "16px"}}>08149976598</h3>
           </div>
         </div>
         <div style={{display: "flex", alignItems: "center"}}>
           <div><WhatsAppIcon sx={{fontSize: "30px", color: "goldenrod"}} /></div>
-          <h3 style={{textAlign: "center", fontWeight: "normal", marginLeft: "25px"}}>07043815052</h3>
+          <h3 style={{textAlign: "center", fontWeight: "normal", marginLeft: "25px", fontSize: "16px"}}>07043815052</h3>
         </div>
         <div style={{display: "flex", alignItems: "center"}}>
           <div><EmailIcon sx={{fontSize: "30px", color: "goldenrod"}} /></div>
-          <h3 style={{textAlign: "center", fontWeight: "normal", marginLeft: "25px"}}>almuwaffaqstores1445@gmail.com</h3>
+          <h3 style={{textAlign: "center", fontWeight: "normal", marginLeft: "25px", fontSize: "16px"}}>almuwaffaqstores1445@gmail.com</h3>
         </div>
       </section>
     </div>
