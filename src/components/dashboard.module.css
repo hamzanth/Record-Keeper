@@ -647,6 +647,9 @@
   .lineDivider{
     margin: 26px auto 50px; 
   }
+  .secHeaders{
+    text-align: center;
+  }
     /* .logWriteup{
       display: none;
     } */
