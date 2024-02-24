@@ -369,7 +369,7 @@ const Home = () => {
         <h2>You can reach us on the following...</h2>
         <div style={{display: "flex", alignItems: "center"}}>
           <div><HomeIcon sx={{fontSize: "30px", color: "goldenrod"}} /></div>
-            <h3 style={{textAlign: "center", fontWeight: "normal", marginLeft: "25px", fontSize: "16px"}}>University of Benin Central Mosque</h3>
+            <h3 style={{fontWeight: "normal", marginLeft: "25px", fontSize: "16px"}}>University of Benin Central Mosque</h3>
         </div>
         <div style={{display: "flex", alignItems: "center"}}>
           <div><LocalPhoneIcon sx={{fontSize: "30px", color: "goldenrod"}} /></div>
