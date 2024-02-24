@@ -419,6 +419,9 @@
     margin: 26px 0 50px; 
     border-radius: 20px;
   }
+  .contacts{
+    margin: 80px 80px;
+  }
   @media screen and (max-width: 1250px){
     .homeBackgroundImg {
       background-position: 0px -250px;
@@ -648,6 +651,12 @@
     margin: 26px auto 50px; 
   }
   .secHeaders{
+    text-align: center;
+  }
+  .contacts{
+    margin: 80px 20px;
+  }
+  .contacts>h2{
     text-align: center;
   }
     /* .logWriteup{

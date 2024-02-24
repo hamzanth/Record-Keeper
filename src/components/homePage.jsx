@@ -363,7 +363,7 @@ const Home = () => {
           </Grid>
         </Grid>
       </section>
-      <section className="contacts" style={{margin: "80px 80px"}}>
+      <section className={styles.contacts}>
         <h1 className={styles.secHeaders} style={{ marginBottom: "0", fontSize: "30px"}}>Contacts</h1>
         <div className={styles.lineDivider}></div>
         <h2>You can reach us on the following...</h2>
