@@ -10,6 +10,10 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone'
 import EmailIcon from '@mui/icons-material/Email'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import HomeIcon from '@mui/icons-material/Home'
+import AccessibleIcon from '@mui/icons-material/Accessible'
+import AccessibilityIcon from '@mui/icons-material/Accessibility'
+import AddBoxIcon from '@mui/icons-material/AddBox'
+import AddAlertIcon from '@mui/icons-material/AddAlert'
 import { Grid } from '@mui/material'
 import { motion, AnimatePresence, spring } from 'framer-motion'
 import LogisticCarousal from './miniComponents/logisticCarousal'
@@ -318,7 +322,7 @@ const Home = () => {
           <Grid item xs={12} sm={6} md={3}>
             <div>
               <div style={{textAlign: "center"}}>
-                <HomeIcon sx={{fontSize: "80px", color: "grey"}} />
+                <AddAlertIcon sx={{fontSize: "80px", color: "grey"}} />
               </div>
               <h2 style={{textAlign: "center", color: "goldenrod", fontWeight: "bold"}}>Variety and Quality</h2>
               <p style={{textAlign: "center", lineHeight: "23px", fontSize: "15px"}}>
@@ -330,7 +334,7 @@ const Home = () => {
           <Grid item xs={12} sm={6} md={3}>
             <div>
               <div style={{textAlign: "center"}}>
-                <HomeIcon sx={{fontSize: "80px", color: "grey"}} />
+                <AccessibleIcon sx={{fontSize: "80px", color: "grey"}} />
               </div>
               <h2 style={{textAlign: "center", color: "goldenrod", fontWeight: "bold"}}>Affordability</h2>
               <p style={{textAlign: "center", lineHeight: "23px", fontSize: "15px"}}>
@@ -341,7 +345,7 @@ const Home = () => {
           <Grid item xs={12} sm={6} md={3}>
             <div>
               <div style={{textAlign: "center"}}>
-                <HomeIcon sx={{fontSize: "80px", color: "grey"}} />
+                <AddBoxIcon sx={{fontSize: "80px", color: "grey"}} />
               </div>
               <h2 style={{textAlign: "center", color: "goldenrod", fontWeight: "bold"}}>Student-Centric Approach</h2>
               <p style={{textAlign: "center", lineHeight: "23px", fontSize: "15px"}}>
@@ -352,7 +356,7 @@ const Home = () => {
           <Grid item xs={12} sm={6} md={3}>
             <div>
               <div style={{textAlign: "center"}}>
-                <HomeIcon sx={{fontSize: "80px", color: "grey"}} />
+                <AccessibilityIcon sx={{fontSize: "80px", color: "grey"}} />
               </div>
               <h2 style={{textAlign: "center", color: "goldenrod", fontWeight: "bold"}}>Accountability</h2>
               <p style={{textAlign: "center", lineHeight: "23px", fontSize: "15px"}}>
